@@ -2,7 +2,7 @@ var express = require("express");
 
 var app = express();
 
-app.get("/",(req,res) => {
+app.get("/about",(req,res) => {
 
 	res.write("Group Members: \n");
 	res.write(" - Alejandro Miguel Ruiz Rodriguez \n");
