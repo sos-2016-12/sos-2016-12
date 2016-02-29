@@ -15,14 +15,6 @@ app.get("/about",(req,res) => {
 app.get("/about/death-penalty-stats",(req,res) => {
 
 	res.write("\n");
-	res.write(" http://www.ub.edu/penal/historia/PdeM/listapaises.htm" \n");
-	res.end();
-
-})
-
-app.get("/about/death-penalty-stats",(req,res) => {
-
-	res.write("\n");
 	res.write(" http://www.ub.edu/penal/historia/PdeM/listapaises.htm \n");
 	res.write(" https://en.wikipedia.org/wiki/List_of_countries_by_intentional_homicide_rate \n");
 	res.end();
