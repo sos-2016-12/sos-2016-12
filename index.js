@@ -12,4 +12,4 @@ app.get("/",(req,res) => {
 
 })
 
-app.listen(16666);
+app.listen(process.env.PORT);
