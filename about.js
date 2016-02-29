@@ -15,8 +15,8 @@ app.get("/about",(req,res) => {
 app.get("/about/death-penalty-stats",(req,res) => {
 
 	res.write("\n");
-	res.write(" <html><body><a href="http://www.ub.edu/penal/historia/PdeM/listapaises.htm"> Source 1 </a> <\n>");
-	res.write(" <a href="https://en.wikipedia.org/wiki/List_of_countries_by_intentional_homicide_rate"> Source 2 </a></body></html> \n");
+	res.write(" <html><body><a>http://www.ub.edu/penal/historia/PdeM/listapaises.htm</a> <\n>");
+	res.write(" <a>https://en.wikipedia.org/wiki/List_of_countries_by_intentional_homicide_rate</a></body></html> \n");
 	res.end();
 
 })
