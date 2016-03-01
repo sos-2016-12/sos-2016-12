@@ -21,6 +21,16 @@ app.get("/about/death-penalty-stats",(req,res) => {
 
 })
 
+app.get("/about/republican-stats",(req,res) => {
+
+	res.write("\n");
+	res.write("https://en.wikipedia.org/wiki/List_of_countries_by_date_of_transition_to_republican_system_of_government \n");
+	res.write("https://es.wikipedia.org/wiki/Anexo:Pa%C3%ADses_por_PIB_(PPA)_per_c%C3%A1pita \n");
+	res.write("https://es.wikipedia.org/wiki/Anexo:Pa%C3%ADses_por_poblaci%C3%B3n \n");
+	res.end();
+
+})
+
 
 
 app.listen(process.env.PORT);
