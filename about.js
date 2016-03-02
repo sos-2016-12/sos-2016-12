@@ -31,6 +31,14 @@ app.get("/about/republican-stats",(req,res) => {
 
 })
 
+app.get("/about/earthquakes-stats",(req,res) => {
+
+	res.write("\n");
+	res.write(" - Earthquakes in the 21st century: https://es.wikipedia.org/wiki/Anexo:Terremotos_del_siglo_XXI \n");
+	res.end();
+
+})
+
 
 
 app.listen(process.env.PORT);
