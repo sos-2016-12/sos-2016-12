@@ -7,7 +7,8 @@ app.get("/about",(req,res) => {
 	res.write("Group Members: \n");
 	res.write(" - Alejandro Miguel Ruiz Rodriguez \n");
 	res.write(" - Victor Alejandro Segura Segura \n \n");
-	res.write(" Our app is a representation of the use of Death Penalty \n and what countries switched to a Democratic Government in the world. \n");
+	res.write(" - Matthias Rein \n \n");
+	res.write(" Our app is a representation of the use of Death Penalty \n ,what countries switched to a Democratic Government \n and the effects of earthquakes in different countries of the world. \n");
 	res.end();
 
 })
