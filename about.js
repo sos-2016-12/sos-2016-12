@@ -4,7 +4,7 @@ var app = express();
 
 app.get("/about",(req,res) => {
 
-	res.write("Group Members: \n");
+	res.write("\nGroup Members: \n");
 	res.write(" - Alejandro Miguel Ruiz Rodriguez \n");
 	res.write(" - Victor Alejandro Segura Segura \n");
 	res.write(" - Matthias Rein \n \n");
