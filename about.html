@@ -1,18 +1,17 @@
-<<!DOCTYPE html>
-<html>
+var express = require("express");
 
-<body>
-	<p>Group Members:</p>
-		<ul>
-			<li>Alejandro Miguel Ruiz Rodriguez</li>
-			<li>Victor Alejandro Segura Segura</li>
-			<li>Matthias Rein</li>
-		</ul>
-	<p>Our app is a representation of the use of Death Penalty, what \n countries switched to a Democratic Government \n and the effects of earthquakes in different countries of the world.</p>
-</body>
-</html>
+var app = express();
 
-	
+app.get("/about",(req,res) => {
+
+	res.write("\nGroup Members: \n\n");
+	res.write(" - Alejandro Miguel Ruiz Rodriguez \n");
+	res.write(" - Victor Alejandro Segura Segura \n");
+	res.write(" - Matthias Rein \n \n");
+	res.write(" Our app is a representation of the use of Death Penalty, what \n countries switched to a Democratic Government \n and the effects of earthquakes in different countries of the world. \n");
+	res.end();
+
+})
 
 app.get("/about/death-penalty-stats",(req,res) => {
 
