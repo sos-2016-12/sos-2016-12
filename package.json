@@ -2,10 +2,6 @@
   "name": "heroku-app",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "start": "node about.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -14,11 +10,15 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sos-2016-12/sandbox.git"
+    "url": "git+https://github.com/sos-2016-12/sos-2016-12.git"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bugs": {
-    "url": "https://github.com/sos-2016-12/sandbox/issues"
+    "url": "https://github.com/sos-2016-12/sos-2016-12/issues"
   },
-  "homepage": "https://github.com/sos-2016-12/sandbox#readme",
+  "homepage": "https://github.com/sos-2016-12/sos-2016-12#readme",
   "description": ""
 }
