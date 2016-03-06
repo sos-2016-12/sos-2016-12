@@ -2,7 +2,7 @@ var express = require("express");
 
 var app = express();
 
-app.use("/",express.static("/static"));
+app.use("/",express.static(__dirname+"/static"));
 
 var p = (process.env.PORT || 16666);
 
