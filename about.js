@@ -1,4 +1,4 @@
-var express = require("express");
+/*var express = require("express");
 
 var app = express();
 
@@ -42,4 +42,4 @@ app.get("/about/earthquakes-stats",(req,res) => {
 
 
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT);*/
