@@ -35,7 +35,7 @@ app.post("/api/sandbox/games", (req,res) =>{
 })
 
 app.post("/api/sandbox/games/:name", (req,res) =>{
-	res.sendStatus(500);
+	res.send("Operation not permitted");
 })
 
 app.listen(p);    
