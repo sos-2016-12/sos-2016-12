@@ -29,7 +29,7 @@ app.get("/api/sandbox/games/:name", (req,res) =>{
 
 app.post("/api/sandbox/games", (req,res) =>{
 	var game = req.body;
-	games.push(contact);
+	games.push(game);
 	console.log("New POST of resource "+game.name);
 	res.sendStatus(200);
 })
