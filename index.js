@@ -17,7 +17,7 @@ var bodyParser = require("body-parser");
 
 app.use(bodyParser.json());
 
-var games = [ { name : ""}];
+var games = [ { "name" : ""}];
 
 app.get("/api/sandbox/games/:name", (req,res) =>{
 	var name = req.params.name;
