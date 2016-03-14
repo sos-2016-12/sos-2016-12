@@ -2,6 +2,10 @@ var express = require("express");
 
 var app = express();
 
+var bodyParser = require("body-parser");
+
+app.use(bodyParser.json());
+
 app.use("/",express.static(__dirname+"/static"));
 
 var p = (process.env.PORT || 16666);
@@ -13,11 +17,9 @@ app.get("/time",(req,res) => {
 	res.end();
 })
 
-var bodyParser = require("body-parser");
 
-app.use(bodyParser.json());
 
-var games = [ { "name" : ""}];
+var games = [ { "name" : "cod"}];
 
 app.get("/api/sandbox/games/:name", (req,res) =>{
 	var name = req.params.name;
