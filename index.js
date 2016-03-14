@@ -38,4 +38,27 @@ app.post("/api/sandbox/games/:name", (req,res) =>{
 	res.send("Operation not permitted");
 })
 
+app.put("/api/sandbox/games/:name", (req,res) =>{
+	var game = req.body;
+	games[name] = game;
+	console.log("New PUT of resource "+game.name);
+	res.sendStatus(200);
+})
+
+app.put("/api/sandbox/games", (req,res) =>{
+	res.sendStatus("Operation not permitted.");
+})
+
+app.delete("/api/sandbox/games", (req,res) =>{
+	games = [];
+	console.log(" You DELETED all games :(");
+	res.sendStatus(200);
+})
+
+app.delete("/api/sandbox/games/:name", (req,res) =>{
+	console.log("You deleted the game successfully.");
+	res.sendStatus(200);
+})
+
+
 app.listen(p);    
