@@ -24,7 +24,7 @@ var games = [];
 app.get("/api/sandbox/games/:name", (req,res) =>{
 	var name = req.params.name;
 	console.log("New GET of resource "+name);
-	res.send(games);
+	res.send(games[name]);
 });
 
 app.post("/api/sandbox/games", (req,res) =>{
@@ -32,6 +32,10 @@ app.post("/api/sandbox/games", (req,res) =>{
 	games.push(game);
 	console.log("New POST of resource "+game.name);
 	res.sendStatus(200);
+})
+
+app.post("/api/sandbox/games/:name", (req,res) =>{
+	res.sendStatus(500);
 })
 
 app.listen(p);    
