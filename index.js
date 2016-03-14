@@ -19,7 +19,7 @@ app.get("/time",(req,res) => {
 
 
 
-var games = [ { "name" : "cod"}];
+var games = [];
 
 app.get("/api/sandbox/games/:name", (req,res) =>{
 	var name = req.params.name;
