@@ -38,7 +38,7 @@ app.get("/api/sandbox/games/", (req,res) =>{
 app.get("/api/sandbox/games/:name", (req,res) =>{
 	var name = req.params.name;
 	console.log("New GET of resource "+name);
-	res.send(games);
+	res.send(games[name]);
 });
 
 app.post("/api/sandbox/games", (req,res) =>{
