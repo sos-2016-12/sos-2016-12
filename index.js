@@ -82,7 +82,7 @@ app.put("/api/sandbox/games/:name", (req,res) =>{
 });
 
 app.put("/api/sandbox/games", (req,res) =>{
-	res.sendStatus("Operation not permitted.");
+	res.send("Operation not permitted.");
 });
 
 app.delete("/api/sandbox/games", (req,res) =>{
