@@ -97,7 +97,7 @@ app.delete("/api/sandbox/games/:name", (req,res) =>{
 	for (var i = 0; i < games.length; i++) {
 		if (games[i].name == name){
 			aux = games[i];
-			games.splice(i);
+			games.splice(i,1);
 			res.send("You deleted the game successfully.");
 		}
 	}
