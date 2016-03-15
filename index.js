@@ -162,7 +162,7 @@ app.post("/api/sandbox/pirates", function(req, res){
 
 
 app.post("/api/sandbox/pirates/:name", function(req,res){
-	res.send("");
+	res.send("Operation not permitted");
 });
 
 app.put("/api/sandbox/pirates/:name", function(req,res){
