@@ -125,7 +125,7 @@ app.get("/api/sandbox/pirates/:name", function(req, res){
 	var name = req.params.name;
 	var aux= Array.contains(pirates, name);
 	console.log("New GET of resource" + name);
-	if(aux = true){
+	if(aux == true){
 		res.send(pirates[pirate]);
 	}else{
 		res.send("404");
