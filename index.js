@@ -90,7 +90,7 @@ app.get("/api/sandbox/pirates/:name", function(req, res){
 
 	var name = req.params.name;
 	console.log("New GET of resource" + name);
-	res.send(pirates[0]);
+	res.send(pirate);
 });
 
 app.get("/api-test/pirates/loadInitialData", function(req,res){
