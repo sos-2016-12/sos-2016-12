@@ -17,7 +17,7 @@ app.get("/time",(req,res) => {
 	res.end();
 })
 
-
+// Alejandro's part
 
 var games = [];
 
@@ -35,7 +35,7 @@ app.get("/api/sandbox/games/", (req,res) =>{
 app.get("/api/sandbox/games/:name", (req,res) =>{
 	var name = req.params.name;
 	console.log("New GET of resource "+name);
-	res.send(games[name]);
+	res.send(games);
 });
 
 app.post("/api/sandbox/games", (req,res) =>{
@@ -71,5 +71,6 @@ app.delete("/api/sandbox/games/:name", (req,res) =>{
 	res.sendStatus(200);
 })
 
+// End of Alejandro's part
 
 app.listen(p);    
