@@ -162,7 +162,7 @@ app.post("/api/sandbox/pirates", function(req, res){
 
 
 app.post("/api/sandbox/pirates/:name", function(req,res){
-	res.send("Operation not permitted");
+	res.sendStatus(403);
 });
 
 app.put("/api/sandbox/pirates/:name", function(req,res){
@@ -194,7 +194,7 @@ app.put("/api/sandbox/pirates/:name", function(req,res){
 });
 
 app.put("/api/sandbox/pirates", function(req,res){
-	res.send("¿Qué tramas, moreno?");
+	res.sendStatus(403);
 });
 
 app.delete("/api/sandbox/pirates", function(req,res){
