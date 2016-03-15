@@ -62,13 +62,13 @@ app.put("/api/sandbox/games", (req,res) =>{
 
 app.delete("/api/sandbox/games", (req,res) =>{
 	games = [];
-	console.log(" You DELETED all games :(");
-	res.sendStatus(200);
+	console.log("You DELETED all games :(");
+	res.sendStatus("You DELETED all games :(");
 })
 
 app.delete("/api/sandbox/games/:name", (req,res) =>{
 	console.log("You deleted the game successfully.");
-	res.sendStatus(200);
+	res.sendStatus("You deleted the game successfully.");
 })
 
 // End of Alejandro's part
