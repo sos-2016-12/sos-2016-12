@@ -17,11 +17,10 @@ app.get("/time",(req,res) => {
 	res.end();
 })
 
-<<<<<<< HEAD
+
 //Cádigo Ale ###############################################
-=======
+
 // Alejandro's part
->>>>>>> a00ee47acf7ec341bb91cfa990ba101cee422e84
 
 var games = [];
 
@@ -75,7 +74,7 @@ app.delete("/api/sandbox/games/:name", (req,res) =>{
 	res.sendStatus(200);
 })
 
-<<<<<<< HEAD
+
 //###########################################################
 
 
@@ -136,8 +135,7 @@ app.delete("/api/sandbox/pirates/:name", (req,res) =>{
 
 
 
-=======
+
 // End of Alejandro's part
->>>>>>> a00ee47acf7ec341bb91cfa990ba101cee422e84
 
 app.listen(p);    
