@@ -90,7 +90,13 @@ app.get("/api/sandbox/pirates/:name", function(req, res){
 
 	var name = req.params.name;
 	console.log("New GET of resource" + name);
-	res.send(pirate);
+	if(pirates.indexOf(name)>0){
+		res.send(pirate);
+	}else{
+		res.send("404");
+	}
+
+
 });
 
 app.get("/api-test/pirates/loadInitialData", function(req,res){
@@ -108,28 +114,40 @@ app.post("/api/sandbox/pirates", function(req, res){
 
 
 app.post("/api/sandbox/pirates/:name", function(req,res){
-	res.send("¿Qué tramas, moreno?");
+	res.send("");
 });
 
-app.put("/api/sandbox/pirates/:name", (req,res) =>{
+app.put("/api/sandbox/pirates/:name", function(req,res){
+	var name = req.params.name;
 	var pirate = req.body;
-	pirates[name] = pirate;
+	if(pirates.indexOf(name)>0){
+		pirates[name] = pirate;
+	}else{
+		res.send("404");
+	}
+	
 	console.log("New PUT of resource "+pirate.name);
 	res.sendStatus(200);
 });
 
 app.put("/api/sandbox/pirate", function(req,res){
-	res.sendStatus("¿Qué tramas, moreno?");
+	res.send("¿Qué tramas, moreno?");
 });
 
 app.delete("/api/sandbox/pirates", function(req,res){
 	pirates = [];
-	console.log(" You DELETED all pirates :(");
+	console.log(" You DELETED all pirates ");
 	res.sendStatus(200);
 });
 
-app.delete("/api/sandbox/pirates/:name", (req,res) =>{
-	console.log("You deleted the pirate successfully.");
+app.delete("/api/sandbox/pirates/:name", function(req,res){
+	var name = req.params.name;
+	if(pirates.indexOf(name)>0){
+		pirates.splice(0,name);
+	}else{
+		res.send("404");
+	} 
+	console.log("You deleted the pirate:"+ name +"successfully.");
 	res.sendStatus(200);
 });
 
