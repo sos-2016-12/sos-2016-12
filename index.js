@@ -101,8 +101,8 @@ app.get("/api/sandbox/pirates/:name", function(req, res){
 
 	var name = req.params.name;
 	console.log("New GET of resource" + name);
-	if(pirates.indexOf(name)>0){
-		res.send(pirate);
+	if(pirates.indexOf(name)>=0){
+		res.send(pirates[pirate]);
 	}else{
 		res.send("404");
 	}
@@ -131,7 +131,7 @@ app.post("/api/sandbox/pirates/:name", function(req,res){
 app.put("/api/sandbox/pirates/:name", function(req,res){
 	var name = req.params.name;
 	var pirate = req.body;
-	if(pirates.indexOf(name)>0){
+	if(pirates.indexOf(name)>=0){
 		pirates[name] = pirate;
 	}else{
 		res.send("404");
@@ -153,7 +153,7 @@ app.delete("/api/sandbox/pirates", function(req,res){
 
 app.delete("/api/sandbox/pirates/:name", function(req,res){
 	var name = req.params.name;
-	if(pirates.indexOf(name)>0){
+	if(pirates.indexOf(name)>=0){
 		pirates.splice(0,name);
 	}else{
 		res.send("404");
