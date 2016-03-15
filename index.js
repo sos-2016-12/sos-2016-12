@@ -110,6 +110,7 @@ app.delete("/api/sandbox/games/:name", (req,res) =>{
 
 
 //###########################################################
+//###########################################################
 
 
 //Código Víctor
@@ -122,14 +123,26 @@ app.get("/api/sandbox/pirates", function(req,res){
 
 app.get("/api/sandbox/pirates/:name", function(req, res){
 
-	var name = req.params.name;
+	/*var name = req.params.name;
 	var aux= Array.contains(pirates, name);
 	console.log("New GET of resource" + name);
 	if(aux == true){
 		res.send(pirates[pirate]);
 	}else{
 		res.send("404");
+	}*/
+	var name = req.params.name;
+	var aux = null;
+	for (var i = 0; i < pirates.length; i++) {
+		if (pirates[i].name == name){
+			aux = pirates[i];
+			res.send(aux);
+		}
 	}
+	if (aux == null) {
+		res.sendStatus(404);
+	}
+	console.log("New GET of resource "+name);
 
 
 });
@@ -153,7 +166,7 @@ app.post("/api/sandbox/pirates/:name", function(req,res){
 });
 
 app.put("/api/sandbox/pirates/:name", function(req,res){
-	var name = req.params.name;
+	/*var name = req.params.name;
 	var pirate = req.body;
 	var aux= Array.contains(pirates, name);
 	if(aux==true){
@@ -163,7 +176,21 @@ app.put("/api/sandbox/pirates/:name", function(req,res){
 	}
 	
 	console.log("New PUT of resource "+pirate.name);
-	res.sendStatus(200);
+	res.sendStatus(200);*/
+
+	var pirate = req.body;
+	var aux = null;
+	for (var i = 0; i < pirates.length; i++) {
+		if (pirates[i].name == req.params.name) {
+			aux = pirates[i];
+			aux.name = pirate.name;
+			res.sendStatus(200);
+		}
+	}
+	if (aux == null) {
+		res.sendStatus(404);
+	}
+	console.log("New PUT of resource "+pirate.name);
 });
 
 app.put("/api/sandbox/pirates", function(req,res){
@@ -177,7 +204,7 @@ app.delete("/api/sandbox/pirates", function(req,res){
 });
 
 app.delete("/api/sandbox/pirates/:name", function(req,res){
-	var name = req.params.name;
+	/*var name = req.params.name;
 	var aux= Array.contains(pirates, name);
 	if(aux==true){
 		pirates.splice(0,name);
@@ -185,7 +212,23 @@ app.delete("/api/sandbox/pirates/:name", function(req,res){
 		res.send("404");
 	} 
 	console.log("You deleted the pirate:"+ name +"successfully.");
-	res.sendStatus(200);
+	res.sendStatus(200);*/
+
+	var name = req.params.name;
+	var aux = null;
+	for (var i = 0; i < pirates.length; i++) {
+		if (pirates[i].name == name){
+			aux = pirates[i];
+			pirates.splice(i,1);
+			res.send("You deleted the pirate successfully.");
+		}
+	}
+	if (aux == null) {
+		res.sendStatus(404);
+	}
+	console.log("You deleted the pirate successfully.");
+
+
 });
 
 
