@@ -21,6 +21,12 @@ app.get("/time",(req,res) => {
 
 var games = [];
 
+app.get("/api-test/games/loadInitialData", (req,res) =>{
+	games = [{ name : "cod", PEGI : "18"},{ name : "GTA"}];
+	console.log("2 elements initialized.");
+	res.send(200);
+});
+
 app.get("/api/sandbox/games/:name", (req,res) =>{
 	var name = req.params.name;
 	console.log("New GET of resource "+name);
