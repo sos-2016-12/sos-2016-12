@@ -22,9 +22,14 @@ app.get("/time",(req,res) => {
 var games = [];
 
 app.get("/api-test/games/loadInitialData", (req,res) =>{
-	games = [{ name : "cod", PEGI : "18"},{ name : "GTA"}];
+	games = [{ name : "cod", PEGI : "18"},{ name : "GTA", PEGI : "18"}];
 	console.log("2 elements initialized.");
 	res.send(200);
+});
+
+app.get("/api/sandbox/games/", (req,res) =>{
+	console.log("New GET of all resources.");
+	res.send(games);
 });
 
 app.get("/api/sandbox/games/:name", (req,res) =>{
