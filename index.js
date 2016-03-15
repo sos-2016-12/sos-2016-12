@@ -57,33 +57,56 @@ app.post("/api/sandbox/games", (req,res) =>{
 	games.push(game);
 	console.log("New POST of resource "+game.name);
 	res.sendStatus(200);
-})
+});
 
 app.post("/api/sandbox/games/:name", (req,res) =>{
 	res.send("Operation not permitted");
-})
+});
 
 app.put("/api/sandbox/games/:name", (req,res) =>{
 	var game = req.body;
-	games[name] = game;
+	var aux = null;
+	for (var i = 0; i < games.length; i++) {
+		if (games[i].name == req.params.name) {
+			aux = games[i];
+			aux.name = game.name;
+			aux.PEGI = game.PEGI;
+			res.sendStatus(200);
+		}
+	}
+	if (aux == null) {
+		res.sendStatus(404);
+	}
 	console.log("New PUT of resource "+game.name);
-	res.sendStatus(200);
-})
+	
+});
 
 app.put("/api/sandbox/games", (req,res) =>{
 	res.sendStatus("Operation not permitted.");
-})
+});
 
 app.delete("/api/sandbox/games", (req,res) =>{
 	games = [];
 	console.log("You DELETED all games :(");
 	res.send("You DELETED all games :(");
-})
+});
 
 app.delete("/api/sandbox/games/:name", (req,res) =>{
+	var name = req.params.name;
+	var aux = null;
+	for (var i = 0; i < games.length; i++) {
+		if (games[i].name == name){
+			aux = games[i];
+			games.splice(i,1);
+			res.send("You deleted the game successfully.");
+		}
+	}
+	if (aux == null) {
+		res.sendStatus(404);
+	}
 	console.log("You deleted the game successfully.");
-	res.send("You deleted the game successfully.");
-})
+	
+});
 
 
 //###########################################################
