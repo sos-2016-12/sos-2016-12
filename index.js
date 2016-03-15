@@ -36,14 +36,15 @@ app.get("/api/sandbox/games/", (req,res) =>{
 });
 
 app.get("/api/sandbox/games/:name", (req,res) =>{
-	var nam = req.params.name;
-	var res;
-	for (var i = 0; i < games.length; i++) {
-		if (games[i].name == nam)
-			res = games[i];
-	}
+	var name = req.params.name;
+	var res = games.indexOf(name);
 	console.log("New GET of resource "+name);
-	res.send(res);
+	if (res == -1) {
+		res.sendStatus(404);
+	} else {
+		res.send(games[res]);
+	}
+	
 });
 
 app.post("/api/sandbox/games", (req,res) =>{
