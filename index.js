@@ -38,7 +38,7 @@ app.get("/api/sandbox/games/", (req,res) =>{
 app.get("/api/sandbox/games/:name", (req,res) =>{
 	var name = req.params.name;
 	console.log("New GET of resource "+name);
-	res.send(games);
+	res.send(games[name]);
 });
 
 app.post("/api/sandbox/games", (req,res) =>{
@@ -65,13 +65,13 @@ app.put("/api/sandbox/games", (req,res) =>{
 
 app.delete("/api/sandbox/games", (req,res) =>{
 	games = [];
-	console.log(" You DELETED all games :(");
-	res.sendStatus(200);
+	console.log("You DELETED all games :(");
+	res.send("You DELETED all games :(");
 })
 
 app.delete("/api/sandbox/games/:name", (req,res) =>{
 	console.log("You deleted the game successfully.");
-	res.sendStatus(200);
+	res.send("You deleted the game successfully.");
 })
 
 
@@ -133,9 +133,5 @@ app.delete("/api/sandbox/pirates/:name", (req,res) =>{
 	res.sendStatus(200);
 });
 
-
-
-
-// End of Alejandro's part
 
 app.listen(p);    
