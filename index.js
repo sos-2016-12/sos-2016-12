@@ -37,7 +37,12 @@ app.get("/api/sandbox/games/", (req,res) =>{
 
 app.get("/api/sandbox/games/:name", (req,res) =>{
 	var name = req.params.name;
-	var res = Object.keys(games).indexOf(name);
+	var res = games.findByID(name, function(err, game) {
+		if(!err)
+			res.send(game);
+		else
+			res.sendStatus(404);
+	});
 	console.log("New GET of resource "+name);
 
 	
