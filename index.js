@@ -17,7 +17,7 @@ app.get("/time",(req,res) => {
 	res.end();
 })
 
-
+//Cádigo Ale ###############################################
 
 var games = [];
 
@@ -70,6 +70,66 @@ app.delete("/api/sandbox/games/:name", (req,res) =>{
 	console.log("You deleted the game successfully.");
 	res.sendStatus(200);
 })
+
+//###########################################################
+
+
+//Código Víctor
+var pirates = [];
+
+app.get("/api/sandbox/pirates", function(req,res){
+	console.log("New GET of all resources.");
+	res.send(pirates);
+});
+
+app.get("/api/sandbox/pirates/:name", function(req, res){
+
+	var name = req.params.name;
+	console.log("New GET of resource" + name);
+	res.send(pirates[0]);
+});
+
+app.get("/api-test/pirates/loadInitialData", function(req,res){
+	pirates = [{ name : "Black Bart"},{ name : "Long Ben"},{ name : "Anne Bonny"}];
+	console.log("3 elements initialized.");
+	res.send(200);
+});
+
+app.post("/api/sandbox/pirates", function(req, res){
+	var pirate = req.body;
+	pirates.push(pirate);
+	console.log("New POST of resource " + pirate.name);
+	res.sendStatus(200);
+});
+
+
+app.post("/api/sandbox/pirates/:name", function(req,res){
+	res.send("¿Qué tramas, moreno?");
+});
+
+app.put("/api/sandbox/pirates/:name", (req,res) =>{
+	var pirate = req.body;
+	pirates[name] = pirate;
+	console.log("New PUT of resource "+pirate.name);
+	res.sendStatus(200);
+});
+
+app.put("/api/sandbox/pirate", function(req,res){
+	res.sendStatus("¿Qué tramas, moreno?");
+});
+
+app.delete("/api/sandbox/pirates", function(req,res){
+	pirates = [];
+	console.log(" You DELETED all pirates :(");
+	res.sendStatus(200);
+});
+
+app.delete("/api/sandbox/pirates/:name", (req,res) =>{
+	console.log("You deleted the pirate successfully.");
+	res.sendStatus(200);
+});
+
+
 
 
 app.listen(p);    
