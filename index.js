@@ -27,7 +27,7 @@ var games = [];
 app.get("/api-test/games/loadInitialData", (req,res) =>{
 	games = [{ name : "cod", PEGI : "18"},{ name : "GTA", PEGI : "18"}];
 	console.log("2 elements initialized.");
-	res.send(200);
+	res.sendStatus(201);
 });
 
 app.get("/api/sandbox/games/", (req,res) =>{
@@ -56,11 +56,11 @@ app.post("/api/sandbox/games", (req,res) =>{
 	var game = req.body;
 	games.push(game);
 	console.log("New POST of resource "+game.name);
-	res.sendStatus(200);
+	res.sendStatus(201);
 });
 
 app.post("/api/sandbox/games/:name", (req,res) =>{
-	res.send("Operation not permitted");
+	res.sendStatus(405);
 });
 
 app.put("/api/sandbox/games/:name", (req,res) =>{
@@ -82,13 +82,13 @@ app.put("/api/sandbox/games/:name", (req,res) =>{
 });
 
 app.put("/api/sandbox/games", (req,res) =>{
-	res.send("Operation not permitted.");
+	res.sendStatus(405);
 });
 
 app.delete("/api/sandbox/games", (req,res) =>{
 	games = [];
 	console.log("You DELETED all games :(");
-	res.send("You DELETED all games :(");
+	res.send(200);
 });
 
 app.delete("/api/sandbox/games/:name", (req,res) =>{
@@ -98,7 +98,7 @@ app.delete("/api/sandbox/games/:name", (req,res) =>{
 		if (games[i].name == name){
 			aux = games[i];
 			games.splice(i,1);
-			res.send("You deleted the game successfully.");
+			res.send(200);
 		}
 	}
 	if (aux == null) {
