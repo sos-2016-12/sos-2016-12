@@ -109,17 +109,17 @@ app.delete("/api/sandbox/games/:name", (req,res) =>{
 
 // Codigo de Ale API principal (death-penalty-stats)
 
-// var death-penalty-stats = [];
+var death-penalty-stats = [];
 
-// app.get("/api/v1/death-penalty-stats/loadInitialData", (req,res) =>{
-// 	games = [{ country : "SPAIN", abolition-year : 1995, for-all-crimes : "yes", most-recent-murder-rate(per-100,000-people) : 0.8},
-// 	{ country : "GERMANY", abolition-year : 1987, for-all-crimes : "yes", most-recent-murder-rate(per-100,000-people) : 0.8},
-// 	{ country : "PERU", abolition-year : 1979, for-all-crimes : "no", most-recent-murder-rate(per-100,000-people) : 9.6},
-// 	{ country : "TURKEY", abolition-year : 1984, for-all-crimes : "no", most-recent-murder-rate(per-100,000-people) : 2.6},
-// 	{ country : "SWEDEN", abolition-year : 1972, for-all-crimes : "yes", most-recent-murder-rate(per-100,000-people) : 0.7}];
-// 	console.log("5 elements initialized.");
-// 	res.sendStatus(201);
-// });
+app.get("/api/v1/death-penalty-stats/loadInitialData", (req,res) =>{
+	games = [{ country : "SPAIN", abolition-year : 1995, for-all-crimes : "yes", most-recent-murder-rate(per-100,000-people) : 0.8},
+	{ country : "GERMANY", abolition-year : 1987, for-all-crimes : "yes", most-recent-murder-rate(per-100,000-people) : 0.8},
+	{ country : "PERU", abolition-year : 1979, for-all-crimes : "no", most-recent-murder-rate(per-100,000-people) : 9.6},
+	{ country : "TURKEY", abolition-year : 1984, for-all-crimes : "no", most-recent-murder-rate(per-100,000-people) : 2.6},
+	{ country : "SWEDEN", abolition-year : 1972, for-all-crimes : "yes", most-recent-murder-rate(per-100,000-people) : 0.7}];
+	console.log("5 elements initialized.");
+	res.sendStatus(201);
+});
 
 // app.get("/api/v1/death-penalty-stats", (req,res) =>{
 // 	console.log("New GET of all resources.");
