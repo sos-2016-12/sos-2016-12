@@ -109,9 +109,9 @@ app.delete("/api/sandbox/games/:name", (req,res) =>{
 
 // Codigo de Ale API principal (death-penalty-stats)
 
-var death-penalty-stats = [];
+var death_penalty_stats = [];
 
-app.get("/api/v1/death-penalty-stats/loadInitialData", (req,res) =>{
+app.get("/api/v1/death_penalty_stats/loadInitialData", (req,res) =>{
 	games = [{ country : "SPAIN", abolition_year : 1995, for_all_crimes : "yes", murder_rate_per_100k_people : 0.8},
 	{ country : "GERMANY", abolition_year : 1987, for_all_crimes : "yes", murder_rate_per_100k_people : 0.8},
 	{ country : "PERU", abolition_year : 1979, for_all_crimes : "no", murder_rate_per_100k_people : 9.6},
@@ -121,17 +121,17 @@ app.get("/api/v1/death-penalty-stats/loadInitialData", (req,res) =>{
 	res.sendStatus(201);
 });
 
-app.get("/api/v1/death-penalty-stats", (req,res) =>{
+app.get("/api/v1/death_penalty_stats", (req,res) =>{
 	console.log("New GET of all resources.");
 	res.send(games);
 });
 
-app.get("/api/v1/death-penalty-stats/:country", (req,res) =>{
+app.get("/api/v1/death_penalty_stats/:country", (req,res) =>{
 	var country = req.params.country;
 	var aux = null;
-	for (var i = 0; i < death-penalty-stats.length; i++) {
-		if (death-penalty-stats[i].country == country){
-			aux = death-penalty-stats[i];
+	for (var i = 0; i < death_penalty_stats.length; i++) {
+		if (death_penalty_stats[i].country == country){
+			aux = death_penalty_stats[i];
 			res.send(aux);
 		}
 	}
@@ -142,23 +142,23 @@ app.get("/api/v1/death-penalty-stats/:country", (req,res) =>{
 	
 });
 
-app.post("/api/v1/death-penalty-stats", (req,res) =>{
+app.post("/api/v1/death_penalty_stats", (req,res) =>{
 	var stat = req.body;
-	death-penalty-stats.push(stat);
+	death_penalty_stats.push(stat);
 	console.log("New POST of resource "+stat.country);
 	res.sendStatus(201);
 });
 
-app.post("/api/v1/death-penalty-stats/:country", (req,res) =>{
+app.post("/api/v1/death_penalty_stats/:country", (req,res) =>{
 	res.sendStatus(405);
 });
 
-app.put("/api/v1/death-penalty-stats/:country", (req,res) =>{
+app.put("/api/v1/death_penalty_stats/:country", (req,res) =>{
 	var stat = req.body;
 	var aux = null;
-	for (var i = 0; i < death-penalty-stats.length; i++) {
-		if (death-penalty-stats[i].country == req.params.country) {
-			aux = death-penalty-stats[i];
+	for (var i = 0; i < death_penalty_stats.length; i++) {
+		if (death_penalty_stats[i].country == req.params.country) {
+			aux = death_penalty_stats[i];
 			aux.country = stat.country;
 			aux.abolition_year = stat.abolition_year;
 			aux.for_all_crimes = stat.for_all_crimes;
@@ -173,23 +173,23 @@ app.put("/api/v1/death-penalty-stats/:country", (req,res) =>{
 	
 });
 
-app.put("/api/v1/death-penalty-stats", (req,res) =>{
+app.put("/api/v1/death_penalty_stats", (req,res) =>{
 	res.sendStatus(405);
 });
 
-app.delete("/api/v1/death-penalty-stats", (req,res) =>{
-	death-penalty-stats = [];
+app.delete("/api/v1/death_penalty_stats", (req,res) =>{
+	death_penalty_stats = [];
 	console.log("You DELETED all statistics :(");
 	res.send(200);
 });
 
-app.delete("/api/v1/death-penalty-stats/:country", (req,res) =>{
+app.delete("/api/v1/death_penalty_stats/:country", (req,res) =>{
 	var country = req.params.country;
 	var aux = null;
-	for (var i = 0; i < death-penalty-stats.length; i++) {
-		if (death-penalty-stats[i].country == country){
-			aux = death-penalty-stats[i];
-			death-penalty-stats.splice(i,1);
+	for (var i = 0; i < death_penalty_stats.length; i++) {
+		if (death_penalty_stats[i].country == country){
+			aux = death_penalty_stats[i];
+			death_penalty_stats.splice(i,1);
 			res.send(200);
 		}
 	}
