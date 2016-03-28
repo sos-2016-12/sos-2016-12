@@ -204,6 +204,100 @@ app.delete("/api/v1/death_penalty_stats/:country", (req,res) =>{
 // //#####################################################
 
 
+
+var republican_stats = [];
+
+app.get("/api/v1/republican_stats/loadInitialData", (req,res) =>{
+	
+	countries = [{ country : "CHILE", year : 1818, gdppc : 23556, population : 18192000},
+	{ country : "SWITZERLAND", year : 1648, gdppc : 58730, population : 8362000},
+	{ country : "PARAGUAY", year : 1811, gdppc : 5294, population : 6855000},];
+	console.log("5 elements initialized.");
+	res.sendStatus(201);
+});
+
+app.get("/api/v1/republican_stats", (req,res) =>{
+	console.log("New GET of all resources.");
+	res.send(countries);
+});
+
+app.get("/api/v1/republican_stats/:country", (req,res) =>{
+	var country = req.params.country;
+	var aux = null;
+	for (var i = 0; i < republican_stats.length; i++) {
+		if (republican_stats[i].country == country){
+			aux = republican_stats[i];
+			res.send(aux);
+		}
+	}
+	if (aux == null) {
+		res.sendStatus(404);
+	}
+	console.log("New GET of resource "+country);
+	
+});
+
+app.post("/api/v1/republican_stats", (req,res) =>{
+	var stat = req.body;
+	republican_stats.push(stat);
+	console.log("New POST of resource "+stat.country);
+	res.sendStatus(201);
+});
+
+app.post("/api/v1/republican_stats/:country", (req,res) =>{
+	res.sendStatus(405);
+});
+
+app.put("/api/v1/republican_stats/:country", (req,res) =>{
+	var stat = req.body;
+	var aux = null;
+	for (var i = 0; i < republican_stats.length; i++) {
+		if (republican_stats[i].country == req.params.country) {
+			aux = republican_stats[i];
+			aux.country = stat.country;
+			aux.year = stat.year;
+			aux.gdppc = stat.gdppc;
+			aux.population = population;
+			res.sendStatus(200);
+		}
+	}
+	if (aux == null) {
+		res.sendStatus(404);
+	}
+	console.log("New PUT of resource "+stat.country);
+	
+});
+
+app.put("/api/v1/republican_stats", (req,res) =>{
+	res.sendStatus(405);
+});
+
+app.delete("/api/v1/republican_stats", (req,res) =>{
+	republican_stats = [];
+	console.log("You DELETED all statistics :(");
+	res.send(200);
+});
+
+app.delete("/api/v1/republican_stats/:country", (req,res) =>{
+	var country = req.params.country;
+	var aux = null;
+	for (var i = 0; i < republican_stats.length; i++) {
+		if (republican_stats[i].country == country){
+			aux = republican_stats[i];
+			republican_stats(i,1);
+			res.send(200);
+		}
+	}
+	if (aux == null) {
+		res.sendStatus(404);
+	}
+	console.log("You deleted the country's statistics successfully.");
+	
+});
+
+
+
+
 //Código Víctor API prueba (pirates)
 var pirates = [];
 
