@@ -123,7 +123,7 @@ app.get("/api/v1/death_penalty_stats/loadInitialData", (req,res) =>{
 
 app.get("/api/v1/death_penalty_stats", (req,res) =>{
 	console.log("New GET of all resources.");
-	res.send(games);
+	res.send(death_penalty_stats);
 });
 
 app.get("/api/v1/death_penalty_stats/:country", (req,res) =>{
