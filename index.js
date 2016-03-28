@@ -211,7 +211,7 @@ app.get("/api/v1/republican_stats/loadInitialData", (req,res) =>{
 	
 	countries = [{ country : "CHILE", year : 1818, gdppc : 23556, population : 18192000},
 	{ country : "SWITZERLAND", year : 1648, gdppc : 58730, population : 8362000},
-	{ country : "PARAGUAY", year : 1811, gdppc : 5294, population : 6855000},];
+	{ country : "PARAGUAY", year : 1811, gdppc : 5294, population : 6855000}];
 	console.log("3 elements initialized.");
 	res.sendStatus(201);
 });
