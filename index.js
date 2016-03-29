@@ -248,6 +248,7 @@ app.get("/api/v1/republican_stats/:country", (req,res) =>{
 	console.log("New GET of resource "+country);
 	
 });
+/*
 app.get("/api/v1/republican_stats/", (req,res) =>{
 	var fromm = req.query.from;
 	var to = req.query.to;
@@ -263,16 +264,16 @@ app.get("/api/v1/republican_stats/", (req,res) =>{
 	}
 	console.log("New GET of resource "+country);
 	
-});
+});*/
 app.get("/api/v1/republican_stats/:year", (req,res) =>{
 	var year = req.params.year;
-	var aux = null;
+	var aux = [];
 	for (var i = 0; i < republican_stats.length; i++) {
-		if (republican_stats[i].year == year){
-			aux = republican_stats[i];
-			res.send(aux);
+		if (republican_stats[i].year === year){
+			aux = aux + republican_stats[i];
 		}
 	}
+	res.send(aux);
 	if (aux == null) {
 		res.sendStatus(404);
 	}
@@ -295,6 +296,27 @@ app.post("/api/v1/republican_stats/:country", (req,res) =>{
 
 app.put("/api/v1/republican_stats/:country", (req,res) =>{
 	var stat = req.body;
+	var aux = null;
+	for (var i = 0; i < republican_stats.length; i++) {
+		if (republican_stats[i].country == req.params.country) {
+			aux = republican_stats[i];
+			aux.country = stat.country;
+			aux.year = stat.year;
+			aux.gdppc = stat.gdppc;
+			aux.population = stat.population;
+			res.sendStatus(200);
+		}
+	}
+	if (aux == null) {
+		res.sendStatus(404);
+	}
+	console.log("New PUT of resource "+stat.country);
+	
+});
+
+app.put("/api/v1/republican_stats/:country/:year", (req,res) =>{
+	var stat = req.body;
+
 	var aux = null;
 	for (var i = 0; i < republican_stats.length; i++) {
 		if (republican_stats[i].country == req.params.country) {
