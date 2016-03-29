@@ -210,7 +210,7 @@ var republican_stats = [];
 
 app.get("/api/v1/republican_stats/loadInitialData", (req,res) =>{
 	
-	republican_stats = [{ country : "chile", year : 1818, gdppc : 23556, population : 18192000},
+	republican_stats = 	
 	{ country : "switzerland", year : 1648, gdppc : 58730, population : 8362000},
 	{ country : "paraguay", year : 1811, gdppc : 5294, population : 6855000},
 	{ country : "argentina", year : 1816, gdppc : 22458, population : 43590000},
@@ -262,7 +262,7 @@ app.put("/api/v1/republican_stats/:country", (req,res) =>{
 			aux.country = stat.country;
 			aux.year = stat.year;
 			aux.gdppc = stat.gdppc;
-			aux.population = population;
+			aux.population = stat.population;
 			res.sendStatus(200);
 		}
 	}
@@ -289,7 +289,7 @@ app.delete("/api/v1/republican_stats/:country", (req,res) =>{
 	for (var i = 0; i < republican_stats.length; i++) {
 		if (republican_stats[i].country == country){
 			aux = republican_stats[i];
-			republican_stats(i,1);
+			republican_stats.splice(i,1);
 			res.send(200);
 		}
 	}
