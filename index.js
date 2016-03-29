@@ -169,6 +169,7 @@ app.put("/api/v1/death_penalty_stats/:country", (req,res) =>{
 	if (aux == null) {
 		res.sendStatus(404);
 	}
+	
 	console.log("New PUT of resource "+stat.country);
 	
 });
