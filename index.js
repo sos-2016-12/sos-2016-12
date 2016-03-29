@@ -237,7 +237,7 @@ app.get("/api/v1/republican_stats/:country", (req,res) =>{
 	var country = req.params.country;
 	var aux = null;
 	for (var i = 0; i < republican_stats.length; i++) {
-		if (republican_stats[i].country == country){
+		if (republican_stats[i].country == country || republican_stats[i].year == year){
 			aux = republican_stats[i];
 			res.send(aux);
 		}
@@ -263,6 +263,7 @@ app.get("/api/v1/republican_stats/:year", (req,res) =>{
 	console.log("New GET of resource "+year);
 	
 });
+
 
 
 app.post("/api/v1/republican_stats", (req,res) =>{
