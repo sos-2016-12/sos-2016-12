@@ -248,11 +248,21 @@ app.get("/api/v1/republican_stats", (req,res) =>{
 app.get("/api/v1/republican_stats/:country", (req,res) =>{
 	var country = req.params.country;
 	var aux = null;
-	for (var i = 0; i < republican_stats.length; i++) {
-		if (republican_stats[i].country == country){
-			aux = republican_stats[i];
-			res.send(aux);
+	if(NaN(country)){
+		for (var i = 0; i < republican_stats.length; i++) {
+			if (republican_stats[i].country == country){
+				aux = republican_stats[i];
+				res.send(aux);
+			}
 		}
+	}else{
+		for (var i = 0; i < republican_stats.length; i++) {
+			if (republican_stats[i].year == year){
+				aux = republican_stats[i];
+				res.send(aux);
+			}
+		}
+		
 	}
 	if (aux == null) {
 		res.sendStatus(404);
