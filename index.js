@@ -162,7 +162,7 @@ app.put("/api/v1/death_penalty_stats/:country", (req,res) =>{
 			aux.country = stat.country;
 			aux.abolition_year = stat.abolition_year;
 			aux.for_all_crimes = stat.for_all_crimes;
-			aux.murder_rate_per_100k_people = murder_rate_per_100k_people;
+			aux.murder_rate_per_100k_people = stat.murder_rate_per_100k_people;
 			res.sendStatus(200);
 		}
 	}
