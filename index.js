@@ -152,31 +152,7 @@ app.get("/api/v1/death_penalty_stats/:country", (req,res) =>{
 	
 });
 
-app.get("/api/v1/death_penalty_stats/:country/:abolition_year", (req,res) =>{
-	var country = req.params.country;
-	var abolition_year = req.params.abolition_year;
-	var aux = [];
-		for (var i = 0; i < death_penalty_stats.length; i++) {
-			if (death_penalty_stats[i].country == country){
-				aux.push(death_penalty_stats[i]);
-				res.send(aux);
-			}
-		}
-	
-		for (var i = 0; i < death_penalty_stats.length; i++) {
-			if (death_penalty_stats[i].abolition_year == abolition_year){
-				aux.push(death_penalty_stats[i]);
-				res.send(aux);
-			}
-		}
-	}
-		
-	if (aux == null) {
-		res.sendStatus(404);
-	}
-	console.log("New GET of resource "+country);
-	
-});
+
 
 app.post("/api/v1/death_penalty_stats", (req,res) =>{
 	var stat = req.body;
