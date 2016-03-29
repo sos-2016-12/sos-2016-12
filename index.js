@@ -217,7 +217,7 @@ var republican_stats = [];
 
 app.get("/api/v1/republican_stats/loadInitialData", (req,res) =>{
 	
-	republican_stats = 	
+	republican_stats = [
 	{ country : "switzerland", year : 1648, gdppc : 58730, population : 8362000},
 	{ country : "paraguay", year : 1811, gdppc : 5294, population : 6855000},
 	{ country : "argentina", year : 1816, gdppc : 22458, population : 43590000},
