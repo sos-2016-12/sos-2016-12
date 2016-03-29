@@ -144,9 +144,15 @@ app.get("/api/v1/death_penalty_stats/:country", (req,res) =>{
 
 app.post("/api/v1/death_penalty_stats", (req,res) =>{
 	var stat = req.body;
-	death_penalty_stats.push(stat);
+	if (stat.country == null || stat.country == "" || (typeof stat.country) != string || stat.abolition_year.isNaN() 
+		|| (stat.for_all_crimes != "yes" && stat.for_all_crimes != "no") || stat.murder_rate_per_100k_people.isNaN() ) {
+		res.sendStatus(409);
+	} else {
+		death_penalty_stats.push(stat);
 	console.log("New POST of resource "+stat.country);
 	res.sendStatus(201);
+	}
+	
 });
 
 app.post("/api/v1/death_penalty_stats/:country", (req,res) =>{
