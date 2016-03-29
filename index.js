@@ -248,6 +248,22 @@ app.get("/api/v1/republican_stats/:country", (req,res) =>{
 	console.log("New GET of resource "+country);
 	
 });
+app.get("/api/v1/republican_stats/:year", (req,res) =>{
+	var year = req.params.year;
+	var aux = null;
+	for (var i = 0; i < republican_stats.length; i++) {
+		if (republican_stats[i].year == year){
+			aux = republican_stats[i];
+			res.send(aux);
+		}
+	}
+	if (aux == null) {
+		res.sendStatus(404);
+	}
+	console.log("New GET of resource "+year);
+	
+});
+
 
 app.post("/api/v1/republican_stats", (req,res) =>{
 	var stat = req.body;
@@ -289,6 +305,7 @@ app.delete("/api/v1/republican_stats", (req,res) =>{
 	console.log("You DELETED all statistics");
 	res.send(200);
 });
+
 
 app.delete("/api/v1/republican_stats/:country", (req,res) =>{
 	var country = req.params.country;
