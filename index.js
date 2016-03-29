@@ -248,6 +248,22 @@ app.get("/api/v1/republican_stats/:country", (req,res) =>{
 	console.log("New GET of resource "+country);
 	
 });
+app.get("/api/v1/republican_stats/", (req,res) =>{
+	var fromm = req.query.from;
+	var to = req.query.to;
+	var aux = null;
+	for (var i = 0; i < republican_stats.length; i++) {
+		if (republican_stats[i].year >= fromm || republican_stats[i].year <= to){
+			aux = aux + republican_stats[i];
+		}
+	}
+	res.send(aux);
+	if (aux == null) {
+		res.sendStatus(404);
+	}
+	console.log("New GET of resource "+country);
+	
+});
 app.get("/api/v1/republican_stats/:year", (req,res) =>{
 	var year = req.params.year;
 	var aux = null;
