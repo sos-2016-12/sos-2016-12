@@ -286,7 +286,7 @@ app.put("/api/v1/republican_stats", (req,res) =>{
 
 app.delete("/api/v1/republican_stats", (req,res) =>{
 	republican_stats = [];
-	console.log("You DELETED all statistics :(");
+	console.log("You DELETED all statistics");
 	res.send(200);
 });
 
