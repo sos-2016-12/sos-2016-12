@@ -32,11 +32,10 @@ module.exports.getData = (req,res) =>{
 	}else{
 		for (var i = 0; i < republican_stats.length; i++) {
 			if (republican_stats[i].year == data){
-				aux = republican_stats[i];
-				res.send(aux);
+				aux = aux + republican_stats[i];
 			}
 		}
-		
+		res.send(aux);
 	}
 	if (aux == null) {
 		res.sendStatus(404);
