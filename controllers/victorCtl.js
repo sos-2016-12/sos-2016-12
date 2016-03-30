@@ -22,6 +22,7 @@ module.exports.getResources = (req,res) =>{
 module.exports.getData = (req,res) =>{
 	var data = req.params.data;
 	var aux = null;
+	var aux2= []
 	if(isNaN(data)){
 		for (var i = 0; i < republican_stats.length; i++) {
 			if (republican_stats[i].country == data){
@@ -32,10 +33,10 @@ module.exports.getData = (req,res) =>{
 	}else{
 		for (var i = 0; i < republican_stats.length; i++) {
 			if (republican_stats[i].year == data){
-				aux = aux + republican_stats[i];
+				aux2.push(republican_stats[i]);
 			}
 		}
-		res.send(aux);
+		res.send(aux2);
 	}
 	if (aux == null) {
 		res.sendStatus(404);
