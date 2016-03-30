@@ -225,51 +225,16 @@ app.delete("/api/v1/death_penalty_stats/:country", (req,res) =>{
 
 
 
-var republican_stats = [];
 
-app.get("/api/v1/republican_stats/loadInitialData", (req,res) =>{
-	
-	republican_stats = [
-	{ country : "switzerland", year : 1648, gdppc : 58730, population : 8362000},
-	{ country : "paraguay", year : 1811, gdppc : 5294, population : 6855000},
-	{ country : "argentina", year : 1816, gdppc : 22458, population : 43590000},
-	{ country : "venezuela", year : 1819, gdppc : 13633, population : 31029000},
-	{ country : "peru", year : 1824, gdppc : 11403, population : 31490000}];
 
-	console.log("6 elements initialized.");
-	res.sendStatus(201);
-});
+var victorCtl = require('./cotrollers/victorCtl.js');
 
-app.get("/api/v1/republican_stats", (req,res) =>{
-	console.log("New GET of all resources.");
-	res.send(republican_stats);
-});
+app.get("/api/v1/republican_stats/loadInitialData", victorCtl.getLoadInitialData);
 
-app.get("/api/v1/republican_stats/:country", (req,res) =>{
-	var country = req.params.country;
-	var aux = null;
-	if(NaN(country)){
-		for (var i = 0; i < republican_stats.length; i++) {
-			if (republican_stats[i].country == country){
-				aux = republican_stats[i];
-				res.send(aux);
-			}
-		}
-	}else{
-		for (var i = 0; i < republican_stats.length; i++) {
-			if (republican_stats[i].year == year){
-				aux = republican_stats[i];
-				res.send(aux);
-			}
-		}
-		
-	}
-	if (aux == null) {
-		res.sendStatus(404);
-	}
-	console.log("New GET of resource "+country);
-	
-});
+app.get("/api/v1/republican_stats", victorCtl.getResources);
+
+app.get("/api/v1/republican_stats/:country", victorCtl.getData);
+
 /*
 app.get("/api/v1/republican_stats/", (req,res) =>{
 	var fromm = req.query.from;
@@ -287,6 +252,8 @@ app.get("/api/v1/republican_stats/", (req,res) =>{
 	console.log("New GET of resource "+country);
 	
 });*/
+
+/*
 app.get("/api/v1/republican_stats/:year", (req,res) =>{
 	var year = req.params.year;
 	var aux = [];
@@ -301,210 +268,56 @@ app.get("/api/v1/republican_stats/:year", (req,res) =>{
 	}
 	console.log("New GET of resource "+year);
 	
-});
+});*/
 
 
 
-app.post("/api/v1/republican_stats", (req,res) =>{
-	var stat = req.body;
-	republican_stats.push(stat);
-	console.log("New POST of resource "+stat.country);
-	res.sendStatus(201);
-});
+app.post("/api/v1/republican_stats", victorCtl.getPost);
 
-app.post("/api/v1/republican_stats/:country", (req,res) =>{
-	res.sendStatus(405);
-});
+app.post("/api/v1/republican_stats/:country", victorCtl.getPostForbidden);
 
-app.put("/api/v1/republican_stats/:country", (req,res) =>{
-	var stat = req.body;
-	var aux = null;
-	for (var i = 0; i < republican_stats.length; i++) {
-		if (republican_stats[i].country == req.params.country) {
-			aux = republican_stats[i];
-			aux.country = stat.country;
-			aux.year = stat.year;
-			aux.gdppc = stat.gdppc;
-			aux.population = stat.population;
-			res.sendStatus(200);
-		}
-	}
-	if (aux == null) {
-		res.sendStatus(404);
-	}
-	console.log("New PUT of resource "+stat.country);
-	
-});
+app.put("/api/v1/republican_stats/:country",victorCtl.getPut);
 
-app.put("/api/v1/republican_stats/:country/:year", (req,res) =>{
-	var stat = req.body;
+app.put("/api/v1/republican_stats/:country/:year", victorCtl.getPutYear);
 
-	var aux = null;
-	for (var i = 0; i < republican_stats.length; i++) {
-		if (republican_stats[i].country == req.params.country) {
-			aux = republican_stats[i];
-			aux.country = stat.country;
-			aux.year = stat.year;
-			aux.gdppc = stat.gdppc;
-			aux.population = stat.population;
-			res.sendStatus(200);
-		}
-	}
-	if (aux == null) {
-		res.sendStatus(404);
-	}
-	console.log("New PUT of resource "+stat.country);
-	
-});
+app.put("/api/v1/republican_stats", victorCtl.getPutForbidden);
 
-app.put("/api/v1/republican_stats", (req,res) =>{
-	res.sendStatus(405);
-});
-
-app.delete("/api/v1/republican_stats", (req,res) =>{
-	republican_stats = [];
-	console.log("You DELETED all statistics");
-	res.send(200);
-});
+app.delete("/api/v1/republican_stats", victorCtl.getDelete);
 
 
-app.delete("/api/v1/republican_stats/:country", (req,res) =>{
-	var country = req.params.country;
-	var aux = null;
-	for (var i = 0; i < republican_stats.length; i++) {
-		if (republican_stats[i].country == country){
-			aux = republican_stats[i];
-			republican_stats.splice(i,1);
-			res.send(200);
-		}
-	}
-	if (aux == null) {
-		res.sendStatus(404);
-	}
-	console.log("You deleted the country's statistics successfully.");
-	
-});
+app.delete("/api/v1/republican_stats/:country", victorCtl.getDeleteOne);
 
 
 
 
 //Código Víctor API prueba (pirates)
-var pirates = [];
 
-app.get("/api/sandbox/pirates", function(req,res){
-	console.log("New GET of all resources.");
-	res.send(pirates);
-});
-
-app.get("/api/sandbox/pirates/:name", function(req, res){
-
-	/*var name = req.params.name;
-	var aux= Array.contains(pirates, name);
-	console.log("New GET of resource" + name);
-	if(aux == true){
-		res.send(pirates[pirate]);
-	}else{
-		res.send("404");
-	}*/
-	var name = req.params.name;
-	var aux = null;
-	for (var i = 0; i < pirates.length; i++) {
-		if (pirates[i].name == name){
-			aux = pirates[i];
-			res.send(aux);
-		}
-	}
-	if (aux == null) {
-		res.sendStatus(404);
-	}
-	console.log("New GET of resource "+name);
+var apiratesCtl = require('./cotrollers/apiratesCtl.js');
 
 
-});
 
-app.get("/api-test/pirates/loadInitialData", function(req,res){
-	pirates = [{ name : "Black Bart"},{ name : "Long Ben"},{ name : "Anne Bonny"}];
-	console.log("3 elements initialized.");
-	res.send(200);
-});
+app.get("/api/sandbox/pirates", apiratesCtl.getResources);
 
-app.post("/api/sandbox/pirates", function(req, res){
-	var pirate = req.body;
-	pirates.push(pirate);
-	console.log("New POST of resource " + pirate.name);
-	res.sendStatus(200);
-});
+app.get("/api/sandbox/pirates/:name", apiratesCtl.getPirate);
+
+app.get("/api-test/pirates/loadInitialData", apiratesCtl.getLoadInitialData);
+
+app.post("/api/sandbox/pirates", apiratesCtl.getPost);
 
 
 app.post("/api/sandbox/pirates/:name", function(req,res){
 	res.sendStatus(403);
 });
 
-app.put("/api/sandbox/pirates/:name", function(req,res){
-	/*var name = req.params.name;
-	var pirate = req.body;
-	var aux= Array.contains(pirates, name);
-	if(aux==true){
-		pirates[name] = pirate;
-	}else{
-		res.send("404");
-	}
-	
-	console.log("New PUT of resource "+pirate.name);
-	res.sendStatus(200);*/
-
-	var pirate = req.body;
-	var aux = null;
-	for (var i = 0; i < pirates.length; i++) {
-		if (pirates[i].name == req.params.name) {
-			aux = pirates[i];
-			aux.name = pirate.name;
-			res.sendStatus(200);
-		}
-	}
-	if (aux == null) {
-		res.sendStatus(404);
-	}
-	console.log("New PUT of resource "+pirate.name);
-});
+app.put("/api/sandbox/pirates/:name", apiratesCtl.getPut);
 
 app.put("/api/sandbox/pirates", function(req,res){
 	res.sendStatus(403);
 });
 
-app.delete("/api/sandbox/pirates", function(req,res){
-	pirates = [];
-	console.log(" You DELETED all pirates ");
-	res.sendStatus(200);
-});
+app.delete("/api/sandbox/pirates", apiratesCtl.getDelete);
 
-app.delete("/api/sandbox/pirates/:name", function(req,res){
-	/*var name = req.params.name;
-	var aux= Array.contains(pirates, name);
-	if(aux==true){
-		pirates.splice(0,name);
-	}else{
-		res.send("404");
-	} 
-	console.log("You deleted the pirate:"+ name +"successfully.");
-	res.sendStatus(200);*/
-
-	var name = req.params.name;
-	var aux = null;
-	for (var i = 0; i < pirates.length; i++) {
-		if (pirates[i].name == name){
-			aux = pirates[i];
-			pirates.splice(i,1);
-			res.send("You deleted the pirate successfully.");
-		}
-	}
-	if (aux == null) {
-		res.sendStatus(404);
-	}
-	console.log("You deleted the pirate successfully.");
-
-
-});
+app.delete("/api/sandbox/pirates/:name", apiratesCtl.getDeleteOne);
 
 
 app.listen(p);    
