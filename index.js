@@ -292,7 +292,7 @@ app.delete("/api/v1/republican_stats/:country", victorCtl.getDeleteOne);
 
 //Código Víctor API prueba (pirates)
 
-var apiratesCtl = require('./cotrollers/apiratesCtl.js');
+var apiratesCtl = require('./controllers/apiratesCtl.js');
 
 
 
