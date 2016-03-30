@@ -79,15 +79,7 @@ module.exports.getDelete = function(req,res){
 }
 
 module.exports.getDeleteOne = function(req,res){
-	/*var name = req.params.name;
-	var aux= Array.contains(pirates, name);
-	if(aux==true){
-		pirates.splice(0,name);
-	}else{
-		res.send("404");
-	} 
-	console.log("You deleted the pirate:"+ name +"successfully.");
-	res.sendStatus(200);*/
+	
 
 	var name = req.params.name;
 	var aux = null;

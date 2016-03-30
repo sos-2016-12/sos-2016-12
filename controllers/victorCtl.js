@@ -22,7 +22,7 @@ module.exports.getResources = (req,res) =>{
 module.exports.getData = (req,res) =>{
 	var country = req.params.country;
 	var aux = null;
-	if(NaN(country)){
+	if(isNaN(country)){
 		for (var i = 0; i < republican_stats.length; i++) {
 			if (republican_stats[i].country == country){
 				aux = republican_stats[i];
@@ -44,6 +44,7 @@ module.exports.getData = (req,res) =>{
 	console.log("New GET of resource "+country);
 	
 }
+
 
 module.exports.getPost = (req,res) =>{
 	var stat = req.body;
