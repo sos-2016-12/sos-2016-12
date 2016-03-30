@@ -20,18 +20,18 @@ module.exports.getResources = (req,res) =>{
 }
 
 module.exports.getData = (req,res) =>{
-	var country = req.params.country;
+	var data = req.params.data;
 	var aux = null;
-	if(isNaN(country)){
+	if(isNaN(data)){
 		for (var i = 0; i < republican_stats.length; i++) {
-			if (republican_stats[i].country == country){
+			if (republican_stats[i].country == data){
 				aux = republican_stats[i];
 				res.send(aux);
 			}
 		}
 	}else{
 		for (var i = 0; i < republican_stats.length; i++) {
-			if (republican_stats[i].year == year){
+			if (republican_stats[i].year == data){
 				aux = republican_stats[i];
 				res.send(aux);
 			}
