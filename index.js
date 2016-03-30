@@ -227,7 +227,7 @@ app.delete("/api/v1/death_penalty_stats/:country", (req,res) =>{
 
 
 
-var victorCtl = require('./cotrollers/victorCtl.js');
+var victorCtl = require('./controllers/victorCtl.js');
 
 app.get("/api/v1/republican_stats/loadInitialData", victorCtl.getLoadInitialData);
 
