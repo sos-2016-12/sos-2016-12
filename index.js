@@ -300,7 +300,7 @@ app.get("/api/sandbox/pirates", apiratesCtl.getResources);
 
 app.get("/api/sandbox/pirates/:name", apiratesCtl.getPirate);
 
-app.get("/api-test/pirates/loadInitialData", apiratesCtl.getLoadInitialData);
+app.get("/api/sandbox/loadInitialData", apiratesCtl.getLoadInitialData);
 
 app.post("/api/sandbox/pirates", apiratesCtl.getPost);
 
