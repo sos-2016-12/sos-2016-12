@@ -129,7 +129,7 @@ app.get("/api/v1/death_penalty_stats", (req,res) =>{
 	var limit = req.query.limit;
 	var offset = req.query.offset;
 	
-	if (fro || to) {
+	if (fro || to || limit || offset) {
 		if (!fro)
 			fro = 0;
 		if (!to)
