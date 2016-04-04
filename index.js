@@ -17,6 +17,7 @@ app.get("/time",(req,res) => {
 	res.end();
 })
 
+var apikey = 1234;
 
 //Codigo Ale API de prueba (games) ###############################################
 
