@@ -152,7 +152,7 @@ app.get("/api/v1/death_penalty_stats", (req,res) =>{
 		res.send(auxList);
 		} else {
 			for (var i = offset; i < auxList.length; i++) {
-				if (auxList.length <= (limit-1))
+				if (auxList1.length <= (limit-1))
 					auxList1.push(auxList[i]);
 			}
 		res.send(auxList1);
