@@ -138,12 +138,12 @@ app.get("/api/v1/death_penalty_stats", (req,res) =>{
 			if (death_penalty_stats[i].abolition_year >= fro && death_penalty_stats[i].abolition_year <= to) {
 				auxList.push(death_penalty_stats[i]);
 			}
-		} 
+		}
 		if (!offset)
 			offset = 0;
 		if (!limit || limit > death_penalty_stats.length)
 			limit = death_penalty_stats.length;
-		if (!fro && !to) {//PAGINACION SI NO SE HA UTILIZADO BUSQUEDA EN LA PETICION
+		if (auxList.length == 0) {//PAGINACION SI NO SE HA UTILIZADO BUSQUEDA EN LA PETICION
 			for (var i = offset; i < death_penalty_stats.length; i++) {
 				if (auxList.length <= (limit-1))
 					auxList.push(death_penalty_stats[i]);
