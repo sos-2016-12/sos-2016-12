@@ -134,21 +134,19 @@ app.get("/api/v1/death_penalty_stats", (req,res) =>{
 			fro = 0;
 		if (!to)
 			to = 9999;
-		for (var i = 0; i < death_penalty_stats.length; i++) {//BUSQUEDA POR AÑOS
-			if (death_penalty_stats[i].abolition_year >= fro && death_penalty_stats[i].abolition_year <= to) {
-				auxList.push(death_penalty_stats[i]);
-			}
-		}
 		if (!offset)
 			offset = 0;
 		if (!limit || limit > death_penalty_stats.length)
 			limit = death_penalty_stats.length;
+		for (var i = 0; i < death_penalty_stats.length; i++) {//BUSQUEDA POR AÑOS
+			if (death_penalty_stats[i].abolition_year >= fro && death_penalty_stats[i].abolition_year <= to)
+				auxList.push(death_penalty_stats[i]);
+		}
 		for (var i = offset; i < auxList.length; i++) {
 			if (auxList1.length <= (limit-1))
 				auxList1.push(auxList[i]);
 		}
 	res.send(auxList1);
-		}
 	} else {
 		console.log("New GET of all resources.");
 		res.send(death_penalty_stats);
