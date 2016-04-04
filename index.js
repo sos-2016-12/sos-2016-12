@@ -157,18 +157,23 @@ app.get("/api/v1/death_penalty_stats/:country", (req,res) =>{
 app.post("/api/v1/death_penalty_stats", (req,res) =>{
 	var stat = req.body;
 	var no = 0;
-	for (var i = 0; i < death_penalty_stats.length; i++) {
-		if (death_penalty_stats[i].country == stat.country) {
-	 		res.sendStatus(409);
-	 		no = 1;
-		} 
+	if (stat.country == null || stat.country == "" || !isNaN(stat.country) || isNaN(stat.abolition_year)
+	 	|| (stat.for_all_crimes != "yes" && stat.for_all_crimes != "no") || isNaN(stat.murder_rate_per_100k_people) || stat.murder_rate_per_100k_people == null 
+	 	|| stat.murder_rate_per_100k_people == "" ) {
+		res.sendStatus(400);
+	} else {
+		for (var i = 0; i < death_penalty_stats.length; i++) {
+			if (death_penalty_stats[i].country == stat.country) {
+	 			res.sendStatus(409);
+	 			no = 1;
+			} 
+		}
+		if (no == 1){
+		death_penalty_stats.push(stat);
+		console.log("New POST of resource "+stat.country);
+		res.sendStatus(201);
+		}
 	}
-	if (no == 1){
-	death_penalty_stats.push(stat);
-	console.log("New POST of resource "+stat.country);
-	res.sendStatus(201);
-	}
-	
 });
 
 app.post("/api/v1/death_penalty_stats/:country", (req,res) =>{
@@ -178,20 +183,25 @@ app.post("/api/v1/death_penalty_stats/:country", (req,res) =>{
 app.put("/api/v1/death_penalty_stats/:country", (req,res) =>{
 	var stat = req.body;
 	var aux = null;
-	for (var i = 0; i < death_penalty_stats.length; i++) {
-		if (death_penalty_stats[i].country == req.params.country) {
-			aux = death_penalty_stats[i];
-			aux.country = stat.country;
-			aux.abolition_year = stat.abolition_year;
-			aux.for_all_crimes = stat.for_all_crimes;
-			aux.murder_rate_per_100k_people = stat.murder_rate_per_100k_people;
-			res.sendStatus(200);
+	if (stat.country == null || stat.country == "" || !isNaN(stat.country) || isNaN(stat.abolition_year)
+	 	|| (stat.for_all_crimes != "yes" && stat.for_all_crimes != "no") || isNaN(stat.murder_rate_per_100k_people) || stat.murder_rate_per_100k_people == null 
+	 	|| stat.murder_rate_per_100k_people == "" ) {
+		res.sendStatus(400);
+	} else {
+		for (var i = 0; i < death_penalty_stats.length; i++) {
+			if (death_penalty_stats[i].country == req.params.country) {
+				aux = death_penalty_stats[i];
+				aux.country = stat.country;
+				aux.abolition_year = stat.abolition_year;
+				aux.for_all_crimes = stat.for_all_crimes;
+				aux.murder_rate_per_100k_people = stat.murder_rate_per_100k_people;
+				res.sendStatus(200);
+			}
+		}
+		if (aux == null) {
+			res.sendStatus(404);
 		}
 	}
-	if (aux == null) {
-		res.sendStatus(404);
-	}
-	
 	console.log("New PUT of resource "+stat.country);
 	
 });
