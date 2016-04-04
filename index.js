@@ -143,7 +143,7 @@ app.get("/api/v1/death_penalty_stats", (req,res) =>{
 			offset = 0;
 		if (!limit || limit > death_penalty_stats.length)
 			limit = death_penalty_stats.length;
-		if (auxList.length) {//PAGINACION SI NO SE HA UTILIZADO BUSQUEDA EN LA PETICION
+		if (fro == 0 && to == 9999) {//PAGINACION SI NO SE HA UTILIZADO BUSQUEDA EN LA PETICION
 			for (var i = offset; i < death_penalty_stats.length; i++) {
 				if (auxList.length <= (limit-1))
 					auxList.push(death_penalty_stats[i]);
@@ -187,8 +187,29 @@ app.get("/api/v1/death_penalty_stats/:country", (req,res) =>{
 	console.log("New GET of resource "+country);
 	
 });
-
-
+app.get("/api/v1/death_penalty_stats/:country/:year", (req,res) =>{
+	var country = req.params.country;
+	var year = req.params.year;
+	var aux = null;
+	if (isNaN(country)) {
+		for (var i = 0; i < death_penalty_stats.length; i++) {
+			if (death_penalty_stats[i].country == country){
+				for (var j = 0; j < death_penalty_stats.length; j++) {
+					if (death_penalty_stats[j].abolition_year == year) {	
+						aux = death_penalty_stats[j];
+						res.send(aux);
+					}
+				}		
+						
+			}
+		}
+	}	
+	if (aux == null) {
+		res.sendStatus(404);
+	}
+	console.log("New GET of resource "+country);
+	
+});
 
 app.post("/api/v1/death_penalty_stats", (req,res) =>{
 	var stat = req.body;
