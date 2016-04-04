@@ -51,6 +51,28 @@ module.exports.getData = (req,res) =>{
 	console.log("New GET of resource ");
 	
 }
+module.exports.getDataDouble = (req,res)=>{
+	var country = req.params.country;
+	var year = req.params.year;
+	var aux= [];
+	if(isNaN(country)){
+		for (var i = 0; i < republican_stats.length; i++) {
+			if (republican_stats[i].country == country){
+				for (var j = 0; j < republican_stats.length; j++)
+					if(republican_stats[j].year == year ){
+						aux.push(republican_stats[j]);
+					}
+			}
+		}
+		if (aux.length == 0){
+				res.sendStatus(404);
+		}	
+		res.send(aux);
+	}
+	
+	console.log("New GET of resource ");
+
+}
 
 module.exports.getPost = (req,res) =>{
 	var stat = req.body;
@@ -134,24 +156,3 @@ module.exports.getDeleteOne = (req,res) =>{
 }
 
 
-module.exports.getDataDouble = (res,req)=>{
-	var country = req.params.country;
-	var year = req.params.data;
-	var aux= [];
-	if(isNaN(country)){
-		for (var i = 0; i < republican_stats.length; i++) {
-			if (republican_stats[i].country == country){
-				if(republican_stats[i].year == year ){
-					aux.push(republican_stats[i]);
-				}
-			}
-		}
-		if (aux.length == 0){
-				res.sendStatus(404);
-		}	
-		res.send(aux);
-	}
-	
-	console.log("New GET of resource ");
-
-}
