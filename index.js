@@ -123,6 +123,7 @@ app.get("/api/v1/death_penalty_stats/loadInitialData", (req,res) =>{
 
 app.get("/api/v1/death_penalty_stats", (req,res) =>{
 	var auxList = [];
+	var auxList1 = [];
 	var fro = req.query.from;
 	var to = req.query.to;
 	var limit = req.query.limit;
@@ -139,17 +140,24 @@ app.get("/api/v1/death_penalty_stats", (req,res) =>{
 			}
 
 		}
-	res.send(auxList);
-	} else if(limit || offset){
 		if (!offset)
 			offset = 0;
 		if (!limit || limit > death_penalty_stats.length)
 			limit = death_penalty_stats.length;
-		for (var i = offset; i < death_penalty_stats.length; i++) {
-			if (auxList.length <= (limit-1))
-				auxList.push(death_penalty_stats[i]);
+		if (auxList.length == 0) {
+			for (var i = offset; i < death_penalty_stats.length; i++) {
+				if (auxList.length <= (limit-1))
+					auxList.push(death_penalty_stats[i]);
+			}
+		res.send(auxList);
+		} else {
+			for (var i = offset; i < auxList.length; i++) {
+				if (auxList.length <= (limit-1))
+					auxList1.push(auxList[i]);
+			}
+		res.send(auxList1);
 		}
-	res.send(auxList);
+	
 	} else {
 		console.log("New GET of all resources.");
 		res.send(death_penalty_stats);
