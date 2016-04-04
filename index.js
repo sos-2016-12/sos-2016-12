@@ -122,8 +122,18 @@ app.get("/api/v1/death_penalty_stats/loadInitialData", (req,res) =>{
 });
 
 app.get("/api/v1/death_penalty_stats", (req,res) =>{
+	var limit = req.query.limit;
+	var offset = req.query.offset;
+	if (!offset)
+		offset = 0;
+	if (limit) {
+			for (var i = offset; i < limit; i++) {
+				res.send(death_penalty_stats[i]);
+			}
+	} else {
 	console.log("New GET of all resources.");
 	res.send(death_penalty_stats);
+	}
 });
 
 app.get("/api/v1/death_penalty_stats/:country", (req,res) =>{
@@ -191,11 +201,15 @@ app.put("/api/v1/death_penalty_stats/:country", (req,res) =>{
 		for (var i = 0; i < death_penalty_stats.length; i++) {
 			if (death_penalty_stats[i].country == req.params.country) {
 				aux = death_penalty_stats[i];
+				if (aux.country != stat.country) {
+					sendStatus(400);
+				} else {
 				aux.country = stat.country;
 				aux.abolition_year = stat.abolition_year;
 				aux.for_all_crimes = stat.for_all_crimes;
 				aux.murder_rate_per_100k_people = stat.murder_rate_per_100k_people;
 				res.sendStatus(200);
+				}
 			}
 		}
 		if (aux == null) {
