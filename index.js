@@ -128,7 +128,11 @@ app.get("/api/v1/death_penalty_stats", (req,res) =>{
 	var limit = req.query.limit;
 	var offset = req.query.offset;
 	
-	if (year) {
+	if (fro || to) {
+		if (!fro)
+			fro = 0;
+		if (!to)
+			to = 9999;
 		for (var i = 0; i < death_penalty_stats.length; i++) {
 			if (death_penalty_stats[i].abolition_year >= fro && death_penalty_stats[i].abolition_year <= to) {
 				auxList.push(death_penalty_stats[i]);
