@@ -18,8 +18,31 @@ var republican_stats = [];
 }
 
 module.exports.getResources = (req,res) =>{
+	var limit = req.query.limit || republican_stats.length;
+	var offset = req.query.limit || 0;
+	var from = req.query.from;
+	var to = req.query.to;
+	var aux = [];
+	if(from || to){
+		for (var i = offset; i < limit; i++) {
+			if (republican_stats[i].year >= from && republican_stats[i].year <= to ){
+				aux.push(republican_stats[i])
+			}
+		}
+		if (aux.length == 0){
+			res.sendStatus(404);
+		}
+		res.send(aux);
+	}else{
+		res.send(republican_stats);
+	}
+	
 	console.log("New GET of all resources.");
-	res.send(republican_stats);
+	console.log("From = "+ from);
+	console.log("To = "+ to);
+	console.log("Limit = "+ limit);
+	console.log("Offset = "+ offset);
+	
 }
 
 module.exports.getData = (req,res) =>{
