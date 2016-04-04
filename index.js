@@ -146,7 +146,7 @@ app.get("/api/v1/death_penalty_stats", (req,res) =>{
 		if (!limit || limit > death_penalty_stats.length)
 			limit = death_penalty_stats.length;
 		for (var i = offset; i < death_penalty_stats.length; i++) {
-			if (auxList.length <= limit)
+			if (auxList.length <= (limit-1))
 				auxList.push(death_penalty_stats[i]);
 		}
 	res.send(auxList);
