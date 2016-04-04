@@ -135,16 +135,16 @@ app.get("/api/v1/death_penalty_stats", (req,res) =>{
 
 		}
 	res.send(auxList);
-	} else if(limit || offset){
-		if (isNaN(offset)){
-			offset = 0;
-		}
-		if (!isNaN(limit)) {
-			for (var i = offset; i =< limit; i++) {
-				auxList.push(death_penalty_stats[i]);
-			}
-		}
-	res.send(auxList);
+	// } else if(limit || offset){
+	// 	if (isNaN(offset)){
+	// 		offset = 0;
+	// 	}
+	// 	if (!isNaN(limit)) {
+	// 		for (var i = offset; i =< limit; i++) {
+	// 			auxList.push(death_penalty_stats[i]);
+	// 		}
+	// 	}
+	// res.send(auxList);
 	} else {
 	console.log("New GET of all resources.");
 	res.send(death_penalty_stats);
