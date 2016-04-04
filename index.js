@@ -168,7 +168,7 @@ app.post("/api/v1/death_penalty_stats", (req,res) =>{
 	 			no = 1;
 			} 
 		}
-		if (no == 1){
+		if (no != 1){
 		death_penalty_stats.push(stat);
 		console.log("New POST of resource "+stat.country);
 		res.sendStatus(201);
