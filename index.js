@@ -282,8 +282,7 @@ app.get("/api/v1/republican_stats", victorCtl.getResources);
 
 app.get("/api/v1/republican_stats/:data", victorCtl.getData);
 
-
-
+app.get("/api/v1/republican_stats/:country/:year", victorCtl.getDataDouble);
 
 app.post("/api/v1/republican_stats", victorCtl.getPost);
 
