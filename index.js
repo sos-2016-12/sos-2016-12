@@ -157,11 +157,11 @@ app.get("/api/v1/death_penalty_stats/:country", (req,res) =>{
 app.post("/api/v1/death_penalty_stats", (req,res) =>{
 	var stat = req.body;
 	var no = 0;
-	// if (stat.country == null || stat.country == "" || !isNaN(stat.country) || isNaN(stat.abolition_year)
-	//  	|| (stat.for_all_crimes != "yes" && stat.for_all_crimes != "no") || isNaN(stat.murder_rate_per_100k_people) || stat.murder_rate_per_100k_people == null 
-	//  	|| stat.murder_rate_per_100k_people == "" ) {
-	// 	res.sendStatus(400);
-	// } else {
+	if (stat.country == null || stat.country == "" || !isNaN(stat.country) || isNaN(stat.abolition_year)
+	 	|| (stat.for_all_crimes != "yes" && stat.for_all_crimes != "no") || isNaN(stat.murder_rate_per_100k_people) || stat.murder_rate_per_100k_people == null 
+	 	|| stat.murder_rate_per_100k_people == "" ) {
+	 	res.sendStatus(400);
+	 } else {
 		for (var i = 0; i < death_penalty_stats.length; i++) {
 			if (death_penalty_stats[i].country == stat.country) {
 	 			res.sendStatus(409);
@@ -173,7 +173,7 @@ app.post("/api/v1/death_penalty_stats", (req,res) =>{
 		console.log("New POST of resource "+stat.country);
 		res.sendStatus(201);
 		}
-//	}
+	}
 });
 
 app.post("/api/v1/death_penalty_stats/:country", (req,res) =>{
