@@ -140,12 +140,14 @@ app.get("/api/v1/death_penalty_stats", (req,res) =>{
 
 		}
 	res.send(auxList);
-	} else if(limit){
-		for (var i = 0; i <= limit; i++) {
+	} else if(limit || offset){
+		if (!limit)
+			limit = 0;
+		if (!offset)
+			offset = 0;
+		for (var i = offset; i <= limit; i++) {
 			auxList.push(death_penalty_stats[i]);
 		}
-
-
 	res.send(auxList);
 	} else {
 		console.log("New GET of all resources.");
