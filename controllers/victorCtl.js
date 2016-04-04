@@ -18,12 +18,37 @@ var republican_stats = [];
 }
 
 module.exports.getResources = (req,res) =>{
-	var limit = req.query.limit || republican_stats.length;
-	var offset = req.query.limit || 0;
+		
+	var limit = req.query.limit;
+	var offset = req.query.limit;
 	var from = req.query.from;
 	var to = req.query.to;
 	var aux = [];
-	if(from || to){
+	var aux2 = [];
+	if (from || to || limit || offset) {
+		if (!from)
+			from = 0;
+		if (!to)
+			to = 9999;
+		if (!offset)
+			offset = 0;
+		if (!limit || limit > republican_stats.length)
+			limit = republican_stats.length;
+		for (var i = 0; i < republican_stats.length; i++) {//BUSQUEDA POR AÑOS
+			if (republican_stats[i].year >= from && republican_stats[i].year <= to)
+				aux.push(republican_stats[i]);
+		}
+		for (var i = offset; i < aux.length; i++) {
+			if (aux2.length <= (limit-1))
+				aux2.push(aux[i]);
+		}
+	res.send(aux2);
+	} else {
+		console.log("New GET of all resources.");
+		res.send(republican_stats);
+	}
+	/*
+	if(from || to || limit || offset){
 		for (var i = offset; i < limit; i++) {
 			if (republican_stats[i].year >= from && republican_stats[i].year <= to ){
 				aux.push(republican_stats[i])
@@ -35,7 +60,7 @@ module.exports.getResources = (req,res) =>{
 		res.send(aux);
 	}else{
 		res.send(republican_stats);
-	}
+	}*/
 	
 	console.log("New GET of all resources.");
 	console.log("From = "+ from);
@@ -99,9 +124,13 @@ module.exports.getDataDouble = (req,res)=>{
 
 module.exports.getPost = (req,res) =>{
 	var stat = req.body;
-	republican_stats.push(stat);
-	console.log("New POST of resource "+stat.country);
-	res.sendStatus(201);
+	if (stat.country == null || stat.country == "" || !isNaN(stat.country) || isNaN(stat.year) || isNaN(stat.gdppc)|| isNaN(stat.population) ){
+	 	res.sendStatus(400);
+	}else{
+		republican_stats.push(stat);
+		console.log("New POST of resource "+stat.country);
+		res.sendStatus(201);
+	}
 }
 
 module.exports.getPostForbidden = (req,res) =>{
@@ -111,18 +140,22 @@ module.exports.getPostForbidden = (req,res) =>{
 module.exports.getPut =  (req,res) =>{
 	var stat = req.body;
 	var aux = null;
-	for (var i = 0; i < republican_stats.length; i++) {
-		if (republican_stats[i].country == req.params.country) {
-			aux = republican_stats[i];
-			aux.country = stat.country;
-			aux.year = stat.year;
-			aux.gdppc = stat.gdppc;
-			aux.population = stat.population;
-			res.sendStatus(200);
+	if (stat.country == null || stat.country == "" || !isNaN(stat.country) || isNaN(stat.year) || isNaN(stat.gdppc)|| isNaN(stat.population) ){
+	 	res.sendStatus(400);
+	}else{
+		for (var i = 0; i < republican_stats.length; i++) {
+			if (republican_stats[i].country == req.params.country) {
+				aux = republican_stats[i];
+				aux.country = stat.country;
+				aux.year = stat.year;
+				aux.gdppc = stat.gdppc;
+				aux.population = stat.population;
+				res.sendStatus(200);
+			}
 		}
-	}
-	if (aux == null) {
-		res.sendStatus(404);
+		if (aux == null) {
+			res.sendStatus(404);
+		}
 	}
 
 	console.log("New PUT of resource "+stat.country);
