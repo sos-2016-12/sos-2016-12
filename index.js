@@ -124,7 +124,7 @@ app.get("/api/v1/death_penalty_stats/loadInitialData", (req,res) =>{
 app.get("/api/v1/death_penalty_stats", (req,res) =>{
 	var limit = req.query.limit;
 	var offset = req.query.offset;
-	if (!offset)
+	if (isNaN(offset))
 		offset = 0;
 	if (limit) {
 			for (var i = offset; i < limit; i++) {
