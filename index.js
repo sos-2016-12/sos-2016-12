@@ -123,13 +123,14 @@ app.get("/api/v1/death_penalty_stats/loadInitialData", (req,res) =>{
 
 app.get("/api/v1/death_penalty_stats", (req,res) =>{
 	var auxList = [];
-	var year = req.query.year;
+	var fro = req.query.from;
+	var to = req.query.to;
 	var limit = req.query.limit;
 	var offset = req.query.offset;
 	
 	if (year) {
 		for (var i = 0; i < death_penalty_stats.length; i++) {
-			if (death_penalty_stats[i].abolition_year == year) {
+			if (death_penalty_stats[i].abolition_year >= fro && death_penalty_stats[i].abolition_year <= to) {
 				auxList.push(death_penalty_stats[i]);
 			}
 
@@ -139,12 +140,12 @@ app.get("/api/v1/death_penalty_stats", (req,res) =>{
 		for (var i = 0; i <= limit; i++) {
 			auxList.push(death_penalty_stats[i]);
 		}
-		
+
 
 	res.send(auxList);
 	} else {
-	console.log("New GET of all resources.");
-	res.send(death_penalty_stats);
+		console.log("New GET of all resources.");
+		res.send(death_penalty_stats);
 	}
 });
 
