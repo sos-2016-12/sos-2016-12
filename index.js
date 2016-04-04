@@ -143,18 +143,11 @@ app.get("/api/v1/death_penalty_stats", (req,res) =>{
 			offset = 0;
 		if (!limit || limit > death_penalty_stats.length)
 			limit = death_penalty_stats.length;
-		if (fro == 0 && to == 9999) {//PAGINACION SI NO SE HA UTILIZADO BUSQUEDA EN LA PETICION
-			for (var i = offset; i < death_penalty_stats.length; i++) {
-				if (auxList.length <= (limit-1))
-					auxList.push(death_penalty_stats[i]);
-			}
-		res.send(auxList);
-		} else {//PAGINACION SI SE HA UTILIZADO BUSQUEDA EN LA PETICION
-			for (var i = offset; i < auxList.length; i++) {
-				if (auxList1.length <= (limit-1))
-					auxList1.push(auxList[i]);
-			}
-		res.send(auxList1);
+		for (var i = offset; i < auxList.length; i++) {
+			if (auxList1.length <= (limit-1))
+				auxList1.push(auxList[i]);
+		}
+	res.send(auxList1);
 		}
 	} else {
 		console.log("New GET of all resources.");
