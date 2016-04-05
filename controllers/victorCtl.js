@@ -1,6 +1,7 @@
 
 var republican_stats = [];
 
+
  module.exports.getLoadInitialData = (req,res) =>{
 	
 	republican_stats = [
@@ -18,7 +19,7 @@ var republican_stats = [];
 }
 
 module.exports.getResources = (req,res) =>{
-		
+	var apiKey=req.query.apikey;
 	var limit = req.query.limit;
 	var offset = req.query.limit;
 	var from = req.query.from;
@@ -71,6 +72,7 @@ module.exports.getResources = (req,res) =>{
 }
 
 module.exports.getData = (req,res) =>{
+	var apiKey=req.query.apikey;
 	var data = req.params.data;
 	var aux = null;
 	var aux2= []
@@ -100,6 +102,7 @@ module.exports.getData = (req,res) =>{
 	
 }
 module.exports.getDataDouble = (req,res)=>{
+	var apiKey=req.query.apikey;
 	var country = req.params.country;
 	var year = req.params.year;
 	var aux= [];
@@ -123,6 +126,7 @@ module.exports.getDataDouble = (req,res)=>{
 }
 
 module.exports.getPost = (req,res) =>{
+	var apiKey=req.query.apikey;
 	var stat = req.body;
 	if (stat.country == null || stat.country == "" || !isNaN(stat.country) || isNaN(stat.year) || isNaN(stat.gdppc)|| isNaN(stat.population) ){
 	 	res.sendStatus(400);
@@ -138,6 +142,7 @@ module.exports.getPostForbidden = (req,res) =>{
 }
 
 module.exports.getPut =  (req,res) =>{
+	var apiKey=req.query.apikey;
 	var stat = req.body;
 	var aux = null;
 	if (stat.country == null || stat.country == "" || !isNaN(stat.country) || isNaN(stat.year) || isNaN(stat.gdppc)|| isNaN(stat.population) ){
@@ -163,6 +168,7 @@ module.exports.getPut =  (req,res) =>{
 }
 
 module.exports.getPutYear = (req,res) =>{
+	var apiKey=req.query.apikey;
 	var year = req.params.year;
 	var country = req.params.country;
 
@@ -188,6 +194,7 @@ module.exports.getPutForbidden =  (req,res) =>{
 }
 
 module.exports.getDelete = (req,res) =>{
+	var apiKey=req.query.apikey;
 	republican_stats = [];
 	console.log("You DELETED all statistics");
 	res.send(200);
