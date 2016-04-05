@@ -215,7 +215,7 @@ module.exports.getPutYear = (req,res) =>{
 		res.sendStatus(401);
 	} else {
 		if(isNaN(country)){
-			if (isNaN(year)){
+			if (year<0 || year > 2016 || isNaN(year)){
 			 	res.sendStatus(400);
 			}else{
 					for (var i = 0; i < republican_stats.length; i++) {
