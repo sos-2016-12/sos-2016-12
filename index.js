@@ -270,7 +270,7 @@ app.put("/api/v1/death_penalty_stats/:country", (req,res) =>{
 			if (death_penalty_stats[i].country == req.params.country) {
 				aux = death_penalty_stats[i];
 				if (req.params.country != stat.country) {
-					sendStatus(400);
+					res.sendStatus(400);
 				} else {
 					aux.country = stat.country;
 					aux.abolition_year = stat.abolition_year;
