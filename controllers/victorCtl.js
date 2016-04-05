@@ -168,7 +168,12 @@ module.exports.getPost = (req,res) =>{
 
 
 module.exports.getPostForbidden = (req,res) =>{
-	res.sendStatus(405);
+	var key=req.query.apikey;
+	if (key != apikey || !key){
+		res.sendStatus(401);
+	} else {
+		res.sendStatus(405);
+	}
 }
 
 module.exports.getPut =  (req,res) =>{
@@ -226,7 +231,12 @@ module.exports.getPutYear = (req,res) =>{
 }
 
 module.exports.getPutForbidden =  (req,res) =>{
-	res.sendStatus(405);
+	var key=req.query.apikey;
+	if (key != apikey || !key){
+		res.sendStatus(401);
+	} else {
+		res.sendStatus(405);
+	}
 }
 
 module.exports.getDelete = (req,res) =>{
