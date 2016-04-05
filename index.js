@@ -18,7 +18,7 @@ app.get("/time",(req,res) => {
 	res.end();
 })
 
-
+var apikey = 1234;
 
 //Codigo Ale API de prueba (games) ###############################################
 
@@ -113,10 +113,11 @@ app.delete("/api/sandbox/games/:name", (req,res) =>{
 
 var death_penalty_stats = [];
 
-var apikey = 1234;
-
 app.get("/api/v1/death_penalty_stats/loadInitialData", (req,res) =>{
-	
+	var key = req.query.apikey;
+	if (key != apikey || !key){
+		res.sendStatus(401);
+	} else {
 	death_penalty_stats = [{ country : "SPAIN", abolition_year : 1995, for_all_crimes : "yes", murder_rate_per_100k_people : 0.8},
 	{ country : "GERMANY", abolition_year : 1987, for_all_crimes : "yes", murder_rate_per_100k_people : 0.8},
 	{ country : "PERU", abolition_year : 1979, for_all_crimes : "no", murder_rate_per_100k_people : 9.6},
@@ -124,10 +125,13 @@ app.get("/api/v1/death_penalty_stats/loadInitialData", (req,res) =>{
 	{ country : "SWEDEN", abolition_year : 1972, for_all_crimes : "yes", murder_rate_per_100k_people : 0.7}];
 	console.log("5 elements initialized.");
 	res.sendStatus(201);
-});
+}});
 
 app.get("/api/v1/death_penalty_stats", (req,res) =>{
-	
+	var key = req.query.apikey;
+	if (key != apikey || !key){
+		res.sendStatus(401);
+	} else {
 	var auxList = [];
 	var auxList1 = [];
 	var fro = req.query.from;
@@ -157,10 +161,13 @@ app.get("/api/v1/death_penalty_stats", (req,res) =>{
 		console.log("New GET of all resources.");
 		res.send(death_penalty_stats);
 	}
-});
+}});
 
 app.get("/api/v1/death_penalty_stats/:country", (req,res) =>{
-	
+	var key = req.query.apikey;
+	if (key != apikey || !key){
+		res.sendStatus(401);
+	} else {
 	var country = req.params.country;
 	var aux = null;
 	if (isNaN(country)) {
@@ -184,10 +191,12 @@ app.get("/api/v1/death_penalty_stats/:country", (req,res) =>{
 	}
 	console.log("New GET of resource "+country);
 	
-});
-
+}});
 app.get("/api/v1/death_penalty_stats/:country/:year", (req,res) =>{
-	
+	var key = req.query.apikey;
+	if (key != apikey || !key){
+		res.sendStatus(401);
+	} else {
 	var country = req.params.country;
 	var year = req.params.year;
 	var aux = null;
@@ -209,10 +218,13 @@ app.get("/api/v1/death_penalty_stats/:country/:year", (req,res) =>{
 	}
 	console.log("New GET of resource "+country);
 	
-});
+}});
 
 app.post("/api/v1/death_penalty_stats", (req,res) =>{
-	
+	var key = req.query.apikey;
+	if (key != apikey || !key){
+		res.sendStatus(401);
+	} else {
 	var stat = req.body;
 	var no = 0;
 	if (stat.country == null || stat.country == "" || !isNaN(stat.country) || isNaN(stat.abolition_year)
@@ -232,14 +244,21 @@ app.post("/api/v1/death_penalty_stats", (req,res) =>{
 		res.sendStatus(201);
 		}
 	}
-});
+}});
 
 app.post("/api/v1/death_penalty_stats/:country", (req,res) =>{
+	var key = req.query.apikey;
+	if (key != apikey || !key){
+		res.sendStatus(401);
+	} else {
 	res.sendStatus(405);
-});
+}});
 
 app.put("/api/v1/death_penalty_stats/:country", (req,res) =>{
-	
+	var key = req.query.apikey;
+	if (key != apikey || !key){
+		res.sendStatus(401);
+	} else {
 	var stat = req.body;
 	var aux = null;
 	if (stat.country == null || stat.country == "" || !isNaN(stat.country) || isNaN(stat.abolition_year)
@@ -267,21 +286,31 @@ app.put("/api/v1/death_penalty_stats/:country", (req,res) =>{
 	}
 	console.log("New PUT of resource "+stat.country);
 	
-});
+}});
 
 app.put("/api/v1/death_penalty_stats", (req,res) =>{
-	
+	var key = req.query.apikey;
+	if (key != apikey || !key){
+		res.sendStatus(401);
+	} else {
 	res.sendStatus(405);
-});
+}});
 
 app.delete("/api/v1/death_penalty_stats", (req,res) =>{
-	
+	var key = req.query.apikey;
+	if (key != apikey || !key){
+		res.sendStatus(401);
+	} else {
 	death_penalty_stats = [];
 	console.log("You DELETED all statistics :(");
 	res.send(200);
-});
+}});
 
 app.delete("/api/v1/death_penalty_stats/:country", (req,res) =>{
+	var key = req.query.apikey;
+	if (key != apikey || !key){
+		res.sendStatus(401);
+	} else {
 	var country = req.params.country;
 	var aux = null;
 	for (var i = 0; i < death_penalty_stats.length; i++) {
@@ -296,7 +325,7 @@ app.delete("/api/v1/death_penalty_stats/:country", (req,res) =>{
 	}
 	console.log("You deleted the country's statistics successfully.");
 	
-});
+}});
 
 // //#####################################################
 // //#####################################################
