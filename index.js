@@ -269,7 +269,7 @@ app.put("/api/v1/death_penalty_stats/:country", (req,res) =>{
 		for (var i = 0; i < death_penalty_stats.length; i++) {
 			if (death_penalty_stats[i].country == req.params.country) {
 				aux = death_penalty_stats[i];
-				if (aux.country != stat.country) {
+				if (req.params.country != stat.country) {
 					sendStatus(400);
 				} else {
 					aux.country = stat.country;
