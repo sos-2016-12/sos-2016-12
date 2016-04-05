@@ -19,7 +19,7 @@ var apikey = 1234;
 		{ country : "panama", year : 1819, gdppc : 16993, population : 3816000}];
 
 
-		console.log("6 elements initialized.");
+		console.log("7 elements initialized.");
 		res.sendStatus(201);
 	}
 
@@ -28,7 +28,7 @@ var apikey = 1234;
 module.exports.getResources = (req,res) =>{
 	var key=req.query.apikey;
 	var limit = req.query.limit;
-	var offset = req.query.limit;
+	var offset = req.query.offset;
 	var fron = req.query.from;
 	var to = req.query.to;
 	var aux = [];
