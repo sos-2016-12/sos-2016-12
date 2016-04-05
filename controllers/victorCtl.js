@@ -29,16 +29,16 @@ module.exports.getResources = (req,res) =>{
 	var key=req.query.apikey;
 	var limit = req.query.limit;
 	var offset = req.query.limit;
-	var from = req.query.from;
+	var fron = req.query.from;
 	var to = req.query.to;
 	var aux = [];
 	var aux2 = [];
 	if (key != apikey || !key){
 		res.sendStatus(401);
 	} else {
-		if (from || to || limit || offset) {
-			if (!from)
-				from = 0;
+		if (fron || to || limit || offset) {
+			if (!fron)
+				fron = 0;
 			if (!to)
 				to = 9999;
 			if (!offset)
@@ -46,7 +46,7 @@ module.exports.getResources = (req,res) =>{
 			if (!limit || limit > republican_stats.length)
 				limit = republican_stats.length;
 			for (var i = 0; i < republican_stats.length; i++) {//BUSQUEDA POR AÑOS
-				if (republican_stats[i].year >= from && republican_stats[i].year <= to)
+				if (republican_stats[i].year >= fron && republican_stats[i].year <= to)
 					aux.push(republican_stats[i]);
 			}
 			for (var i = offset; i < aux.length; i++) {
@@ -74,7 +74,7 @@ module.exports.getResources = (req,res) =>{
 		}*/
 		
 		console.log("New GET of all resources.");
-		console.log("From = "+ from);
+		console.log("From = "+ fron);
 		console.log("To = "+ to);
 		console.log("Limit = "+ limit);
 		console.log("Offset = "+ offset);
@@ -126,7 +126,7 @@ module.exports.getDataDouble = (req,res)=>{
 			for (var i = 0; i < republican_stats.length; i++) {
 				if (republican_stats[i].country == country){
 					for (var j = 0; j < republican_stats.length; j++)
-						if(republican_stats[i].country == country && republican_stats[j].year == year ){
+						if(republican_stats[j].country == country && republican_stats[j].year == year ){
 							aux.push(republican_stats[j]);
 						}
 				}
