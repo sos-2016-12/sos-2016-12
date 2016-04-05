@@ -214,7 +214,7 @@ module.exports.getPutYear = (req,res) =>{
 	if (key != apikey || !key){
 		res.sendStatus(401);
 	} else {
-		if(isNaN(country) ){
+		if(isNaN(country)){
 			if (isNaN(year)){
 			 	res.sendStatus(400);
 			}else{
