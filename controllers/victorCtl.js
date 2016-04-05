@@ -144,18 +144,28 @@ module.exports.getDataDouble = (req,res)=>{
 module.exports.getPost = (req,res) =>{
 	var key=req.query.apikey;
 	var stat = req.body;
+	var no = 0;
 	if (key != apikey || !key){
 		res.sendStatus(401);
-	} else {
+	}else{
 		if (stat.country == null || stat.country == "" || !isNaN(stat.country) || isNaN(stat.year) || isNaN(stat.gdppc)|| isNaN(stat.population) ){
 		 	res.sendStatus(400);
-		}else{
-			republican_stats.push(stat);
-			console.log("New POST of resource "+stat.country);
-			res.sendStatus(201);
+		}else {
+			for (var i = 0; i < republican_stats.length; i++) {
+				if (republican_stats[i].country == stat.country) {
+	 				res.sendStatus(409);
+	 				no = 1;
+				} 
+			}
+			if (no != 1){
+					republican_stats.push(stat);
+					console.log("New POST of resource "+stat.country);
+					res.sendStatus(201);
+			}
 		}
 	}
 }
+
 
 module.exports.getPostForbidden = (req,res) =>{
 	res.sendStatus(405);
