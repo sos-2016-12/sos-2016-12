@@ -116,7 +116,7 @@ var death_penalty_stats = [];
 app.get("/api/v1/death_penalty_stats/loadInitialData", (req,res) =>{
 	var key = req.query.apikey;
 	if (key != apikey || !key){
-		sendStatus(401);
+		res.sendStatus(401);
 	} else {
 	death_penalty_stats = [{ country : "SPAIN", abolition_year : 1995, for_all_crimes : "yes", murder_rate_per_100k_people : 0.8},
 	{ country : "GERMANY", abolition_year : 1987, for_all_crimes : "yes", murder_rate_per_100k_people : 0.8},
@@ -130,7 +130,7 @@ app.get("/api/v1/death_penalty_stats/loadInitialData", (req,res) =>{
 app.get("/api/v1/death_penalty_stats", (req,res) =>{
 	var key = req.query.apikey;
 	if (key != apikey || !key){
-		sendStatus(401);
+		res.sendStatus(401);
 	} else {
 	var auxList = [];
 	var auxList1 = [];
@@ -166,7 +166,7 @@ app.get("/api/v1/death_penalty_stats", (req,res) =>{
 app.get("/api/v1/death_penalty_stats/:country", (req,res) =>{
 	var key = req.query.apikey;
 	if (key != apikey || !key){
-		sendStatus(401);
+		res.sendStatus(401);
 	} else {
 	var country = req.params.country;
 	var aux = null;
@@ -195,7 +195,7 @@ app.get("/api/v1/death_penalty_stats/:country", (req,res) =>{
 app.get("/api/v1/death_penalty_stats/:country/:year", (req,res) =>{
 	var key = req.query.apikey;
 	if (key != apikey || !key){
-		sendStatus(401);
+		res.sendStatus(401);
 	} else {
 	var country = req.params.country;
 	var year = req.params.year;
@@ -223,7 +223,7 @@ app.get("/api/v1/death_penalty_stats/:country/:year", (req,res) =>{
 app.post("/api/v1/death_penalty_stats", (req,res) =>{
 	var key = req.query.apikey;
 	if (key != apikey || !key){
-		sendStatus(401);
+		res.sendStatus(401);
 	} else {
 	var stat = req.body;
 	var no = 0;
@@ -247,13 +247,17 @@ app.post("/api/v1/death_penalty_stats", (req,res) =>{
 }});
 
 app.post("/api/v1/death_penalty_stats/:country", (req,res) =>{
+	var key = req.query.apikey;
+	if (key != apikey || !key){
+		res.sendStatus(401);
+	} else {
 	res.sendStatus(405);
-});
+}});
 
 app.put("/api/v1/death_penalty_stats/:country", (req,res) =>{
 	var key = req.query.apikey;
 	if (key != apikey || !key){
-		sendStatus(401);
+		res.sendStatus(401);
 	} else {
 	var stat = req.body;
 	var aux = null;
@@ -265,8 +269,8 @@ app.put("/api/v1/death_penalty_stats/:country", (req,res) =>{
 		for (var i = 0; i < death_penalty_stats.length; i++) {
 			if (death_penalty_stats[i].country == req.params.country) {
 				aux = death_penalty_stats[i];
-				if (aux.country != stat.country) {
-					sendStatus(400);
+				if (req.params.country != stat.country) {
+					res.sendStatus(400);
 				} else {
 					aux.country = stat.country;
 					aux.abolition_year = stat.abolition_year;
@@ -287,7 +291,7 @@ app.put("/api/v1/death_penalty_stats/:country", (req,res) =>{
 app.put("/api/v1/death_penalty_stats", (req,res) =>{
 	var key = req.query.apikey;
 	if (key != apikey || !key){
-		sendStatus(401);
+		res.sendStatus(401);
 	} else {
 	res.sendStatus(405);
 }});
@@ -295,7 +299,7 @@ app.put("/api/v1/death_penalty_stats", (req,res) =>{
 app.delete("/api/v1/death_penalty_stats", (req,res) =>{
 	var key = req.query.apikey;
 	if (key != apikey || !key){
-		sendStatus(401);
+		res.sendStatus(401);
 	} else {
 	death_penalty_stats = [];
 	console.log("You DELETED all statistics :(");
@@ -305,7 +309,7 @@ app.delete("/api/v1/death_penalty_stats", (req,res) =>{
 app.delete("/api/v1/death_penalty_stats/:country", (req,res) =>{
 	var key = req.query.apikey;
 	if (key != apikey || !key){
-		sendStatus(401);
+		res.sendStatus(401);
 	} else {
 	var country = req.params.country;
 	var aux = null;
