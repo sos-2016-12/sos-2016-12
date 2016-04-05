@@ -214,13 +214,19 @@ module.exports.getPutYear = (req,res) =>{
 	if (key != apikey || !key){
 		res.sendStatus(401);
 	} else {
-		if(isNaN(country)){
-			for (var i = 0; i < republican_stats.length; i++) {
-				if (republican_stats[i].country == country) {
-					aux = republican_stats[i];
-					aux.year = year;
-					res.sendStatus(200);
-				}
+		if(isNaN(country) ){
+			if (isNaN(year)){
+			 	res.sendStatus(400);
+			}else{
+					for (var i = 0; i < republican_stats.length; i++) {
+						if (republican_stats[i].country == country) {
+							aux = republican_stats[i];
+							aux.year = year;
+							res.sendStatus(200);
+						}/*if (republican_stats[i].country != country) {
+							res.sendStatus(400)
+						}*/
+					}
 			}
 		}
 		if(aux == null) {
