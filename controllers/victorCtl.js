@@ -126,7 +126,7 @@ module.exports.getDataDouble = (req,res)=>{
 			for (var i = 0; i < republican_stats.length; i++) {
 				if (republican_stats[i].country == country){
 					for (var j = 0; j < republican_stats.length; j++)
-						if(republican_stats[j].year == year ){
+						if(republican_stats[i].country == country && republican_stats[j].year == year ){
 							aux.push(republican_stats[j]);
 						}
 				}
