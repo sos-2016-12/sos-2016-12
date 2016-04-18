@@ -17,7 +17,7 @@
 					var request = $.ajax({
 
 						  url: $('#url').val(),
-						  type: "GET",
+						  type: method,
 						  contentType: "application/json",
 						  data: $("#payload").val(),
 						  
@@ -36,32 +36,6 @@
 					 if(status == "error") {
 						$("#status").html(jqXHR.status);
 					 	console.log(jqXHR.status);	
-					 }				  
-					});
-
-					var request1 = $.ajax({
-
-						  url: $('#url').val(),
-						  type: "POST",
-						  contentType: "application/json",
-						  data: $("#payload").val(),
-						  
-						 
-					});
-					request.done(function(data,status,jqXHR) {
-					  // Tratamiento en caso de exito
-					  console.log("Handling request (OK)"); 
-					  console.log("Data received"); 
-					  console.log(data);
-					  $("#status").html(jqXHR.status);
-					  $("#data").text(JSON.stringify(data));
-					});
-					request.always(function(jqXHR, status) {
-					  // Tratamiento en cualquier caso
-					 if(status == "error") {
-						$("#status").html(jqXHR.status);
-					 	console.log(jqXHR.status);
-					 	$("#data").text();
 					 }				  
 					});
 				});
