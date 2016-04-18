@@ -33,8 +33,10 @@
 					});
 					request.always(function(jqXHR, status) {
 					  // Tratamiento en cualquier caso
-					  if(status == "error")
-					  console.log(jqXHR.status);					  
+					 if(status == "error") {
+						$("#status").html(jqXHR.status);
+					 	console.log(jqXHR.status);	
+					 }				  
 					});
 				});
 				
