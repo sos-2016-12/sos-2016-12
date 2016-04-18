@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="https://code.jquery.com/jquery-1.12.2.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				console.log("JQuery ready!");
+				/*$('#button').click(function(){
+					$("#log").html("<h1>Hello world<h1>");
+				});*/
+				$('#button').click(function(){
+					console.log("Handling click");
+					var method = $("input[type=radio]:checked").attr("id");
+
+					var request = $.ajax({
+
+						  url: $('#url').val(),
+						  type: "GET",
+						  contentType: "application/json",
+						  data: $("#payload").val(),
+						  
+						  // data: '{"name":"sevilla“,…}'
+					});
+					request.done(function(data) {
+					  // Tratamiento en caso de exito
+					  console.log("Handling request (OK)"); 
+					  console.log("Data recieved"); 
+					  console.log(data);
+					  $("#data").text(JSON.stringify(data));
+					});
+					request.always(function(jqXHR, status) {
+					  // Tratamiento en cualquier caso
+					  if(status == "error")
+					  console.log(jqXHR.status);					  
+					});
+				});
+				
+				
+				
+
+ 			});
+		</script>
+	</head>
+
+	<body>
+		<h1>JQuery REST Client</h1>
+			URL: <input id="url" size="30" value="/contacts"/>
+			GET <input name="method" type="radio" id="GET" checked="checked"/> &nbsp;&nbsp;
+			POST <input name="method" type="radio" id="POST" /> &nbsp;&nbsp;
+			PUT <input name="method" type="radio" id="PUT" /> &nbsp;&nbsp;
+			DELETE <input name="method" type="radio" id="DELETE" /> &nbsp;&nbsp;
+		<br/>
+		Payload: <input id="payload" size="60" value='{"name":"sevilla"}'/>
+		<br/> <br/>
+		<span id="button" class="Button">Send</span>
+		<br/><hr/>
+			HTTP Status: <span id="status"></span> 
+		<br/><hr/>
+			<span id="data"></span> 
+		<br/><hr/>
+			<ul id="list"></ul> 
+		<hr/>
+		Log: <span id="log"></span>     
+	</body>
+</html>
