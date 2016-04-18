@@ -14,8 +14,6 @@
 					console.log("Handling click");
 					var method = $("input[type=radio]:checked").attr("id");
 
-					var statusCode = jqXHR.status;
-
 					var request = $.ajax({
 
 						  url: $('#url').val(),
@@ -30,11 +28,12 @@
 					  console.log("Handling request (OK)"); 
 					  console.log("Data received"); 
 					  console.log(data);
-					  $("#status").html(statusCode);
+					  
 					  $("#data").text(JSON.stringify(data));
 					});
 					request.always(function(jqXHR, status) {
 					  // Tratamiento en cualquier caso
+					  $("#status").html(jqXHR.status);
 					  if(status == "error")
 					  console.log(jqXHR.status);					  
 					});
