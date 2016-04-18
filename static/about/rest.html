@@ -19,7 +19,7 @@
 						  url: $('#url').val(),
 						  type: method,
 						  contentType: "application/json",
-						  data: $("#payload").val(),
+						  data: $("#payload").val()
 						  
 						 
 					});
@@ -30,6 +30,8 @@
 					  console.log(data);
 					  $("#status").html(jqXHR.status);
 					  $("#data").text(JSON.stringify(data));
+					  $("#log").html("done");
+
 					});
 					request.always(function(jqXHR, status) {
 					  // Tratamiento en cualquier caso
@@ -37,6 +39,7 @@
 						$("#status").html(jqXHR.status);
 					 	console.log(jqXHR.status);
 					 	$("#data").html("");
+					 	$("#log").html("error");
 
 					 }				  
 					});
