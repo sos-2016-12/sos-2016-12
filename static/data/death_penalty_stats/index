@@ -39,9 +39,9 @@ $(document).ready(function(){
             
         var trHTML = '';
                 
-        $.each(data.Countries, function (i, item) {
+        $.each(data.country, function (i, item) {
             
-            trHTML += '<tr><td>' + data.Countries[i] + '</td><td>' + data.Cities[i] + '</td></tr>';
+            trHTML += '<tr><td>' + data.country[i] + '</td><td>' + data.abolition_year[i] + '</td></tr>';
         });
         
         $('#location').append(trHTML);
