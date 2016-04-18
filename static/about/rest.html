@@ -30,7 +30,7 @@
 					  console.log("Handling request (OK)"); 
 					  console.log("Data received"); 
 					  console.log(data);
-					  $("#status").text(statusCode);
+					  $("#status").html(statusCode);
 					  $("#data").text(JSON.stringify(data));
 					});
 					request.always(function(jqXHR, status) {
