@@ -32,6 +32,7 @@
 					});
 					request.always(function(jqXHR, status) {
 					  // Tratamiento en cualquier caso
+					   $("#status").text(jqXHR.status);
 					  if(status == "error")
 					  console.log(jqXHR.status);					  
 					});
