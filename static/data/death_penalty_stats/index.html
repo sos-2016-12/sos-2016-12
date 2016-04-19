@@ -12,14 +12,12 @@
 				});*/
 				$('#button').click(function(){
 					console.log("Handling click");
-					var method = $("input[type=radio]:checked").attr("id");
 
 					var request = $.ajax({
 
 						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey=1234",
 						  type: "GET",
 						  contentType: "application/json",
-						  data: $("#payload").val()
 						  
 						 
 					});
@@ -29,7 +27,10 @@
 					  console.log("Data received"); 
 					  console.log(data);
 					  $("#status").html(jqXHR.status);
-					  $("#data").text(JSON.stringify(data));
+					  $('#table').append(
+   						 $.map(data.country, function (country, index) {
+    						return '<tr><td>' + country + '</td><td>' + data.abolition_year[index] + '</td></tr>';
+						}).join());		
 					  $("#log").html("done");
 
 					});
@@ -44,9 +45,6 @@
 					 }				  
 					});
 				});
-				
-				
-				
 
  			});
 		</script>
@@ -55,11 +53,15 @@
 	<body>
 		<h1>JQuery REST Client</h1>
 		<br/>
-		<span id="button" class="Button">Send</span>
+		<span id="button" class="Button">GET Resources</span>
 		<br/><hr/>
 			HTTP Status: <span id="status"></span> 
 		<br/><hr/>
-			<span id="data"></span> 
+			<span id="data">
+				<table id="table">
+					
+				</table>
+			</span> 
 		<br/><hr/>
 			<ul id="list"></ul> 
 		<hr/>
