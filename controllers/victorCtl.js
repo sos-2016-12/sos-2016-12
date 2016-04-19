@@ -189,11 +189,15 @@ module.exports.getPut =  (req,res) =>{
 			for (var i = 0; i < republican_stats.length; i++) {
 				if (republican_stats[i].country == req.params.country) {
 					aux = republican_stats[i];
-					aux.country = stat.country;
-					aux.year = stat.year;
-					aux.gdppc = stat.gdppc;
-					aux.population = stat.population;
-					res.sendStatus(200);
+					if (req.params.country != stat.country) {
+						res.sendStatus(400);
+					}else{
+						aux.country = stat.country;
+						aux.year = stat.year;
+						aux.gdppc = stat.gdppc;
+						aux.population = stat.population;
+						res.sendStatus(200);
+					}
 				}
 			}
 			if (aux == null) {
