@@ -27,10 +27,6 @@
 					  console.log("Data received"); 
 					  console.log(data);
 					  $("#status").html(jqXHR.status);
-					  $('#table').append(
-   						 $.map(data.Countries, function (ignore, index) {
-        					return '<tr><td>' + data[index].country + '</td><td>' + data[index].abolition_year + '</td></tr>';
-    					}).join()	
 					  $("#log").html("done");
 
 					});
