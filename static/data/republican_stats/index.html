@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="https://code.jquery.com/jquery-1.12.2.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				console.log("JQuery ready!");
+				$('#button').click(function(){
+
+					var request = $.ajax({
+
+						  url: "http://sos-2016-12.herokuapp.com/api/v1/republican_stats?apikey=1234",
+						  type: "GET",
+						  contentType: "application/json",
+
+						  
+					});
+					request.done(function(data,status,jqXHR) {
+					  // Tratamiento en caso de exito
+					  var trHTML = '';
+                
+       				 $.each(data, function (i, item) {
+            
+            		trHTML += '<tr><td>' + data[i].country + '</td><td>' + data[i].year + '</td><td>' + data[i].gdppc + '</td><td>'
+            			+ data[i].population + '</td></tr>';
+       				 });
+        
+       				 $('#table').append(trHTML);
+					  $("#status").html(jqXHR.status);
+					  $("#log").html("done");
+
+					});
+
+					request.always(function(jqXHR, status) {
+					  // Tratamiento en cualquier caso
+					 if(status == "error") {
+						$("#status").html(jqXHR.status);
+					 	console.log(jqXHR.status);
+					 	$("#data").html("");
+					 	$("#log").html("error");
+
+					 }				  
+					});
+				});
+
+ 			});
+		</script>
+	</head>
+
+	<body>
+		<h1>JQuery REST Client</h1>
+		<br/>
+		<span id="button" class="Button">GET Resources</span>
+		<br/><hr/>
+			HTTP Status: <span id="status"></span> 
+		<br/><hr/>
+			<span id="data">
+				<table id="table" border="1">
+					<tr>
+       					<th>Country</th>
+         				<th>Year</th>
+         				<th>GDPPC</th>
+         				<th>Population</th>
+    				</tr>
+				</table>
+			</span> 
+		<br/><hr/>
+			<ul id="list"></ul> 
+		<hr/>
+		Log: <span id="log"></span>     
+	</body>
+</html>
