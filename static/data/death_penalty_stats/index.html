@@ -24,7 +24,8 @@
                 
        				 $.each(data, function (i, item) {
             
-            		trHTML += '<tr><td>' + data[i].country + '</td><td>' + data[i].abolition_year + '</td></tr>';
+            		trHTML += '<tr><td>' + data[i].country + '</td><td>' + data[i].abolition_year + '</td></tr>' + data[i].for_all_crimes + '</td></tr>'
+            			+ data[i].murder_rate_per_100k_people + '</td></tr>';
        				 });
         
        				 $('#table').append(trHTML);
@@ -32,7 +33,7 @@
 					  $("#log").html("done");
 
 					});
-					
+
 					request.always(function(jqXHR, status) {
 					  // Tratamiento en cualquier caso
 					 if(status == "error") {
@@ -57,10 +58,12 @@
 			HTTP Status: <span id="status"></span> 
 		<br/><hr/>
 			<span id="data">
-				<table id="table">
+				<table id="table" border="1">
 					<tr>
        					<th>Country</th>
          				<th>Abolition Year</th>
+         				<th>For All Crimes?</th>
+         				<th>Murder Rate Per 100k People</th>
     				</tr>
 				</table>
 			</span> 
