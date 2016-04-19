@@ -7,29 +7,32 @@
 		<script>
 			$(document).ready(function(){
 				console.log("JQuery ready!");
-				/*$('#button').click(function(){
-					$("#log").html("<h1>Hello world<h1>");
-				});*/
 				$('#button').click(function(){
-					console.log("Handling click");
 
 					var request = $.ajax({
 
 						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey=1234",
 						  type: "GET",
 						  contentType: "application/json",
+
 						  
 						 
 					});
 					request.done(function(data,status,jqXHR) {
 					  // Tratamiento en caso de exito
-					  console.log("Handling request (OK)"); 
-					  console.log("Data received"); 
-					  console.log(data);
+					  var trHTML = '';
+                
+       				 $.each(data, function (i, item) {
+            
+            		trHTML += '<tr><td>' + data[i].country + '</td><td>' + data[i].abolition_year + '</td></tr>';
+       				 });
+        
+       				 $('#table').append(trHTML);
 					  $("#status").html(jqXHR.status);
 					  $("#log").html("done");
 
 					});
+					
 					request.always(function(jqXHR, status) {
 					  // Tratamiento en cualquier caso
 					 if(status == "error") {
