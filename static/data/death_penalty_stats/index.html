@@ -28,9 +28,9 @@
 					  console.log(data);
 					  $("#status").html(jqXHR.status);
 					  $('#table').append(
-   						 $.map(data.country, function (country, index) {
-    						return '<tr><td>' + country + '</td><td>' + data.abolition_year[index] + '</td></tr>';
-						}).join());		
+   						 $.map(data.Countries, function (ignore, index) {
+        					return '<tr><td>' + data[index].country + '</td><td>' + data[index].abolition_year + '</td></tr>';
+    					}).join()	
 					  $("#log").html("done");
 
 					});
@@ -59,7 +59,10 @@
 		<br/><hr/>
 			<span id="data">
 				<table id="table">
-					
+					<tr>
+       					<th>Country</th>
+         				<th>Abolition Year</th>
+    				</tr>
 				</table>
 			</span> 
 		<br/><hr/>
