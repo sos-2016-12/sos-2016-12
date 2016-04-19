@@ -40,4 +40,22 @@ hr{ border : 1px solid grey; }
 	position:relative;
 	top:1px;
 }
-body {background-color:#FFF0C9;}
+body {background: rgba(226,226,226,1);
+background: -moz-linear-gradient(left, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 51%, rgba(254,254,254,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(226,226,226,1)), color-stop(51%, rgba(219,219,219,1)), color-stop(100%, rgba(254,254,254,1)));
+background: -webkit-linear-gradient(left, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 51%, rgba(254,254,254,1) 100%);
+background: -o-linear-gradient(left, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 51%, rgba(254,254,254,1) 100%);
+background: -ms-linear-gradient(left, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 51%, rgba(254,254,254,1) 100%);
+background: linear-gradient(to right, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 51%, rgba(254,254,254,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=1 );}
+
+li {font-family: Tahoma, Geneva, sans-serif;
+font-size: 14px;
+font-weight: bold;
+letter-spacing: 1.4pt;}
+
+#titulo{font-family: Tahoma, Geneva, sans-serif;
+font-size: 16px;
+font-weight: bold;
+letter-spacing: 1.4pt;
+}

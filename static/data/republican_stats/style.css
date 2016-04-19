@@ -40,4 +40,11 @@ hr{ border : 1px solid grey; }
 	position:relative;
 	top:1px;
 }
-body {background-color:#FFF0C9;}
+body {background: rgba(234,238,216,1);
+background: -moz-linear-gradient(left, rgba(234,238,216,1) 0%, rgba(199,235,20,0.36) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(234,238,216,1)), color-stop(100%, rgba(199,235,20,0.36)));
+background: -webkit-linear-gradient(left, rgba(234,238,216,1) 0%, rgba(199,235,20,0.36) 100%);
+background: -o-linear-gradient(left, rgba(234,238,216,1) 0%, rgba(199,235,20,0.36) 100%);
+background: -ms-linear-gradient(left, rgba(234,238,216,1) 0%, rgba(199,235,20,0.36) 100%);
+background: linear-gradient(to right, rgba(234,238,216,1) 0%, rgba(199,235,20,0.36) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eaeed8', endColorstr='#c7eb14', GradientType=1 );}
