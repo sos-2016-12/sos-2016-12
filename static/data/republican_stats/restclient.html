@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="https://code.jquery.com/jquery-1.12.2.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				console.log("JQuery ready!");
+				/*$('#button').click(function(){
+					$("#log").html("<h1>Hello world<h1>");
+				});*/
+				$('#button').click(function(){
+					console.log("Handling click");
+					var method = $("input[type=radio]:checked").attr("id");
+
+					var request = $.ajax({
+
+						  url: $('#url').val(),
+						  type: method,
+						  contentType: "application/json",
+						  data: $("#payload").val()
+						  
+						 
+					});
+					request.done(function(data,status,jqXHR) {
+					  // Tratamiento en caso de exito
+					  console.log("Handling request (OK)"); 
+					  console.log("Data received"); 
+					  console.log(data);
+					  $("#status").html(jqXHR.status);
+					  $("#data").text(JSON.stringify(data));
+					  $("#log").html("done");
+
+					});
+					request.always(function(jqXHR, status) {
+					  // Tratamiento en cualquier caso
+					 if(status == "error") {
+						$("#status").html(jqXHR.status);
+					 	console.log(jqXHR.status);
+					 	$("#data").html("");
+					 	$("#log").html("error");
+
+					 }				  
+					});
+				});
+				
+				
+				
+
+ 			});
+		</script>
+	</head>
+
+	<body>
+		<h1>JQuery REST Client</h1>
+			URL: <input id="url" size="30" value="http://sos-2016-12.herokuapp.com/api/v1/republican_stats?apikey=1234"/>
+			GET <input name="method" type="radio" id="GET" checked="checked"/> &nbsp;&nbsp;
+			POST <input name="method" type="radio" id="POST" /> &nbsp;&nbsp;
+			PUT <input name="method" type="radio" id="PUT" /> &nbsp;&nbsp;
+			DELETE <input name="method" type="radio" id="DELETE" /> &nbsp;&nbsp;
+		<br/>
+		Payload: <input id="payload" size="60" value='{}'/>
+		<br/> <br/>
+		<span id="button" class="Button">Send</span>
+		<br/><hr/>
+			HTTP Status: <span id="status"></span> 
+		<br/><hr/>
+			<span id="data"></span> 
+		<br/><hr/>
+			<ul id="list"></ul> 
+		<hr/>
+		Log: <span id="log"></span>     
+	</body>
+</html>
