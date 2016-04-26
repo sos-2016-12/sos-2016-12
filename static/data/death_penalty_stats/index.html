@@ -2,7 +2,10 @@
 <html>
 
 	<head>
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<style type="text/css">
+ 			body { background: #FCFCC1; !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+ 		</style> 
 		<script src="https://code.jquery.com/jquery-1.12.2.min.js"></script>
 		<script>
 			$(document).ready(function(){
@@ -49,16 +52,16 @@
 		</script>
 	</head>
 
-	<body>
+	<body><div class="container">
 		<h1>JQuery REST Client</h1>
 		<br/>
-		<span id="button" class="Button">GET Resources</span>
+		<button type="button" id="button" data-loading-text="Loading..." class="btn btn-primary" aria-label="Left Align" autocomplete="off"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> GET Resources</button>
 		<br/><hr/>
-			HTTP Status: <span id="status"></span> 
-		<br/><hr/>
+			<p class="lead">HTTP Status: <span id="status"></span> </p>
+		<hr/>
 			<span id="data">
-				<table id="table" border="1">
-					<tr>
+				<table id="table" border="1" class="table table-hover table-condensed table-bordered">
+					<tr class="info">
        					<th>Country</th>
          				<th>Abolition Year</th>
          				<th>For All Crimes?</th>
@@ -66,9 +69,7 @@
     				</tr>
 				</table>
 			</span> 
-		<br/><hr/>
-			<ul id="list"></ul> 
-		<hr/>
-		Log: <span id="log"></span>     
-	</body>
+				<hr/>
+			<p class="lead">Log: <span id="log"></span></p>
+	</div></body>
 </html>
