@@ -2,7 +2,11 @@
 <html>
 
 	<head>
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+		 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Compiled and minified JavaScript -->
+  		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 		<script src="https://code.jquery.com/jquery-1.12.2.min.js"></script>
 		<script>
 			$(document).ready(function(){
@@ -45,31 +49,66 @@
 					});
 				});
 				
-				
+    		Materialize.updateTextFields();
+  
 				
 
  			});
 		</script>
 	</head>
 
-	<body>
-		<h1>JQuery REST Client</h1>
-			URL: <input id="url" size="30" value="http://sos-2016-12.herokuapp.com/api/v1/republican_stats?apikey=1234"/>
-			GET <input name="method" type="radio" id="GET" checked="checked"/> &nbsp;&nbsp;
-			POST <input name="method" type="radio" id="POST" /> &nbsp;&nbsp;
-			PUT <input name="method" type="radio" id="PUT" /> &nbsp;&nbsp;
-			DELETE <input name="method" type="radio" id="DELETE" /> &nbsp;&nbsp;
-		<br/>
-		Payload: <input id="payload" size="60" value='{}'/>
-		<br/> <br/>
-		<span id="button" class="Button">Send</span>
-		<br/><hr/>
-			HTTP Status: <span id="status"></span> 
-		<br/><hr/>
+	<body class="brown lighten-4">
+		<h4>JQuery REST Client</h4>
+		<div class="row">
+		    <div class="input-field col s6">
+		      <input id="url" type="text" value="http://sos-2016-12.herokuapp.com/api/v1/republican_stats?apikey=1234" class="validate">
+		      <label class="active" for="url">URL:</label>
+
+		    </div>
+		</div>
+		<div>
+		 <form action="#">
+		    
+		      <input name="method" type="radio" id="GET" checked="checked"/> &nbsp;&nbsp;
+		      <label for="GET">GET</label>
+		    
+		      <input name="method" type="radio" id="POST" /> &nbsp;&nbsp;
+		      <label for="POST">POST</label>
+		    
+		    
+		      <input name="method" type="radio" id="PUT" /> &nbsp;&nbsp;
+		      <label for="PUT">PUT</label>
+		    
+		      
+		        <input name="method" type="radio" id="DELETE" /> &nbsp;&nbsp;
+		        <label for="DELETE">DELETE</label>
+		    
+		 </form>
+		<p>
+			<button id="button" class="btn waves-effect waves-light" type="submit" name="action">Send
+    			<i class="material-icons right">send</i>
+  			</button>
+  		</p>
+		</div>
+		<div class="row">
+		    <div class="input-field col s6">
+		      <input id="payload" value='{}'class="validate">
+		      <label class="active" for="payload">Payload</label>
+		    </div>
+		</div>
+		<div class="card-panel brown darken-4">
+			<span class="light-green-text text-lighten-5">HTTP Status: 
+				<span id="status">
+					
+				</span>
+			</span>
+		</div>
+		
+		
+		<br/><br/>
 			<span id="data"></span> 
-		<br/><hr/>
+		<br/><br/>
 			<ul id="list"></ul> 
-		<hr/>
-		Log: <span id="log"></span>     
+		<div class="card-panel brown darken-4"> <span class="light-green-text text-lighten-5">Log: <span id="log"></span></span></div>     
 	</body>
 </html>
