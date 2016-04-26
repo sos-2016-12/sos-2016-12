@@ -4,13 +4,10 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 		<script src="https://code.jquery.com/jquery-1.12.2.min.js"></script>
-		<script src="js/bootstrap.js"></script>
 		<script>
 			$(document).ready(function(){
 				console.log("JQuery ready!");
 				$('#button').click(function(){
-
-					var $btn = $(this).button('loading')
 
 					var request = $.ajax({
 
@@ -46,8 +43,6 @@
 
 					 }				  
 					});
-
-					$btn.button('reset')
 				});
 
  			});
@@ -57,7 +52,7 @@
 	<body><div class="container">
 		<h1>JQuery REST Client</h1>
 		<br/>
-		<button type="button" id="button" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">GET Resources</button>
+		<span id="button" class="btn btn-primary">GET Resources</span>
 		<br/><hr/>
 			<p class="lead">HTTP Status: <span id="status"></span> </p>
 		<hr/>
