@@ -57,15 +57,20 @@
 			<form class="form-horizontal">
 				<div class="form-group">
 					<label class="col-sm-2 control-label">URL: </label>
-					<input id="url" class="form-control" size="30" value="http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey=1234"/>
-					GET <input class="form-control" name="method" type="radio" id="GET" checked="checked"/> &nbsp;&nbsp;
-					POST <input class="form-control" name="method" type="radio" id="POST" /> &nbsp;&nbsp;
-					PUT <input class="form-control" name="method" type="radio" id="PUT" /> &nbsp;&nbsp;
-					DELETE <input class="form-control" name="method" type="radio" id="DELETE" /> &nbsp;&nbsp;
+						<div class="col-sm-10">
+							<input id="url" class="form-control" size="30" value="http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey=1234"/>
+							GET <input name="method" type="radio" id="GET" checked="checked"/> &nbsp;&nbsp;
+							POST <input name="method" type="radio" id="POST" /> &nbsp;&nbsp;
+							PUT <input name="method" type="radio" id="PUT" /> &nbsp;&nbsp;
+							DELETE <input name="method" type="radio" id="DELETE" /> &nbsp;&nbsp;
+						</div>
 				</div>
 					<br/>
 				<div class="form-group">
-					Payload: <input class="form-control" id="payload" size="60" value='{}'/>
+					<label class="col-sm-2 control-label">Payload: </label>
+						<div class="col-sm-10">
+							<input class="form-control" id="payload" size="60" value='{}'/>
+						</div>
 				</div>
 			</form>
 		<br/> <br/>
