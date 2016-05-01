@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>-->
+  <script src="https://code.jquery.com/jquery-1.12.2.min.js"></script>
+  <script src="functions.js"></script>
+
+  
+</head>
+<body class="light-green lighten-5">
+  <div class="container">
+  		<form class="col s12">
+	  		<div class="row">
+		        <div class="input-field col s6">
+		          <i class="material-icons prefix">vpn_key</i>
+		          <input id="apikey" name="apikey" type="text" class="validate" value="1234">
+		          <label class="active" for="apikey">Apikey</label>
+		        </div>
+		        <div class="col s6">
+		        	<button id="loadInitialData" name="loadInitialData" class="btn waves-effect waves-light" type="submit" name="action">loadInitialData
+	    				<i class="material-icons right">send</i>
+	  				</button>
+		        </div>
+		    </div>
+		</form>
+
+		<form class="col s12">
+			<label><h5>Add/Update resource</h5></label>
+				<div class="row">
+					<div class="input-field">
+						
+						<div class="col s3">
+							<input type="text" id="newCountry" name="newCountry" placeholder="Country"></input>
+	    				</div>
+	    				<div class="col s3">
+	    					<input  type="text" id="newYear" name="newYear" placeholder="Year"></input>	
+	    				</div>
+	    				<div class="col s3">
+							<input type="text" id="newGdppc" name="newGdppc" placeholder="Gdppc"></input>
+	    				</div>
+	    				<div class="col s3">
+	    					<input  type="text" id="newPopulation" name="newPopulation" placeholder="Population"></input>	
+	    				</div>						
+					</div>
+					<button id="addButton" name="addButton" class="btn waves-effect waves-light" type="submit">Add
+	    				<i class="material-icons right">input</i>
+	  				</button>
+	  				<button id="updateButton" name="updateButton" class="btn waves-effect waves-light" type="submit">Update
+	    				<i class="material-icons right">system_update_alt</i>
+	  				</button>
+				</div>
+		</form>
+		<form class="col s12">
+			<label><h5>Search</h5></label>
+				<div class="row">
+				    
+				        <div class="input-field col s5">
+				   
+				          <input id="country" name="country" type="text" class="validate">
+				          <label class="active" for="country">Country</label>
+				        </div>
+				        <div class="input-field col s5">
+				   
+				          <input id="year" name="year" type="text" class="validate">
+				          <label class="active" for="year">Year</label>
+				        </div>
+				        <div class = "col s2">
+					        <button id="searchButton" name="searchButton" class="btn waves-effect waves-light">
+					          		<i class="material-icons">search</i>
+
+					        </button>
+					    </div>
+				        
+				      
+				  </div>
+			
+		</form>
+
+
+
+
+
+
+
+    
+  </div>
+</body>
+</html>
