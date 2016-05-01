@@ -7,7 +7,7 @@ $("body").ready(function (){
 
 	$("#loadInitialData").click(function(){
 
-	    var apikey = $("#apiKey").val();
+	    var apikey = $("#apikey").val();
 	    var dir = "";
 
 	    var request = $.ajax({
@@ -35,7 +35,7 @@ $("body").ready(function (){
 	});
 
 	$("#addButton").click(function(){
-		  var apikey = $("#apiKey").val();
+		  var apikey = $("#apikey").val();
 		  var country = $("#newCountry").val();
 		  var year = $("#newYear").val();
 		  var gdppc = $("#newGdppc").val();
@@ -46,7 +46,7 @@ $("body").ready(function (){
   		if(country && year && gdppc && population){
 
 		  var request = $.ajax({
-		    url:"/api/v1/oil?apikey="+apikey,
+		    url:"/api/v1/republican_stats?apikey="+apikey,
 		    type:"POST",
 		    data: '{"country":"'+country+'","year":'+year+',"gdppc":'+gdppc+',"population":'+population+'}',
 		    contentType : "application/json"
@@ -82,7 +82,7 @@ $("body").ready(function (){
 
 
 	$("#updateButton").click(function(){
-	  	var apikey = $("#apiKey").val();
+	  	var apikey = $("#apikey").val();
 		var country = $("#newCountry").val();
 		var year = $("#newYear").val();
 		var gdppc = $("#newGdppc").val();
