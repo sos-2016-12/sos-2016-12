@@ -25,10 +25,10 @@ $("body").ready(function (){
 
 	    request.always(function (jqXHR,status){
 		    if(status=="error" && jqXHR.status==401){
-		        swal("Unauthorized: Apikey not valid");
+		        Materialize.toast('Unauthorized: Apikey not valid', 4000);
 		    }else {
 
-		      swal("Data Loaded");
+		      Materialize.toast('Data loaded', 4000);
 
 		    }
 	    });
@@ -62,20 +62,20 @@ $("body").ready(function (){
 
 		  request.always(function (jqXHR,status){
 		    if(status=="error" && jqXHR.status==401){
-
-		    	swal("Unauthorized: Apikey No Valid");
+		    	Materialize.toast('Unauthorized: Apikey not valid', 4000);
+		    	
 
 		  	}else if(status=="error" && jqXHR.status==409){
 
-		    	swal("Data Already Exists");
+		    	
+		    	Materialize.toast('Data already exists', 4000);
 
 		    }
 		  });
 
 		}else{
-			//Materialize.toast('There are empty fields', 4000)
-		  swal("Empty fields");
-
+			Materialize.toast('There are empty fields', 4000);
+		
 		}
 	});
 
@@ -110,18 +110,19 @@ $("body").ready(function (){
 	  request.always(function (jqXHR,status){
 	    if(status=="error" && jqXHR.status==401){
 
-	    swal("Unauthorized: Apikey not valid");
+		    Materialize.toast('Unauthorized: Apikey not valid', 4000);
 
 	  	}else{
 
-	    swal("Data Updated");
+		    Materialize.toast('Data update', 4000);
 
 	    }
 	  });
 
 		}else{
 
-		  swal("Fill in all fields");
+		  	Materialize.toast('Empty fields', 4000);
+
 
 		}
 
