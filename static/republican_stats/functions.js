@@ -55,7 +55,7 @@ $("body").ready(function (){
 		  request.done(function (data){
 		    console.log("Handling request (OK)");
 		    console.log("Data received: ");
-		    swal("Data Created!");
+		    Materialize.toast('Created', 4000);
 		    table(dir);
 
 		  });
@@ -102,7 +102,7 @@ $("body").ready(function (){
 	  request.done(function (data){
 	    console.log("Handling request (OK)");
 	    console.log("Data received: ");
-	    swal("Data Update!");
+	    Materialize.toast('Updated', 4000);
 	    table(dir);
 
 	  });
@@ -158,7 +158,7 @@ $("body").ready(function (){
 
 
 
-
+/*
 
 	$("#searchButton").click(function(){
 	    console.log("Handling click");
@@ -196,7 +196,7 @@ $("body").ready(function (){
 
 	});
 
-
+*/
 
 
 
