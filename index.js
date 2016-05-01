@@ -17,9 +17,12 @@ app.get("/time",(req,res) => {
 	res.write("It is "+now);
 	res.end();
 })
-
-
-
+//COMPLETAR UNA VEZ MONTADA LA GUI!!!!!!!!!
+//COMPLETAR UNA VEZ MONTADA LA GUI!!!!!!!!!
+//COMPLETAR UNA VEZ MONTADA LA GUI!!!!!!!!!
+//COMPLETAR UNA VEZ MONTADA LA GUI!!!!!!!!!
+//app.use("/republican_stats", express.static(__dirname+"/"));
+//app.use("/death_penalty_stats", express.static(__dirname+"/"));
 
 
 var apikey = 1234;
