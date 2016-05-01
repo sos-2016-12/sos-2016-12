@@ -23,10 +23,10 @@ $("body").ready(function (){
 
 	    request.always(function (jqXHR,status){
 		    if(status=="error" && jqXHR.status==401){
-		        Materialize.toast('Unauthorized: Apikey not valid', 4000);
+		        alert('Unauthorized: Apikey not valid');
 		    }else {
 
-		      Materialize.toast('Data loaded', 4000);
+		      alert('Data loaded');
 
 		    }
 	    });
@@ -53,26 +53,26 @@ $("body").ready(function (){
 		  request.done(function (data){
 		    console.log("Handling request (OK)");
 		    console.log("Data received: ");
-		    Materialize.toast('Created', 4000);
+		    alert('Created');
 		    
 
 		  });
 
 		  request.always(function (jqXHR,status){
 		    if(status=="error" && jqXHR.status==401){
-		    	Materialize.toast('Unauthorized: Apikey not valid', 4000);
+		    	alert('Unauthorized: Apikey not valid');
 		    	
 
 		  	}else if(status=="error" && jqXHR.status==409){
 
 		    	
-		    	Materialize.toast('Data already exists', 4000);
+		    	alert('Data already exists');
 
 		    }
 		  });
 
 		}else{
-			Materialize.toast('There are empty fields', 4000);
+			alert('There are empty fields');
 		
 		}
 	});
@@ -87,39 +87,43 @@ $("body").ready(function (){
 		var population = $("#newPopulation").val();
 		
 
-  	if(country && year && gdppc && population){
+	  	if(country && year && gdppc && population){
 
 
-	  var request = $.ajax({
-	    url:"/api/v1/republican_stats/"+country+"/"+year+"?apikey="+apikey,
-	    type:"PUT",
-	    data: '{"country":"'+country+'","year":'+year+',"gdppc":'+gdppc+',"population":'+population+'}',
-	    contentType : "application/json"
-	  });
+		  var request = $.ajax({
+		    url:"/api/v1/republican_stats/"+country+"/"+year+"?apikey="+apikey,
+		    type:"PUT",
+		    data: '{"country":"'+country+'","year":'+year+',"gdppc":'+gdppc+',"population":'+population+'}',
+		    contentType : "application/json"
+		  });
 
-	  request.done(function (data){
-	    console.log("Handling request (OK)");
-	    console.log("Data received: ");
-	    Materialize.toast('Updated', 4000);
-	    
+		  request.done(function (data){
+		    console.log("Handling request (OK)");
+		    console.log("Data received: ");
+		    alert('Updated');
+		    
 
-	  });
+		  });
 
-	  request.always(function (jqXHR,status){
-	    if(status=="error" && jqXHR.status==401){
+		  request.always(function (jqXHR,status){
+		    if(status=="error" && jqXHR.status==401){
 
-		    Materialize.toast('Unauthorized: Apikey not valid', 4000);
+			    alert('Unauthorized: Apikey not valid');
 
-	  	}else{
+		  	}if(status=="error" && jqXHR.status==405){
 
-		    Materialize.toast('Data update', 4000);
+			    alert('Method not allowed');
 
-	    }
-	  });
+		    }if(status=="error" && jqXHR.status==404){
+
+			    alert('Not found');
+
+		    }
+		  });
 
 		}else{
 
-		  	Materialize.toast('Empty fields', 4000);
+			alert('Empty fields');
 
 
 		}
@@ -127,57 +131,32 @@ $("body").ready(function (){
 	});
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
 	$("#searchButton").click(function(){
 	    console.log("Handling click");
-	    var apikey = $("#apiKey").val();
+	    var apikey = $("#apikey").val();
 	    var country = $("#country").val();
 	    var year = $("#year").val();
-	    var item = $("#item").val();
-	    var page = $("#page").val();
-	    var dir = "";
 
-	  var request = $.ajax({
-	    url:"/api/v1/republican_stats?apikey="+apikey,
-	    type:"GET"
-	  });
+	    if(country){
+		  var request = $.ajax({
+		    url:"/api/v1/republican_stats/"+country+"/"+year+"?apikey="+apikey,
+		    type:"GET"
+		  });
+		}if(year){
+			var request = $.ajax({
+		    url:"/api/v1/republican_stats/"+year+"?apikey="+apikey,
+		    type:"GET"
+		  });
+		}if(!country && !year){
+			alert('What are you looking for?');
+		}
 
 
 
 	  request.done(function (data){
 	    console.log("Handling request (OK)");
 	    console.log("Data received: ");
-	    table(dir);
+	    
 
 
 	  });
@@ -186,17 +165,13 @@ $("body").ready(function (){
 	  request.always(function (jqXHR,status){
 	    if(status=="error" && jqXHR.status==401){
 
-	      swal("Unauthorized: Apikey not valid");
+		   alert('Unauthorized: Apikey not valid');
 
 	  }
 
 	  });
 
 	});
-
-*/
-
-
 
 
 });
