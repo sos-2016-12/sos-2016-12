@@ -8,7 +8,6 @@ $("body").ready(function (){
 	$("#loadInitialData").click(function(){
 
 	    var apikey = $("#apikey").val();
-	    var dir = "";
 
 	    var request = $.ajax({
 	      url:"/api/v1/republican_stats/loadInitialData?apikey="+apikey,
@@ -19,7 +18,6 @@ $("body").ready(function (){
 	    request.done(function (data){
 	      console.log("Handling request (OK)");
 	      console.log("Data received: ");
-	      table(dir);
 
 	    });
 
@@ -40,7 +38,7 @@ $("body").ready(function (){
 		  var year = $("#newYear").val();
 		  var gdppc = $("#newGdppc").val();
 		  var population = $("#newPopulation").val();
-		  var dir = "";
+		  
 
 
   		if(country && year && gdppc && population){
@@ -56,7 +54,7 @@ $("body").ready(function (){
 		    console.log("Handling request (OK)");
 		    console.log("Data received: ");
 		    Materialize.toast('Created', 4000);
-		    table(dir);
+		    
 
 		  });
 
@@ -87,7 +85,7 @@ $("body").ready(function (){
 		var year = $("#newYear").val();
 		var gdppc = $("#newGdppc").val();
 		var population = $("#newPopulation").val();
-		var dir = "";
+		
 
   	if(country && year && gdppc && population){
 
@@ -103,7 +101,7 @@ $("body").ready(function (){
 	    console.log("Handling request (OK)");
 	    console.log("Data received: ");
 	    Materialize.toast('Updated', 4000);
-	    table(dir);
+	    
 
 	  });
 
