@@ -65,7 +65,7 @@ $(document).ready(function(){
 
                 	id = 1;
 
-       				$.each(data, function (i, item) {
+       				$.each(data, function (i) {
             
             		trHTML += '<tr id="'+id+'"><td>' + id +'</td><td>'+ data[i].country + '</td><td>' + data[i].abolition_year + '</td><td>' + data[i].for_all_crimes + '</td><td>'
             			+ data[i].murder_rate_per_100k_people + '</td></tr>';
@@ -100,14 +100,14 @@ $(document).ready(function(){
 
 					var apikey = $("#apikey").val();
 
-					var country = $("#country-srch").val();
+					var countr = $("#country-srch").val();
 
 					var from = $("#from-srch").val();
 
 					var to = $("#to-srch").val();
 
-					if (!country)
-						country = "";
+					if (!countr)
+						countr = "";
 					if (!from)
 						from=0;
 					if (!to)
@@ -116,7 +116,7 @@ $(document).ready(function(){
 
 					var request = $.ajax({
 
-						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats/"+country+"?apikey="+apikey+"&from="+from+"&to="+to,
+						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats/"+countr+"?apikey="+apikey+"&from="+from+"&to="+to,
 						  type: "GET",
 						  contentType: "application/json",
   
@@ -126,11 +126,11 @@ $(document).ready(function(){
 					  // Tratamiento en caso de exito
 					var trHTML = '';
 
-                	$("table").find("tr:gt(0)").remove();
+                	$("#table").find("tr:gt(0)").remove();
 
                 	id = 1;
 
-       				$.each(data, function (i, item) {
+       				$.each(data, function (i) {
             
             		trHTML += '<tr id="'+id+'"><td>' + id +'</td><td>'+ data[i].country + '</td><td>' + data[i].abolition_year + '</td><td>' + data[i].for_all_crimes + '</td><td>'
             			+ data[i].murder_rate_per_100k_people + '</td></tr>';
@@ -185,7 +185,7 @@ $(document).ready(function(){
 					  	var trHTML = '';
 
 
-       					$.each(data, function (i, item) {
+       					$.each(data, function (i) {
             
             			trHTML += '<tr id="'+id+'"><td>'+ id +'</td><td>'+ country + '</td><td>' + abolition_year + '</td><td>' + for_all_crimes + '</td><td>'
             			+ murder_rate_per_100k_people + '</td></tr>';
