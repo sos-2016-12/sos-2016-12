@@ -59,8 +59,11 @@
 
 					request.done(function(data,status,jqXHR) {
 					  // Tratamiento en caso de exito
-					  var trHTML = '';
-                	$("#data").html("");
+					
+					$("#table").empty();
+
+					var trHTML = '';
+                	
        				$.each(data, function (i, item) {
             
             		trHTML += '<tr><td>' + data[i].country + '</td><td>' + data[i].abolition_year + '</td><td>' + data[i].for_all_crimes + '</td><td>'
