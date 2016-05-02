@@ -11,14 +11,14 @@
 			$(document).ready(function(){
 				console.log("JQuery ready!");
 
-
+				var apikey = $("#apikey").val();
 
 
 				$('#button-ld-ini').click(function(){
 
 					var request = $.ajax({
 
-						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats/loadInitialData?apikey=1234",
+						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats/loadInitialData?apikey="+apikey,
 						  type: "GET",
 						  contentType: "application/json",
   
@@ -196,10 +196,9 @@
 	<body><div class="container">
 		<h1>JQuery REST Client</h1>
 		</br>
-			<i class="material-icons prefix">vpn_key</i>
-		    <input id="apikey" name="apikey" type="text" class="validate" value="1234">
 		    <label class="active" for="apikey"> Apikey </label>
-		</br>
+		    <input id="apikey" name="apikey" type="text" class="form-control" value="1234">
+		</br></br>
 		<button type="button" id="button-get" class="btn btn-primary" autocomplete="off"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> GET Resources </button>
 		<button type="button" id="button-ld-ini" class="btn btn-primary" autocomplete="off"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Load Initial Data </button>
 		</br><hr/>
