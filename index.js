@@ -22,7 +22,7 @@ app.get("/time",(req,res) => {
 //COMPLETAR UNA VEZ MONTADA LA GUI!!!!!!!!!
 //COMPLETAR UNA VEZ MONTADA LA GUI!!!!!!!!!
 app.use("/republican_stats", express.static(__dirname+"/static/republican_stats"));
-//app.use("/death_penalty_stats", express.static(__dirname+"/"));
+app.use("/death_penalty_stats", express.static(__dirname+"/static/death_penalty_stats"));
 
 
 var apikey = 1234;

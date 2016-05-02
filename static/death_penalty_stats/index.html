@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<link rel="stylesheet" type="text/css" href="./data/death_penalty_stats/css/bootstrap.css">
+		<style type="text/css">
+ 			body { background: #FCFCC1; !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+ 		</style> 
+		<script src="https://code.jquery.com/jquery-1.12.2.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				console.log("JQuery ready!");
+				$('#button').click(function(){
+
+					var request = $.ajax({
+
+						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey=1234",
+						  type: "GET",
+						  contentType: "application/json",
+
+						  
+					});
+					request.done(function(data,status,jqXHR) {
+					  // Tratamiento en caso de exito
+					  var trHTML = '';
+                
+       				 $.each(data, function (i, item) {
+            
+            		trHTML += '<tr><td>' + data[i].country + '</td><td>' + data[i].abolition_year + '</td><td>' + data[i].for_all_crimes + '</td><td>'
+            			+ data[i].murder_rate_per_100k_people + '</td></tr>';
+       				 });
+        
+       				 $('#table').append(trHTML);
+					  $("#status").html(jqXHR.status);
+					  $("#log").html("done");
+
+					});
+
+					request.always(function(jqXHR, status) {
+					  // Tratamiento en cualquier caso
+					 if(status == "error") {
+						$("#status").html(jqXHR.status);
+					 	console.log(jqXHR.status);
+					 	$("#data").html("");
+					 	$("#log").html("error");
+
+					 }				  
+					});
+				});
+
+ 			});
+		</script>
+	</head>
+
+	<body><div class="container">
+		<h1>JQuery REST Client</h1>
+		<br/>
+		<button type="button" id="button" data-loading-text="Loading..." class="btn btn-primary" aria-label="Left Align" autocomplete="off"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> GET Resources</button>
+		<br/><hr/>
+			<p class="lead">HTTP Status: <span id="status"></span> </p>
+		<hr/>
+			<span id="data">
+				<table id="table" border="1" class="table table-hover table-condensed table-bordered">
+					<tr class="info">
+       					<th>Country</th>
+         				<th>Abolition Year</th>
+         				<th>For All Crimes?</th>
+         				<th>Murder Rate Per 100k People</th>
+    				</tr>
+				</table>
+			</span> 
+				<hr/>
+			<p class="lead">Log: <span id="log"></span></p>
+	</div></body>
+</html>
