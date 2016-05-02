@@ -82,7 +82,7 @@
 					 if(status == "error") {
 						$("#status").html(jqXHR.status);
 					 	console.log(jqXHR.status);
-					 	$("#data").html("");
+					 	$("table").find("tr:gt(0)").remove();
 					 	$("#log").html("error");
 					}	
 
@@ -118,7 +118,7 @@
 					 if(status == "error") {
 						$("#status").html(jqXHR.status);
 					 	console.log(jqXHR.status);
-					 	$("#data").html("");
+					 	$("table").find("tr:gt(0)").remove();
 					 	$("#log").html("error");
 					}	
 
@@ -154,7 +154,7 @@
 					 if(status == "error") {
 						$("#status").html(jqXHR.status);
 					 	console.log(jqXHR.status);
-					 	$("#data").html("");
+					 	$("table").find("tr:gt(0)").remove();
 					 	$("#log").html("error");
 					}	
 
@@ -190,7 +190,7 @@
 					 if(status == "error") {
 						$("#status").html(jqXHR.status);
 					 	console.log(jqXHR.status);
-					 	$("#data").html("");
+					 	$("table").find("tr:gt(0)").remove();
 					 	$("#log").html("error");
 					}	
 
@@ -206,7 +206,7 @@
 		</br>
 		<button type="button" id="button-get" class="btn btn-primary" autocomplete="off"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> GET Resources </button>
 		<button type="button" id="button-ld-ini" class="btn btn-primary" autocomplete="off"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Load Initial Data </button>
-		<label class="active" for="apikey">     Apikey </label>
+		<label class="active" for="apikey"> Apikey </label>
 		    <input id="apikey" name="apikey" type="text" value="1234">
 		</br><hr/>
 			<p class="lead">HTTP Status: <span id="status"></span> </p>
@@ -225,6 +225,6 @@
 			</span>
 			<button type="button" id="button-dlt-all" class="btn btn-primary" autocomplete="off"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span> Delete All Data </button>
 				<hr/>
-			<p class="lead">Log: <span id="log"></span></p>
+			<p class="lead">Message: <span id="log"></span></p>
 	</div></body>
 </html>
