@@ -129,9 +129,11 @@ $(document).ready(function(){
                 	$("#table").find("tr:gt(0)").remove();
 
                 	id = 1;
+
+       				$.each(data, function (i) {
             
-            		trHTML += '<tr id="'+id+'"><td>' + id +'</td><td>'+ data.country + '</td><td>' + data.abolition_year + '</td><td>' + data.for_all_crimes + '</td><td>'
-            			+ data.murder_rate_per_100k_people + '</td></tr>';
+            		trHTML += '<tr id="'+id+'"><td>' + id +'</td><td>'+ data[i].country + '</td><td>' + data[i].abolition_year + '</td><td>' + data[i].for_all_crimes + '</td><td>'
+            			+ data[i].murder_rate_per_100k_people + '</td></tr>';
        				 id++;
        				 });
         
