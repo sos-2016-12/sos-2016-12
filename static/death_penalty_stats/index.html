@@ -36,7 +36,6 @@
 					 if(status == "error") {
 						$("#status").html(jqXHR.status);
 					 	console.log(jqXHR.status);
-					 	$("table").find("tr:gt(0)").remove();
 					 	$("#log").html("error");
 					}	
 
@@ -82,7 +81,6 @@
 					 if(status == "error") {
 						$("#status").html(jqXHR.status);
 					 	console.log(jqXHR.status);
-					 	$("table").find("tr:gt(0)").remove();
 					 	$("#log").html("error");
 					}	
 
@@ -118,7 +116,6 @@
 					 if(status == "error") {
 						$("#status").html(jqXHR.status);
 					 	console.log(jqXHR.status);
-					 	$("table").find("tr:gt(0)").remove();
 					 	$("#log").html("error");
 					}	
 
@@ -154,7 +151,6 @@
 					 if(status == "error") {
 						$("#status").html(jqXHR.status);
 					 	console.log(jqXHR.status);
-					 	$("table").find("tr:gt(0)").remove();
 					 	$("#log").html("error");
 					}	
 
@@ -187,12 +183,15 @@
 
 					request.always(function(jqXHR, status) {
 					  // Tratamiento en cualquier caso
-					 if(status == "error") {
+					if(status == "error") {
 						$("#status").html(jqXHR.status);
 					 	console.log(jqXHR.status);
-					 	$("table").find("tr:gt(0)").remove();
-					 	$("#log").html("error");
-					}	
+					 	if (jqXHR.status == 401) {
+					 		$("#log").html("The apikey you entered is not valid");
+					 	}else{
+					 		$("#log").html("error");
+					 	}
+					}
 
 					});
 				});
@@ -204,7 +203,7 @@
 	<body><div class="container">
 		<h1>JQuery REST Client</h1>
 		</br>
-		<button type="button" id="button-get" class="btn btn-primary" autocomplete="off"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> GET Resources </button>
+		<button type="button" id="button-get" class="btn btn-primary" autocomplete="off"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> GET All Resources </button>
 		<button type="button" id="button-ld-ini" class="btn btn-primary" autocomplete="off"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Load Initial Data </button>
 		<label class="active" for="apikey"> Apikey </label>
 		    <input id="apikey" name="apikey" type="text" value="1234">
