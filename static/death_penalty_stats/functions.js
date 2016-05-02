@@ -116,7 +116,7 @@ $(document).ready(function(){
 
 					var request = $.ajax({
 
-						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats/"+country+"?apikey="+apikey+"&from="+from+"&to="+to,
+						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats/"'+country+'"?apikey="+apikey+"&from="+from+"&to="+to,
 						  type: "GET",
 						  contentType: "application/json",
   
