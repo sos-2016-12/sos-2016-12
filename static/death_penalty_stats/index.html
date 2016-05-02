@@ -75,7 +75,7 @@
 
        				$.each(data, function (i, item) {
             
-            		trHTML += '<tr id="'+id+'"><td>' + id +'</td><td id="country">'+ data[i].country + '</td><td id="abolition_year">' + data[i].abolition_year + '</td><td id="for_all_crimes">' + data[i].for_all_crimes + '</td id="murder_rate_per_100k_people"><td>'
+            		trHTML += '<tr id="'+id+'"><td>' + id +'</td><td>'+ data[i].country + '</td><td>' + data[i].abolition_year + '</td><td>' + data[i].for_all_crimes + '</td><td>'
             			+ data[i].murder_rate_per_100k_people + '</td><td> <button type="button" id="button-upd" class="btn btn-primary" autocomplete="off"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Update </button> </td><td> <button type="button" id="button-dlt" class="btn btn-primary" autocomplete="off"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete </button> </td></tr>';
        				 id++;
        				 });
@@ -130,7 +130,7 @@
 
        					$.each(data, function (i, item) {
             
-            			trHTML += '<tr id="'+id+'"><td>'+ id +'</td><td id="country">'+ country + '</td><td id="abolition_year">' + abolition_year + '</td><td id="for_all_crimes">' + for_all_crimes + '</td><td id="murder_rate_per_100k_people">'
+            			trHTML += '<tr id="'+id+'"><td>'+ id +'</td><td>'+ country + '</td><td>' + abolition_year + '</td><td>' + for_all_crimes + '</td><td>'
             			+ murder_rate_per_100k_people + '</td><td> <button type="button" id="button-upd" class="btn btn-primary" autocomplete="off"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Update </button> </td><td> <button type="button" id="button-dlt" class="btn btn-primary" autocomplete="off"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete </button> </td></tr>';
        					 id++;
        					 });
@@ -168,14 +168,14 @@
 
 					var apikey = $("#apikey").val();
 
-					// var row = $(this).closest("tr"),        // Finds the closest row <tr> 
+					var row = $(this).closest("tr"),        // Finds the closest row <tr> 
 
-					// var identifier = row.find("td:nth-child(2)").val();
+					var identifier = row.find("td:nth-child(2)").val();
 
-					// var country = $("#country-add").val();
-					// var year = $("#year-add").val();
-		  	// 		var for_all_crimes = $("#for-all-add").val();
-		  	// 		var murder_rate_per_100k_people = $("#rate-add").val();
+					var country = $("#country-add").val();
+					var year = $("#year-add").val();
+		  			var for_all_crimes = $("#for-all-add").val();
+		  			var murder_rate_per_100k_people = $("#rate-add").val();
 
 					var request = $.ajax({
 
