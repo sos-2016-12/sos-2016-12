@@ -129,10 +129,9 @@
             			+ murder_rate_per_100k_people + '</td><td> <button type="button" id="button-upd" class="btn btn-primary" autocomplete="off"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Update </button> </td><td> <button type="button" id="button-dlt" class="btn btn-primary" autocomplete="off"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete </button> </td></tr>';
        					 });
         
-       					 $('#table').append(trHTML);
-
+       					$('#table').append(trHTML);
 					 	$("#status").html(jqXHR.status);
-					 	$("#log").html("done");
+					 	$("#log").html("You added a new resource successfully.");
 
 					});
 
