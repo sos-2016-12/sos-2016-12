@@ -11,10 +11,10 @@
 			$(document).ready(function(){
 				console.log("JQuery ready!");
 
-				var apikey = $("#apikey").val();
-
 
 				$('#button-ld-ini').click(function(){
+
+					var apikey = $("#apikey").val();
 
 					var request = $.ajax({
 
@@ -48,6 +48,8 @@
 
 
 				$('#button-get').click(function(){
+
+					var apikey = $("#apikey").val();
 
 					var request = $.ajax({
 
@@ -92,6 +94,8 @@
 
 				$('#button-upd').click(function(){
 
+					var apikey = $("#apikey").val();
+
 					var request = $.ajax({
 
 						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey="+apikey,
@@ -126,6 +130,8 @@
 
 				$('#button-dlt').click(function(){
 
+					var apikey = $("#apikey").val();
+
 					var request = $.ajax({
 
 						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey="+apikey,
@@ -157,6 +163,8 @@
 
 
 				$('#button-dlt-all').click(function(){
+
+					var apikey = $("#apikey").val();
 
 					var request = $.ajax({
 
