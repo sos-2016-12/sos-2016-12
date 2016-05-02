@@ -164,49 +164,49 @@
 
 
 
-				// $('#button-upd').click(function(){
+				$('#button-upd').click(function(){
 
-				// 	var apikey = $("#apikey").val();
+					var apikey = $("#apikey").val();
 
-				// 	var row = $(this).closest("tr"),        // Finds the closest row <tr> 
+					// var row = $(this).closest("tr"),        // Finds the closest row <tr> 
 
-				// 	var identifier = row.find("td:nth-child(2)").val();
+					// var identifier = row.find("td:nth-child(2)").val();
 
 					
 
-				// 	var request = $.ajax({
+					var request = $.ajax({
 
-				// 		  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats/"+identifier+"?apikey="+apikey,
-				// 		  type: "PUT",
-				// 		  data: '{"country":"'+country+'","abolition_year":'+year+',"for_all_crimes":"'+for_all_crimes+'","murder_rate_per_100k_people":'+murder_rate_per_100k_people+'}',
-				// 		  contentType: "application/json"
+						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats/"+identifier+"?apikey="+apikey,
+						  type: "PUT",
+						  data: '{"country":"'+country+'","abolition_year":'+year+',"for_all_crimes":"'+for_all_crimes+'","murder_rate_per_100k_people":'+murder_rate_per_100k_people+'}',
+						  contentType: "application/json"
   
-				// 	});
+					});
 
 
-				// 	request.done(function(data,status,jqXHR) {
-				// 	  // Tratamiento en caso de exito
+					request.done(function(data,status,jqXHR) {
+					  // Tratamiento en caso de exito
 					  
-				// 	 $("#status").html(jqXHR.status);
-				// 	 $("#log").html("done");
+					 $("#status").html(jqXHR.status);
+					 $("#log").html("done");
 
-				// 	});
+					});
 
-				// 	request.always(function(jqXHR, status) {
-				// 	  // Tratamiento en cualquier caso
-				// 	 if(status == "error") {
-				// 		$("#status").html(jqXHR.status);
-				// 	 	console.log(jqXHR.status);
-				// 	 	if (jqXHR.status == 401) {
-				// 	 		$("#log").html("The apikey you entered is not valid");
-				// 	 		alert('Apikey not valid');
-				// 	 	}else{
-				// 	 		$("#log").html("error");
-				// 	 	}
-				// 	}	
+					request.always(function(jqXHR, status) {
+					  // Tratamiento en cualquier caso
+					 if(status == "error") {
+						$("#status").html(jqXHR.status);
+					 	console.log(jqXHR.status);
+					 	if (jqXHR.status == 401) {
+					 		$("#log").html("The apikey you entered is not valid");
+					 		alert('Apikey not valid');
+					 	}else{
+					 		$("#log").html("error");
+					 	}
+					}	
 
-				// 	});
-				// });
+					});
+				});
 
 
 
