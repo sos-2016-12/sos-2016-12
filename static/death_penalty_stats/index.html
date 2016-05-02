@@ -51,7 +51,7 @@
 
 					var request = $.ajax({
 
-						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey=1234",
+						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey="+apikey,
 						  type: "GET",
 						  contentType: "application/json",
   
@@ -94,7 +94,7 @@
 
 					var request = $.ajax({
 
-						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey=1234",
+						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey="+apikey,
 						  type: "UPDATE",
 						  contentType: "application/json",
   
@@ -128,7 +128,7 @@
 
 					var request = $.ajax({
 
-						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey=1234",
+						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey="+apikey,
 						  type: "DELETE",
 						  contentType: "application/json",
   
@@ -160,7 +160,7 @@
 
 					var request = $.ajax({
 
-						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey=1234",
+						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey="+apikey,
 						  type: "DELETE",
 						  contentType: "application/json",
   
@@ -198,7 +198,7 @@
 		</br>
 		<button type="button" id="button-get" class="btn btn-primary" autocomplete="off"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> GET Resources </button>
 		<button type="button" id="button-ld-ini" class="btn btn-primary" autocomplete="off"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Load Initial Data </button>
-		<label class="active" for="apikey"> Apikey </label>
+		<label class="active" for="apikey">     Apikey </label>
 		    <input id="apikey" name="apikey" type="text" value="1234">
 		</br><hr/>
 			<p class="lead">HTTP Status: <span id="status"></span> </p>
