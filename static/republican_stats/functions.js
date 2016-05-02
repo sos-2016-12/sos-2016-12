@@ -1,8 +1,8 @@
 
-$("body").ready(function (){
+$(document).ready(function (){
+	$('select').material_select();
 
 	console.log("jQuery Ready!");
-	//$('input#input_text, textarea#textarea1').characterCounter();
 
 
 	$("#loadInitialData").click(function(){
@@ -19,7 +19,7 @@ $("body").ready(function (){
 	    request.done(function (data){
 	      console.log("Handling request (OK)");
 	      console.log("Data received: ");
-	      table();
+	     // loadTable();
 	    });
 
 	    request.always(function (jqXHR,status){
@@ -56,7 +56,7 @@ $("body").ready(function (){
 		    console.log("Data received: ");
 		    alert('Created');
 		    
-		    table();
+		    //loadTable();
 		    
 
 		  });
@@ -105,7 +105,7 @@ $("body").ready(function (){
 		    console.log("Data received: ");
 		    alert('Updated');
 		  
-		    table();
+		    //loadTable();
 		    
 
 		  });
@@ -132,6 +132,36 @@ $("body").ready(function (){
 
 
 		}
+
+	});
+	$("#getData").click(function(){
+		var apikey = $("#apikey").val();
+		var url="/api/v1/republican_stats/";
+
+		var request = $.ajax({
+
+			url: url+"?apikey="+apikey,
+			type: "GET",
+			contentType: "application/json",
+  
+		});
+		request.done(function(data,status,jqXHR) {
+					  // Tratamiento en caso de exito
+					var trHTML = '';
+
+                	$("dataTable").find("tr:gt(0)").remove();
+
+       				$.each(data, function (i, item) {
+            
+            		trHTML += '<tr><td>' + data[i].country 
+            				+ '</td><td>' + data[i].year 
+            				+ '</td><td>' + data[i].gdppc 
+            				+ '</td><td>' + data[i].population ;
+       				 });
+        
+       				 $('#dataTable').append(trHTML);
+       	});
+
 
 	});
 
@@ -162,8 +192,7 @@ $("body").ready(function (){
 	  request.done(function (data){
 	    console.log("Handling request (OK)");
 	    console.log("Data received: ");
-	    $("#idtable").find("tr:gt(0)").remove();
-	    table();
+	    //loadTable();
 
 
 	  });
@@ -180,25 +209,25 @@ $("body").ready(function (){
 
 	});
 
-});
 
-function table(){
-	
+});
+/*
+function loadTable(){
+		
 		var apikey = $("#apikey").val();
 		var countryS = $("#countryS").val();
 		var year = $("#yearS").val();
-		//var gdppc = $("#gdppc").val();
-		//var population = $("#population").val();
+		var fromS= $("#from").val();
+		var to = $("#to").val();
+		var elements= $("#elements").val();
+		var pages=$("#pages").val();
 		var url="/api/v1/republican_stats/";
 		//$( ".data" ).remove();
 
 		if(countryS){
-		        url= "/api/v1/republican_stats/"+countryS+"?apikey="+apikey;
-		}else{
-
-        		url = url + "?apikey="+apikey;
-
-      	}
+		        url= url+countryS;
+		}
+		url= url+"?apikey="+apikey+"&limit="+elements+"&offset="+elements*(pages-1)+"&from="+fromS+"&to="+to;
   
 
 		var request = $.ajax({
@@ -206,12 +235,29 @@ function table(){
 		    type:"GET",
 		    contentType : "application/json"
 		});
-
 		
+		request.done(function(data,status,jqXHR) {
+					  // Tratamiento en caso de exito
+					var trHTML = '';
+
+                	$("dataTable").find("tr:gt(0)").remove();
+
+       				$.each(data, function (i, item) {
+            
+            		trHTML += '<tr><td>' + data[i].country 
+            				+ '</td><td>' + data[i].year 
+            				+ '</td><td>' + data[i].gdppc 
+            				+ '</td><td>' + data[i].population ;
+       				 });
+        
+       				 $('#dataTable').append(trHTML);
+       	});
+		
+		/*
 		request.done(function (data){
 		    console.log("Handling request (OK)");
 		 		    
-		    loadtable = $('<tbody></tbody>')
+		    loadtable = $('<tbody></tbody>');
 		    for (i=0;i<data.length;i++){
 		      var row = $('<tr></tr>').appendTo(loadtable);
 		      $('<td class="data"></td>').text(data[i].country).appendTo(row);
@@ -238,6 +284,7 @@ function table(){
 
 
 }
+*/
 
 
 
