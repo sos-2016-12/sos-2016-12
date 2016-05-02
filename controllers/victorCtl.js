@@ -16,10 +16,19 @@ var apikey = 1234;
 		{ country : "venezuela", year : 1819, gdppc : 13633, population : 31029000},
 		{ country : "peru", year : 1824, gdppc : 11403, population : 31490000},
 		{ country : "colombia", year : 1819, gdppc : 11284, population : 48782000},
-		{ country : "panama", year : 1819, gdppc : 16993, population : 3816000}];
+		{ country : "brazil", year : 1889, gdppc : 10284, population : 58782000},
+		{ country : "france", year : 1789, gdppc : 22255, population : 60598605},
+		{ country : "italy", year : 1919, gdppc : 15689, population : 40568939},
+		{ country : "cuba", year : 1898, gdppc : 9284, population : 18082000},
+		{ country : "uruguay", year : 1889, gdppc : 11284, population : 48782000},
+		{ country : "mexico", year : 1759, gdppc : 7808, population : 56998956},
+		{ country : "paraguay", year : 1856, gdppc : 13284, population : 25782063},
+		{ country : "chile", year : 1819, gdppc : 11284, population : 48782000},
+		{ country : "australia", year : 1869, gdppc : 20284, population : 68782000},
+		{ country : "russia", year : 1914, gdppc : 19293, population : 250556568}];
 
 
-		console.log("7 elements initialized.");
+		console.log("16 elements initialized.");
 		res.sendStatus(201);
 	}
 
