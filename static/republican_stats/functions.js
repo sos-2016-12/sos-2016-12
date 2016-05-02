@@ -8,6 +8,7 @@ $("body").ready(function (){
 	$("#loadInitialData").click(function(){
 
 	    var apikey = $("#apikey").val();
+	    
 
 	    var request = $.ajax({
 	      url:"/api/v1/republican_stats/loadInitialData?apikey="+apikey,
@@ -18,7 +19,7 @@ $("body").ready(function (){
 	    request.done(function (data){
 	      console.log("Handling request (OK)");
 	      console.log("Data received: ");
-	      table(data);
+	      table();
 	    });
 
 	    request.always(function (jqXHR,status){
@@ -54,6 +55,7 @@ $("body").ready(function (){
 		    console.log("Handling request (OK)");
 		    console.log("Data received: ");
 		    alert('Created');
+		    
 		    table();
 		    
 
@@ -102,6 +104,7 @@ $("body").ready(function (){
 		    console.log("Handling request (OK)");
 		    console.log("Data received: ");
 		    alert('Updated');
+		  
 		    table();
 		    
 
@@ -138,6 +141,7 @@ $("body").ready(function (){
 	    var apikey = $("#apikey").val();
 	    var countryS = $("#countryS").val();
 	    var yearS = $("#yearS").val();
+	    
 
 	    if(countryS){
 		  var request = $.ajax({
@@ -158,6 +162,7 @@ $("body").ready(function (){
 	  request.done(function (data){
 	    console.log("Handling request (OK)");
 	    console.log("Data received: ");
+	    $("#idtable").find("tr:gt(0)").remove();
 	    table();
 
 
@@ -178,20 +183,23 @@ $("body").ready(function (){
 });
 
 function table(){
+	
 		var apikey = $("#apikey").val();
 		var countryS = $("#countryS").val();
-		/*var year = $("#year").val();
-		var gdppc = $("#gdppc").val();
-		var population = $("#population").val();*/
-
-		var url = "/api/v1/republican_stats";
+		var year = $("#yearS").val();
+		//var gdppc = $("#gdppc").val();
+		//var population = $("#population").val();
+		var url="/api/v1/republican_stats/";
+		//$( ".data" ).remove();
 
 		if(countryS){
-		   	url = url+"/"+countryS+"?apikey="+apikey;;
-		}
-		else{
-			url = url +"?apikey="+apikey;
-		}
+		        url= "/api/v1/republican_stats/"+countryS+"?apikey="+apikey;
+		}else{
+
+        		url = url + "?apikey="+apikey;
+
+      	}
+  
 
 		var request = $.ajax({
 		    url:url,
@@ -199,40 +207,22 @@ function table(){
 		    contentType : "application/json"
 		});
 
-
-
-
-		request.done(function(data,status,jqXHR) {
-					var trHTML = '';
-                	$("idtable").find("tr:gt(0)").remove();
-       				$.each(data, function (i, item) {
-            
-            		trHTML += '<tr><td>' + data[i].country + '</td><td>' + data[i].year + '</td><td>' + data[i].gdppc + '</td><td>'
-            			+ data[i].population + '</td></tr>';
-       				});
-        
-       				$('#idtable').append(trHTML);
-       				console.log("tabla creada");
-		})
-		/*
+		
 		request.done(function (data){
 		    console.log("Handling request (OK)");
-		    console.log("Data received: ");
-		    console.log(JSON.stringify(data));
-		    
-		    loadtable = $('<tbody></tbody>');
+		 		    
+		    loadtable = $('<tbody></tbody>')
 		    for (i=0;i<data.length;i++){
-		      var clase = "data"+i;
-		      var row = $('<tr id='+clase+'></tr>').appendTo(loadtable);
+		      var row = $('<tr></tr>').appendTo(loadtable);
 		      $('<td class="data"></td>').text(data[i].country).appendTo(row);
 		      $('<td class="data"></td>').text(data[i].year).appendTo(row);
 		      $('<td class="data"></td>').text(data[i].gdppc).appendTo(row);
 		      $('<td class="data"></td>').text(data[i].population).appendTo(row);
 		    }
 		    console.log("Table:"+loadtable.html());
-		    loadtable.appendTo("#idtable");
+		    loadtable.appendTo("#dataTable");
 		});
-		*/
+		
 
 		request.always(function (jqXHR,status){
 		    if(status=="error"){
@@ -243,7 +233,7 @@ function table(){
 
 		});
 
-
+	
 
 
 
