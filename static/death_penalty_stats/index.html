@@ -111,7 +111,7 @@
 
 						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey="+apikey,
 						  type: "POST",
-						  data: '{"country":"'+country+'","abolition_year":'+year+',"for_all_crimes":'+for_all_crimes+',"murder_rate_per_100k_people":'+murder_rate_per_100k_people+'}',
+						  data: '{"country":"'+country+'","abolition_year":'+year+',"for_all_crimes":"'+for_all_crimes+'","murder_rate_per_100k_people":'+murder_rate_per_100k_people+'}',
 						  contentType: "application/json",
   
 					});
