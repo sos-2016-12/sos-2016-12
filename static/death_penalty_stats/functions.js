@@ -9,7 +9,7 @@ $(document).ready(function(){
 				var id = 1;
 
 
-				$('#title').click(function(){
+				$('#button-ld-ini').click(function(){
 
 					var apikey = $("#apikey").val();
 
