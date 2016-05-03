@@ -140,7 +140,7 @@ $(document).ready(function (){
 
 		var request = $.ajax({
 
-			url: "http://sos-2016-12.herokuapp.com/api/v1/republican_stats?apikey="+apikey,
+			url: url+"?apikey="+apikey,
 			type: "GET",
 			contentType: "application/json",
   
@@ -161,6 +161,16 @@ $(document).ready(function (){
         
        				 $('#dataTable').append(trHTML);
        	});
+
+       	request.always(function(jqXHR, status) {
+					  // Tratamiento en cualquier caso
+			if(status=="error" && jqXHR.status==401){
+
+		  		 alert('Unauthorized: Apikey not valid');
+
+	  		}
+
+		});
 
 
 	});
