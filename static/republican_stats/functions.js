@@ -270,6 +270,11 @@ $(document).ready(function (){
 
 					var countryS = $("#countryS").val();
 					var yearS = $("#yearS").val();
+					var fromS=$("#fromS").val();
+					var to=$("#to").val();
+					if(!countryS & !yearS){
+						alert("What are you looking for?");
+					}
 
 					if (!elements)
 						elements = 9999;
@@ -412,7 +417,7 @@ function loadTable(){
 		var apikey = $("#apikey").val();
 		var countryS = $("#countryS").val();
 		var year = $("#yearS").val();
-		var fromS= $("#from").val();
+		var fromS= $("#fromS").val();
 		var to = $("#to").val();
 		var elements= $("#elements").val();
 		var pages=$("#pages").val();
