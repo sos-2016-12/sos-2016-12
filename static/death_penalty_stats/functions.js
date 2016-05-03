@@ -3,7 +3,7 @@
 $(document).ready(function(){
 				console.log("JQuery ready!");
 
-            	$("#button-dlt-all").jqxTooltip({ content: '<b>Title:</b> <i>The Amazing Spider-man</i><br /><b>Year:</b> 2012', position: 'mouse', name: 'movieTooltip'});
+				$('.my-tooltip').tooltip();
 
 				var id = 1;
 
