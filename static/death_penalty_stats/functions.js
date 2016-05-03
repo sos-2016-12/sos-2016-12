@@ -5,7 +5,7 @@ $(document).ready(function(){
 
 
 				
-        		$('.form-inline').collapse();
+        		$('.collapsible').collapse();
     			
 
 				var id = 1;
