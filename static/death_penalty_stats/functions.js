@@ -3,9 +3,9 @@
 $(document).ready(function(){
 				console.log("JQuery ready!");
 
-				$("#hide-btn").click(function(){
-        			$("#collapseOne").collapse('hide');
-    			});
+				$('#accordion').on('show.bs.collapse', function () {
+    				$('#accordion .in').collapse('hide');
+				});
 
 				var id = 1;
 
