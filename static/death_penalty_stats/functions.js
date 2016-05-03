@@ -51,7 +51,7 @@ $(document).ready(function(){
 
 					var request = $.ajax({
 
-						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats/SPAIN?apikey="+apikey,
+						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey="+apikey,
 						  type: "GET",
 						  contentType: "application/json",
   
@@ -130,12 +130,12 @@ $(document).ready(function(){
 
                 	id = 1;
 
-       				$.each(data, function (i) {
+       				
             
-            		trHTML += '<tr id="'+id+'"><td>' + id +'</td><td>'+ data[i].country + '</td><td>' + data[i].abolition_year + '</td><td>' + data[i].for_all_crimes + '</td><td>'
-            			+ data[i].murder_rate_per_100k_people + '</td></tr>';
+            		trHTML += '<tr id="'+id+'"><td>' + id +'</td><td>'+ data[0].country + '</td><td>' + data[0].abolition_year + '</td><td>' + data[0].for_all_crimes + '</td><td>'
+            			+ data[0].murder_rate_per_100k_people + '</td></tr>';
        				 id++;
-       				 });
+       				 
         
        				 $('#table').append(trHTML);
 					 $("#status").html(jqXHR.status);
