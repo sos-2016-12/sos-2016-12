@@ -1,5 +1,6 @@
 
 $(document).ready(function (){
+	
 	$('select').material_select();
 
 	console.log("jQuery Ready!");
@@ -19,7 +20,7 @@ $(document).ready(function (){
 	    request.done(function (data){
 	      console.log("Handling request (OK)");
 	      console.log("Data received: ");
-	     // loadTable();
+	     	loadTable();
 	    });
 
 	    request.always(function (jqXHR,status){
@@ -27,7 +28,7 @@ $(document).ready(function (){
 		        alert('Unauthorized: Apikey not valid');
 		    }else {
 
-		      alert('Data loaded');
+		      //alert('Data loaded');
 
 		    }
 	    });
@@ -56,7 +57,7 @@ $(document).ready(function (){
 		    console.log("Data received: ");
 		    alert('Created');
 		    
-		    //loadTable();
+		    loadTable();
 		    
 
 		  });
@@ -105,7 +106,7 @@ $(document).ready(function (){
 		    console.log("Data received: ");
 		    alert('Updated');
 		  
-		    //loadTable();
+		    loadTable();
 		    
 
 		  });
@@ -134,7 +135,100 @@ $(document).ready(function (){
 		}
 
 	});
+	$('#deleteButton').click(function(){
+
+					var apikey = $("#apikey").val();
+
+					var request = $.ajax({
+
+						  url: "/api/v1/republican_stats?apikey="+apikey,
+						  type: "DELETE",
+						  contentType: "application/json",
+  
+					});
+
+
+					request.done(function(data,status,jqXHR) {
+					  // Tratamiento en caso de exito
+					 
+					 $("table").find("tr:gt(0)").remove();
+
+					 alert("You deleted all resources.");
+
+					});
+
+				request.always(function(jqXHR, status) {
+					  // Tratamiento en cualquier caso
+					if(status == "error") {
+						$("#status").html(jqXHR.status);
+					 	console.log(jqXHR.status);
+					 	if (jqXHR.status == 401) {
+					 		$("#log").html("The apikey you entered is not valid");
+					 		alert('Apikey not valid');
+					 	}else{
+					 		$("#log").html("error");
+					 	}
+					}
+
+				});
+	});
+	
+	$('#delete1Button').click(function(){
+
+					var apikey = $("#apikey").val();
+					var countryS=$("#countryS").val();
+					//var yearS=$("yearS").val();
+					if(countryS){
+						var url = "/api/v1/republican_stats/"+countryS;
+					}else{
+						alert("What do you want delete?");
+					}
+					
+					/*if(yearS && countryS){
+						url=url+countryS+"/"+yearS;
+					}
+					if(countryS && !yearS){ 
+						url=url+countryS;
+					}*/
+					var request = $.ajax({
+
+						  url: url+"?apikey="+apikey,
+						  type: "DELETE",
+						  contentType: "application/json",
+  
+					});
+
+
+					request.done(function(data,status,jqXHR) {
+					  // Tratamiento en caso de exito
+					 
+					 //$("table").find("tr:gt(0)").remove();
+
+					 alert("You deleted the resource.");
+					 //loadTable();
+
+					});
+
+					request.always(function(jqXHR, status) {
+					  // Tratamiento en cualquier caso
+					if(status == "error") {
+						$("#status").html(jqXHR.status);
+					 	console.log(jqXHR.status);
+					 	if (jqXHR.status == 401) {
+					 		$("#log").html("The apikey you entered is not valid");
+					 		alert('Apikey not valid');
+					 	}else{
+					 		$("#log").html("error");
+					 	}
+					}
+
+					});
+				});
+
+
 	$("#getData").click(function(){
+		loadTable();
+		/*
 		var apikey = $("#apikey").val();
 		var url="/api/v1/republican_stats/";
 
@@ -161,21 +255,27 @@ $(document).ready(function (){
         
        				 $('#dataTable').append(trHTML);
        	});
-
+*/
 
 	});
 
-
+/*
 	$("#searchButton").click(function(){
-	    console.log("Handling click");
+		loadTable();
+	    /*console.log("Handling click");
 	    var apikey = $("#apikey").val();
 	    var countryS = $("#countryS").val();
 	    var yearS = $("#yearS").val();
 	    
-
-	    if(countryS){
+	     if(countryS && yearS){
 		  var request = $.ajax({
 		    url:"/api/v1/republican_stats/"+countryS+"/"+yearS+"?apikey="+apikey,
+		    type:"GET"
+		  });
+		}
+	    if(countryS){
+		  var request = $.ajax({
+		    url:"/api/v1/republican_stats/"+countryS+"?apikey="+apikey,
 		    type:"GET"
 		  });
 		}if(yearS){
@@ -192,11 +292,10 @@ $(document).ready(function (){
 	  request.done(function (data){
 	    console.log("Handling request (OK)");
 	    console.log("Data received: ");
-	    //loadTable();
+	    loadTable();
 
 
 	  });
-
 
 	  request.always(function (jqXHR,status){
 	    if(status=="error" && jqXHR.status==401){
@@ -207,11 +306,12 @@ $(document).ready(function (){
 
 	  });
 
-	});
 
+	});
+*/
 
 });
-/*
+
 function loadTable(){
 		
 		var apikey = $("#apikey").val();
@@ -226,6 +326,7 @@ function loadTable(){
 
 		if(countryS){
 		        url= url+countryS;
+		        console.log("pais cogido");
 		}
 		url= url+"?apikey="+apikey+"&limit="+elements+"&offset="+elements*(pages-1)+"&from="+fromS+"&to="+to;
   
@@ -240,7 +341,7 @@ function loadTable(){
 					  // Tratamiento en caso de exito
 					var trHTML = '';
 
-                	$("dataTable").find("tr:gt(0)").remove();
+                	$("#dataTable tbody").remove();
 
        				$.each(data, function (i, item) {
             
@@ -268,13 +369,13 @@ function loadTable(){
 		    console.log("Table:"+loadtable.html());
 		    loadtable.appendTo("#dataTable");
 		});
-		
+		*/
 
 		request.always(function (jqXHR,status){
 		    if(status=="error"){
 		      console.log("Status: "+jqXHR.status);
 		      if(jqXHR.status==401)
-		      alert("You entered a wrong APIkey")
+		      alert("You entered a wrong apikey")
 		    }
 
 		});
@@ -284,7 +385,6 @@ function loadTable(){
 
 
 }
-*/
 
 
 
