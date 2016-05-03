@@ -135,6 +135,7 @@ $(document).ready(function (){
 		}
 
 	});
+<<<<<<< HEAD
 	$('#deleteButton').click(function(){
 
 					var apikey = $("#apikey").val();
@@ -225,6 +226,8 @@ $(document).ready(function (){
 					});
 				});
 
+=======
+>>>>>>> 36076fb2d043ecbe5709b2a739f9cac5f91d2679
 
 	$("#getData").click(function(){
 		loadTable();
@@ -239,21 +242,23 @@ $(document).ready(function (){
 			contentType: "application/json",
   
 		});
+
 		request.done(function(data,status,jqXHR) {
 					  // Tratamiento en caso de exito
 					var trHTML = '';
 
-                	$("dataTable").find("tr:gt(0)").remove();
+                	$("#dataTable").find("tr:gt(0)").remove();
 
-       				$.each(data, function (i, item) {
+       				$.each(data, function (i) {
             
             		trHTML += '<tr><td>' + data[i].country 
             				+ '</td><td>' + data[i].year 
             				+ '</td><td>' + data[i].gdppc 
-            				+ '</td><td>' + data[i].population ;
+            				+ '</td><td>' + data[i].population 
+            				+ '</td></tr>';
        				 });
         
-       				 $('#dataTable').append(trHTML);
+       				 $("#dataTable").append(trHTML);
        	});
 */
 
