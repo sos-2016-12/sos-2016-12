@@ -3,6 +3,10 @@
 $(document).ready(function(){
 				console.log("JQuery ready!");
 
+				$('#myCollapsible').collapse({
+ 					 toggle: false
+				})
+
 				var id = 1;
 
 
