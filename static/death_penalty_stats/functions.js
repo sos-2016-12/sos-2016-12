@@ -3,9 +3,6 @@
 $(document).ready(function(){
 				console.log("JQuery ready!");
 
-				$('#collapseOne').collapse({
- 					 toggle: false
-				});
 
 				var id = 1;
 
