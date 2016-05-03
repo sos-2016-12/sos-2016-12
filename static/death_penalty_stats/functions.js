@@ -3,7 +3,7 @@
 $(document).ready(function(){
 				console.log("JQuery ready!");
 
-				$('#accordion').click( function () {
+				$('.accordion-toggle').click( function () {
     				$('#accordion .in').collapse('toggle');
 				});
 
