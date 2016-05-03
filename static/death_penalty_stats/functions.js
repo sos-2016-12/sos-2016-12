@@ -3,9 +3,10 @@
 $(document).ready(function(){
 				console.log("JQuery ready!");
 
-				$('.accordion-toggle').click( function () {
-    				$('#accordion .in').collapse('toggle');
-				});
+
+				$(".toggle-btn").click(function(){
+        			$('#accordion .in').collapse('toggle');
+    			});
 
 				var id = 1;
 
