@@ -11,7 +11,7 @@ $(document).ready(function (){
 	    
 
 	    var request = $.ajax({
-	      url:"/api/v1/republican_stats/loadInitialData?apikey="+apikey,
+	      url:"http://sos-2016-12.herokuapp.com/api/v1/republican_stats/loadInitialData?apikey="+apikey,
 	      type:"GET"
 	    
 	    });
@@ -45,7 +45,7 @@ $(document).ready(function (){
   		if(country && year && gdppc && population){
 
 		  var request = $.ajax({
-		    url:"/api/v1/republican_stats?apikey="+apikey,
+		    url:"http://sos-2016-12.herokuapp.com/api/v1/republican_stats?apikey="+apikey,
 		    type:"POST",
 		    data: '{"country":"'+country+'","year":'+year+',"gdppc":'+gdppc+',"population":'+population+'}',
 		    contentType : "application/json"
@@ -134,6 +134,7 @@ $(document).ready(function (){
 		}
 
 	});
+
 	$("#getData").click(function(){
 		var apikey = $("#apikey").val();
 		var url="/api/v1/republican_stats/";
@@ -145,6 +146,7 @@ $(document).ready(function (){
 			contentType: "application/json",
   
 		});
+		
 		request.done(function(data,status,jqXHR) {
 					  // Tratamiento en caso de exito
 					var trHTML = '';
@@ -156,21 +158,12 @@ $(document).ready(function (){
             		trHTML += '<tr><td>' + data[i].country 
             				+ '</td><td>' + data[i].year 
             				+ '</td><td>' + data[i].gdppc 
-            				+ '</td><td>' + data[i].population + '</td></tr>' ;
+            				+ '</td><td>' + data[i].population 
+            				+ '</td></tr>';
        				 });
         
        				 $('#dataTable').append(trHTML);
        	});
-
-       	request.always(function(jqXHR, status) {
-					  // Tratamiento en cualquier caso
-			if(status=="error" && jqXHR.status==401){
-
-		  		 alert('Unauthorized: Apikey not valid');
-
-	  		}
-
-		});
 
 
 	});
