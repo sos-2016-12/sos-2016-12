@@ -3,8 +3,7 @@
 $(document).ready(function(){
 				console.log("JQuery ready!");
 
-            	$("#button-dlt-all").jqxTooltip({ content: '<p>Be careful, all data will be lost</p>', position: 'mouse', name: 'ButtonTooltip'});
-
+            
 
 				var id = 1;
 
