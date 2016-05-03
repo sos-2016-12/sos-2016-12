@@ -92,10 +92,10 @@ $(document).ready(function (){
 		
 
 	  	if(country && year && gdppc && population){
-
+//"/"+year+
 
 		  var request = $.ajax({
-		    url:"/api/v1/republican_stats/"+country+"/"+year+"?apikey="+apikey,
+		    url:"/api/v1/republican_stats/"+country+"?apikey="+apikey,
 		    type:"PUT",
 		    data: '{"country":"'+country+'","year":'+year+',"gdppc":'+gdppc+',"population":'+population+'}',
 		    contentType : "application/json"
@@ -417,8 +417,9 @@ function loadTable(){
 		var apikey = $("#apikey").val();
 		var countryS = $("#countryS").val();
 		var year = $("#yearS").val();
-		var fromS= $("#fromS").val();
-		var to = $("#to").val();
+		//var fromS= $("#fromS").val();
+		//var to = $("#to").val();
+		//+"&from="+fromS+"&to="+to
 		var elements= $("#elements").val();
 		var pages=$("#pages").val();
 		var url="/api/v1/republican_stats/";
@@ -428,7 +429,7 @@ function loadTable(){
 		        url= url+countryS;
 		        console.log("pais cogido");
 		}
-		url= url+"?apikey="+apikey+"&limit="+elements+"&offset="+elements*(pages-1)+"&from="+fromS+"&to="+to;
+		url= url+"?apikey="+apikey+"&limit="+elements+"&offset="+elements*(pages-1);
   
 
 		var request = $.ajax({
