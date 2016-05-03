@@ -5,7 +5,7 @@ $(document).ready(function(){
 
 
 				
-        		$('.collapsible').collapse();
+        		$('.del-all').tooltip('show');
     			
 
 				var id = 1;
