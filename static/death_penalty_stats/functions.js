@@ -5,7 +5,7 @@ $(document).ready(function(){
 
 
 				$(".toggle-btn").click(function(){
-        			$('#accordion .in').collapse('toggle');
+        			$('.panel-body').collapse('toggle');
     			});
 
 				var id = 1;
