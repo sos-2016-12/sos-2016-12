@@ -140,7 +140,7 @@ $(document).ready(function (){
 
 		var request = $.ajax({
 
-			url: url+"?apikey="+apikey,
+			url: "http://sos-2016-12.herokuapp.com/api/v1/republican_stats?apikey="+apikey,
 			type: "GET",
 			contentType: "application/json",
   
@@ -151,7 +151,7 @@ $(document).ready(function (){
 
                 	$("#dataTable").find("tr:gt(0)").remove();
 
-       				$.each(data, function (i, item) {
+       				$.each(data, function (i) {
             
             		trHTML += '<tr><td>' + data[i].country 
             				+ '</td><td>' + data[i].year 
