@@ -149,7 +149,7 @@ $(document).ready(function (){
 					  // Tratamiento en caso de exito
 					var trHTML = '';
 
-                	$("dataTable").find("tr:gt(0)").remove();
+                	$("#dataTable").find("tr:gt(0)").remove();
 
        				$.each(data, function (i, item) {
             
