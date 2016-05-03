@@ -3,7 +3,9 @@
 $(document).ready(function(){
 				console.log("JQuery ready!");
 
-				$('.collapse').collapse()
+				$('#collapseOne').collapse({
+ 					 toggle: false
+				});
 
 				var id = 1;
 
