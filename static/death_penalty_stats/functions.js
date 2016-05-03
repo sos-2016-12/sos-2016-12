@@ -5,7 +5,9 @@ $(document).ready(function(){
 
 
 				$('#toggle-btn').click(function(){
-        			$('#panel1').collapse('toggle');
+        			$('#panel1').collapse({
+  					toggle: false
+					});
     			});
 
 				var id = 1;
