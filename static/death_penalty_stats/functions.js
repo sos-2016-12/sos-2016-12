@@ -4,7 +4,7 @@ $(document).ready(function(){
 				console.log("JQuery ready!");
 
 				$('#accordion').on('show.bs.collapse', function () {
-    				$('#accordion .in').collapse('hide');
+    				$('#accordion .in').collapse('toggle');
 				});
 
 				var id = 1;
