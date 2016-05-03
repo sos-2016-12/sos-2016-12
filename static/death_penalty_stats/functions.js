@@ -5,7 +5,7 @@ $(document).ready(function(){
 
 
 				
-        		$('.del-all').tooltip('show');
+        		$('[data-toggle="tooltip"]').tooltip();
     			
 
 				var id = 1;
