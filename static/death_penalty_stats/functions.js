@@ -3,9 +3,10 @@
 $(document).ready(function(){
 				console.log("JQuery ready!");
 
-    			$(function () {
- 					 $('[data-toggle="tooltip"]').tooltip();
-				});
+ 				$('[data-toggle="tooltip"]').tooltip({
+        			placement : 'right'
+        		});
+   
 
 				var id = 1;
 
