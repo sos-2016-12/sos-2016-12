@@ -3,7 +3,7 @@
 $(document).ready(function(){
 				console.log("JQuery ready!");
 
-				
+				$('button-dlt-all').tooltip();
 				
 				var id = 1;
 
