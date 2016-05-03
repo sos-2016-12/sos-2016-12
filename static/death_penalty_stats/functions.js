@@ -3,6 +3,9 @@
 $(document).ready(function(){
 				console.log("JQuery ready!");
 
+				$("#hide-btn").click(function(){
+        			$("#collapseOne").collapse('hide');
+    			});
 
 				var id = 1;
 
