@@ -5,10 +5,7 @@ $(document).ready(function(){
 
 
 				
-        		$('#panel1').accordion({
-  					collapsible: true,
-  					active: false
-				});
+        		$('.form-inline').collapse();
     			
 
 				var id = 1;
