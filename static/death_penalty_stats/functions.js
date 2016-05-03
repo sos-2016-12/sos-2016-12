@@ -130,18 +130,11 @@ $(document).ready(function(){
 
                 	id = 1;
 
-       				for (var i = data.length - 1; i >= 0; i--) {
-       					if (country != ""){	
-       						if (data[i].country == country) {
-       							trHTML += '<tr id="'+id+'"><td>' + id +'</td><td>'+ data[i].country + '</td><td>' + data[i].abolition_year + '</td><td>' + data[i].for_all_crimes + '</td><td>'
-            					+ data[i].murder_rate_per_100k_people + '</td></tr>';
-       				 			id++;
-       				 		}
-       				 	}
-       				}
             
-            		
-       				
+            		trHTML += '<tr id="'+id+'"><td>' + id +'</td><td>'+ data.country + '</td><td>' + data.abolition_year + '</td><td>' + data.for_all_crimes + '</td><td>'
+            			+ data.murder_rate_per_100k_people + '</td></tr>';
+       				 id++;
+     
         
        				 $('#table').append(trHTML);
 					 $("#status").html(jqXHR.status);
