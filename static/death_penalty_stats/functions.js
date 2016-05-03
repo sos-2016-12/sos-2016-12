@@ -4,11 +4,12 @@ $(document).ready(function(){
 				console.log("JQuery ready!");
 
 
-				$('#toggle-btn').click(function(){
-        			$('#panel1').collapse({
-  					toggle: false
-					});
-    			});
+				
+        		$('#panel1').accordion({
+  					collapsible: true,
+  					active: false
+				});
+    			
 
 				var id = 1;
 
