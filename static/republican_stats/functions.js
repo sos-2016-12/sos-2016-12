@@ -156,7 +156,7 @@ $(document).ready(function (){
             		trHTML += '<tr><td>' + data[i].country 
             				+ '</td><td>' + data[i].year 
             				+ '</td><td>' + data[i].gdppc 
-            				+ '</td><td>' + data[i].population ;
+            				+ '</td><td>' + data[i].population + '</td></tr>' ;
        				 });
         
        				 $('#dataTable').append(trHTML);
