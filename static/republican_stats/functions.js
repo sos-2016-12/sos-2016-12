@@ -135,7 +135,7 @@ $(document).ready(function (){
 		}
 
 	});
-<<<<<<< HEAD
+
 	$('#deleteButton').click(function(){
 
 					var apikey = $("#apikey").val();
@@ -154,7 +154,7 @@ $(document).ready(function (){
 					 
 					 $("table").find("tr:gt(0)").remove();
 
-					 alert("You deleted all resources.");
+					 alert("You have deleted all resources.");
 
 					});
 
@@ -205,7 +205,7 @@ $(document).ready(function (){
 					 
 					 //$("table").find("tr:gt(0)").remove();
 
-					 alert("You deleted the resource.");
+					 alert("You have deleted the resource.");
 					 //loadTable();
 
 					});
@@ -226,8 +226,7 @@ $(document).ready(function (){
 					});
 				});
 
-=======
->>>>>>> 36076fb2d043ecbe5709b2a739f9cac5f91d2679
+
 
 	$("#getData").click(function(){
 		loadTable();
@@ -264,9 +263,100 @@ $(document).ready(function (){
 
 	});
 
-/*
+
 	$("#searchButton").click(function(){
-		loadTable();
+		
+					var apikey = $("#apikey").val();
+
+					var countryS = $("#countryS").val();
+					var yearS = $("#yearS").val();
+
+					if (!elements)
+						elements = 9999;
+					if (!pages)
+						pages = 1;
+
+					var offset = elements*(pages-1);
+
+					var fromS = $("#fromS").val();
+
+					var to = $("#to").val();
+
+					
+					if (!fromS){
+						fromS=0;
+					}
+					if (!to){
+						to=9999;
+					}
+
+					if(countryS && !yearS){
+						var request = $.ajax({
+
+							  url: "/api/v1/republican_stats/"+countryS+"?apikey="+apikey+"&from="+fromS+"&to="+to+"&limit="+elements+"&offset="+offset,
+							  type: "GET",
+							  contentType: "application/json",
+	  
+						});
+					}
+					if (yearS && !countryS) {
+						var request = $.ajax({
+
+							  url: "/api/v1/republican_stats/"+yearS+"?apikey="+apikey+"&from="+fromS+"&to="+to+"&limit="+elements+"&offset="+offset,
+							  type: "GET",
+							  contentType: "application/json",
+	  
+						});
+
+					}
+
+
+
+					request.done(function(data,status,jqXHR) {
+					  // Tratamiento en caso de exito
+						var trHTML = '';
+
+	                	$("#dataTable").find("tr:gt(0)").remove();
+
+	                	
+
+	                	if (countryS != "") {
+	            
+	            			trHTML += '<tr><td>'+ data.country + '</td><td>' + data.year + '</td><td>' + data.gdppc + '</td><td>'
+	            				+ data.population + '</td></tr>';
+	       				 	
+	     				} else {
+	     					$.each(data, function (i) {
+	            
+	            				trHTML += '<tr><td>'+ data[i].country + '</td><td>' + data[i].year + '</td><td>' + data[i].gdppc + '</td><td>'
+	            				+ data[i].population + '</td></tr>';
+	       					 
+	       				 	});
+	     				}
+	        
+	       				 $('#dataTable').append(trHTML);
+					 
+
+					});
+
+					request.always(function(jqXHR, status) {
+					  // Tratamiento en cualquier caso
+					 if(status == "error") {
+						$("#status").html(jqXHR.status);
+					 	console.log(jqXHR.status);
+					 	if (jqXHR.status == 401) {
+					 		$("#log").html("The apikey you entered is not valid");
+					 		alert('Apikey not valid');
+					 	}else{
+					 		$("#log").html("error");
+					 	}
+					}	
+
+					});
+				
+
+		/*
+		
 	    /*console.log("Handling click");
 	    var apikey = $("#apikey").val();
 	    var countryS = $("#countryS").val();
@@ -311,9 +401,9 @@ $(document).ready(function (){
 
 	  });
 
-
+		*/
 	});
-*/
+
 
 });
 
