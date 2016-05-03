@@ -3,7 +3,6 @@
 $(document).ready(function(){
 				console.log("JQuery ready!");
 
-				$('.my-tooltip').tooltip();
 
 				var id = 1;
 
