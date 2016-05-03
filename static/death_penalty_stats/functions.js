@@ -43,15 +43,24 @@ $(document).ready(function(){
 
 
 
-
-
 				$('#button-get').click(function(){
 
 					var apikey = $("#apikey").val();
 
+					var items = $("#items").val();
+
+					var page = $("#page").val();
+
+					if (!items)
+						items = 9999;
+					if (!page)
+						page = 1;
+
+					var offset = items*(page-1);
+
 					var request = $.ajax({
 
-						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey="+apikey,
+						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey="+apikey+"&limit="+items+"&offset="+offset,
 						  type: "GET",
 						  contentType: "application/json",
   
