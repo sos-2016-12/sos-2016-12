@@ -3,7 +3,7 @@
 $(document).ready(function(){
 				console.log("JQuery ready!");
 
-				$('#myCollapsible').collapse({
+				$('#collapseOne').collapse({
  					 toggle: false
 				})
 
