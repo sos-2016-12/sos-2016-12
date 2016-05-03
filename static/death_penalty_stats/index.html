@@ -10,11 +10,7 @@
     	<script type="text/javascript" src="../data/death_penalty_stats/jqwidgets-ver4.1.2/jqwidgets/jqxcore.js"></script>
    	 	<script type="text/javascript" src="../data/death_penalty_stats/jqwidgets-ver4.1.2/jqwidgets/jqxtooltip.js"></script>
     	<script type="text/javascript" src="../data/death_penalty_stats/jqwidgets-ver4.1.2/scripts/demos.js"></script>
-    	<script type="text/javascript">
-        $(document).ready(function () {
-            $("#button-dlt-all").jqxTooltip({ content: '<p>Be careful, all data will be lost</p>', position: 'mouse', name: 'ButtonTooltip'});
-        });
-    	</script>
+    
 		<style type="text/css">
  			body { background: #FCFCC1; !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
  		</style> 
@@ -53,7 +49,7 @@
     				</tr>
 				</table>
 			</span>
-			<button type="button" id="button-dlt-all" class="btn btn-primary" autocomplete="off" data-toggle="tooltip" title="Be careful, all data will be lost."><span class="glyphicon glyphicon-fire" aria-hidden="true"></span> Delete All Data </button>
+			<button type="button" id="button-dlt-all" class="btn btn-primary" autocomplete="off" data-toggle="tooltip"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span> Delete All Data </button>
 				<hr/>
 
 			<div class="form"><form class="form-inline">
