@@ -11,7 +11,7 @@ $(document).ready(function (){
 	    
 
 	    var request = $.ajax({
-	      url:"http://sos-2016-12.herokuapp.com/api/v1/republican_stats/loadInitialData?apikey="+apikey,
+	      url:"/api/v1/republican_stats/loadInitialData?apikey="+apikey,
 	      type:"GET"
 	    
 	    });
@@ -45,7 +45,7 @@ $(document).ready(function (){
   		if(country && year && gdppc && population){
 
 		  var request = $.ajax({
-		    url:"http://sos-2016-12.herokuapp.com/api/v1/republican_stats?apikey="+apikey,
+		    url:"/api/v1/republican_stats?apikey="+apikey,
 		    type:"POST",
 		    data: '{"country":"'+country+'","year":'+year+',"gdppc":'+gdppc+',"population":'+population+'}',
 		    contentType : "application/json"
@@ -146,7 +146,7 @@ $(document).ready(function (){
 			contentType: "application/json",
   
 		});
-		
+
 		request.done(function(data,status,jqXHR) {
 					  // Tratamiento en caso de exito
 					var trHTML = '';
@@ -162,7 +162,7 @@ $(document).ready(function (){
             				+ '</td></tr>';
        				 });
         
-       				 $('#dataTable').append(trHTML);
+       				 $("#dataTable").append(trHTML);
        	});
 
 
