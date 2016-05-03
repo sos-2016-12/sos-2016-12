@@ -3,14 +3,7 @@
 $(document).ready(function(){
 				console.log("JQuery ready!");
 
-            $("#button-dlt-all").jqxToggleButton({ width: '200', toggled: true});
-            $("#button-dlt-all").on('click', function () {
-                    var toggled = $("#button-dlt-all").jqxToggleButton('toggled');
-                    if (toggled) {
-                        $("#button-dlt-all")[0].value = 'Toggled On';
-                    }
-                    else $("#button-dlt-all")[0].value = 'Toggled Off';
-                });
+            
 
 				var id = 1;
 
