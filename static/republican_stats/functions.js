@@ -270,9 +270,20 @@ $(document).ready(function (){
 
 					var countryS = $("#countryS").val();
 					var yearS = $("#yearS").val();
-					var fromS=$("#fromS").val();
-					var to=$("#to").val();
-					if(!countryS & !yearS){
+					//var fromS=$("#fromS").val();
+					//var to=$("#to").val();
+					var elements= $("#elements").val();
+					var pages=$("#pages").val();
+
+					var range = $("#range_49");
+					var fromS = $(range).data("from");
+					var to = $(range).data("to");
+
+
+
+
+
+					if(!countryS & !yearS & !fromS & !to){
 						alert("What are you looking for?");
 					}
 
@@ -283,9 +294,9 @@ $(document).ready(function (){
 
 					var offset = elements*(pages-1);
 
-					var fromS = $("#fromS").val();
+					//var fromS = $("#fromS").val();
 
-					var to = $("#to").val();
+					//var to = $("#to").val();
 
 					
 					if (!fromS){
@@ -314,6 +325,16 @@ $(document).ready(function (){
 						});
 
 					}
+					if(!countryS && !yearS){
+						var request = $.ajax({
+
+							  url: "/api/v1/republican_stats?apikey=1234&from="+fromS+"&to="+to+"&limit="+elements+"&offset="+elements*(pages-1),
+							  type: "GET",
+							  contentType: "application/json",
+	  
+						});
+
+					}
 
 
 
@@ -324,23 +345,25 @@ $(document).ready(function (){
 	                	$("#dataTable").find("tr:gt(0)").remove();
 
 	                	
-
-	                	if (countryS != "") {
+	                	
+	                	if (data.country==countryS) {
 	            
 	            			trHTML += '<tr><td>'+ data.country + '</td><td>' + data.year + '</td><td>' + data.gdppc + '</td><td>'
 	            				+ data.population + '</td></tr>';
+	           
 	       				 	
 	     				} else {
 	     					$.each(data, function (i) {
 	            
 	            				trHTML += '<tr><td>'+ data[i].country + '</td><td>' + data[i].year + '</td><td>' + data[i].gdppc + '</td><td>'
 	            				+ data[i].population + '</td></tr>';
+	            				i++;
 	       					 
 	       				 	});
 	     				}
 	        
 	       				 $('#dataTable').append(trHTML);
-					 
+
 
 					});
 

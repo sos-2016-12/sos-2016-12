@@ -57,6 +57,7 @@ module.exports.getResources = (req,res) =>{
 			for (var i = 0; i < republican_stats.length; i++) {//BUSQUEDA POR AÑOS
 				if (republican_stats[i].year >= fron && republican_stats[i].year <= to)
 					aux.push(republican_stats[i]);
+					console.log("country", republican_stats[i].country);
 			}
 			for (var i = offset; i < aux.length; i++) {
 				if (aux2.length <= (limit-1))

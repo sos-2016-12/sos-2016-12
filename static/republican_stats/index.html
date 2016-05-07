@@ -2,12 +2,21 @@
 <html>
 	<head>
 	  
-		
-		<script src="/republican_stats/js/jquery-1.12.3.min.js"></script>
-		<!--<script src="https://code.jquery.com/jquery-1.12.2.min.js"></script>-->
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link rel="stylesheet" href="materialize/css/materialize.min.css">
+		<script src="https://code.jquery.com/jquery-2.2.3.js"></script>
+		<!--<script src="/republican_stats/js/jquery-1.12.3.min.js"></script>-->
 		<script src="materialize/js/materialize.min.js"></script>
+		<script src="noUiSlider.8.5.1/nouislider.js"></script>
+		<script src="ion.rangeSlider-2.1.4/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
+	
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="ion.rangeSlider-2.1.4/css/ion.rangeSlider.css">
+		<link rel="stylesheet" href="ion.rangeSlider-2.1.4/css/normalize.css">
+		<link rel="stylesheet" href="ion.rangeSlider-2.1.4/css/ion.rangeSlider.skinFlat.css">
+		<link rel="stylesheet" href="materialize/css/materialize.min.css">
+		<link rel="stylesheet" href="noUiSlider.8.5.1/nouislider.css">
+		<link rel="stylesheet" href="noUiSlider.8.5.1/nouislider.pips.css">
+		<link rel="stylesheet" href="noUiSlider.8.5.1/nouislider.tooltips.css">
+		
 		<script src="functions.js"></script>
 
 	  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>-->
@@ -41,7 +50,7 @@
 						<div class="input-field">
 							
 							<div class="col s3">
-								<input type="text" id="newCountry" name="newCountry" placeholder="Country"></input>
+								<input type="text" id="newCountry" name="newCountry" placeholder="Country" ></input>
 		    				</div>
 		    				<div class="col s3">
 		    					<input  type="text" id="newYear" name="newYear" placeholder="Year"></input>	
@@ -97,7 +106,35 @@
 					        
 					      
 					  </div>
-				
+			<div>
+				 <form action="#">
+    <p class="range_48" id="range_49">
+      <input type="text"  name="example_name" value="" />
+    </p>
+
+  </form>
+				<script type="text/javascript">
+					
+					var $range = $("#range_49");
+
+					$range.ionRangeSlider({
+					    type: "double",
+					    min: 0,
+					    max: 2016,
+					    from: 0,
+					    to: 2016
+					});
+
+					$range.on("change", function () {
+					    var $this = $(this),
+					        from = $this.data("from"),
+					        to = $this.data("to");
+
+					});
+
+					
+				</script>
+			</div>
 			
 			<div class="row">
 				<table id="dataTable" name="dataTable" class="bordered highlight">
