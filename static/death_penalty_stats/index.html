@@ -21,7 +21,7 @@
 	<body><div class="container">
 		<h1 id="title">Resource Management GUI</h1>
 		</br>
-		<button type="button" id="button-get" class="btn btn-primary" autocomplete="off"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> GET All Resources </button>
+		<button type="button" id="button-get" class="btn btn-primary" autocomplete="off"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Show All Resources </button>
 		<button type="button" id="button-ld-ini" class="btn btn-primary" autocomplete="off"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Load Initial Data </button>
 		<label class="active" for="apikey"> Apikey </label>
 		    <input id="apikey" name="apikey" type="text" value="1234">
@@ -31,7 +31,7 @@
 			<span id="data">
 				<table id="table" border="1" class="table table-hover table-condensed table-bordered">
 					<tr class="info">
-						<th>ID</th>
+						    <th>ID</th>
        					<th>Country</th>
          				<th>Abolition Year</th>
          				<th>For All Crimes?</th>
@@ -43,7 +43,7 @@
 				<hr/>
 
 			<div class="form"><form class="form-inline">
-				<p class="lead">POST OR UPDATE</p>
+				<p class="lead">Add or Update a Resource</p>
   				<div class="form-group">
     				<label class="sr-only">Country</label>
     					<input type="text" class="form-control" id="country-add" placeholder="Country">
@@ -65,7 +65,7 @@
 			</form></div>
 			<hr/>
 			<div class="form"><form class="form-inline">
-				<p class="lead">SEARCH AND DELETE</p>
+				<p class="lead">Search or Delete a Resource</p>
   				<div class="form-group">
     				<label class="sr-only">Country</label>
     					<input type="text" class="form-control" id="country-srch" placeholder="Country">
@@ -94,7 +94,5 @@
     					<input type="text" class="form-control" id="page" placeholder="Page Number">
   				</div>
 			</form>	</div>
-			<hr/>
-			<p class="lead">HTTP Status: <span id="status"></span></p>
 	</div></body>
 </html>

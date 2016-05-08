@@ -21,7 +21,6 @@ $(document).ready(function(){
 
 					request.done(function(data,status,jqXHR) {
 					  // Tratamiento en caso de exito
-					  $("#status").html(jqXHR.status);
 					  $("#log").html("You loaded the initial data successfully.");
 
 					});
@@ -29,7 +28,6 @@ $(document).ready(function(){
 					request.always(function(jqXHR, status) {
 					  // Tratamiento en cualquier caso
 					 if(status == "error") {
-						$("#status").html(jqXHR.status);
 					 	console.log(jqXHR.status);
 					 	if (jqXHR.status == 401) {
 					 		$("#log").html("The apikey you entered is not valid");
@@ -83,7 +81,6 @@ $(document).ready(function(){
        				 });
         
        				 $('#table').append(trHTML);
-					 $("#status").html(jqXHR.status);
 					 $("#log").html("done");
 
 					});
@@ -91,7 +88,6 @@ $(document).ready(function(){
 					request.always(function(jqXHR, status) {
 					  // Tratamiento en cualquier caso
 					 if(status == "error") {
-						$("#status").html(jqXHR.status);
 					 	console.log(jqXHR.status);
 					 	if (jqXHR.status == 401) {
 					 		$("#log").html("The apikey you entered is not valid");
@@ -162,7 +158,6 @@ $(document).ready(function(){
      				}
         
        				 $('#table').append(trHTML);
-					 $("#status").html(jqXHR.status);
 					 $("#log").html("done");
 
 					});
@@ -170,7 +165,6 @@ $(document).ready(function(){
 					request.always(function(jqXHR, status) {
 					  // Tratamiento en cualquier caso
 					 if(status == "error") {
-						$("#status").html(jqXHR.status);
 					 	console.log(jqXHR.status);
 					 	if (jqXHR.status == 401) {
 					 		$("#log").html("The apikey you entered is not valid");
@@ -217,7 +211,6 @@ $(document).ready(function(){
        					 });
         
        					$('#table').append(trHTML);
-					 	$("#status").html(jqXHR.status);
 					 	$("#log").html("You added a new resource successfully.");
 
 					});
@@ -225,7 +218,6 @@ $(document).ready(function(){
 					request.always(function(jqXHR, status) {
 					  // Tratamiento en cualquier caso
 					 if(status == "error") {
-						$("#status").html(jqXHR.status);
 					 	console.log(jqXHR.status);
 					 	if (jqXHR.status == 401) {
 					 		$("#log").html("The apikey you entered is not valid");
@@ -269,7 +261,6 @@ $(document).ready(function(){
 					request.done(function(data,status,jqXHR) {
 					  // Tratamiento en caso de exito
 					  
-					 $("#status").html(jqXHR.status);
 					 $("#log").html("done");
 
 					});
@@ -277,7 +268,6 @@ $(document).ready(function(){
 					request.always(function(jqXHR, status) {
 					  // Tratamiento en cualquier caso
 					 if(status == "error") {
-						$("#status").html(jqXHR.status);
 					 	console.log(jqXHR.status);
 					 	if (jqXHR.status == 401) {
 					 		$("#log").html("The apikey you entered is not valid");
@@ -311,7 +301,6 @@ $(document).ready(function(){
 					request.done(function(data,status,jqXHR) {
 					  // Tratamiento en caso de exito
 					  
-					 $("#status").html(jqXHR.status);
 					 $("#log").html("done");
 
 					});
@@ -319,7 +308,6 @@ $(document).ready(function(){
 					request.always(function(jqXHR, status) {
 					  // Tratamiento en cualquier caso
 					 if(status == "error") {
-						$("#status").html(jqXHR.status);
 					 	console.log(jqXHR.status);
 					 	if (jqXHR.status == 401) {
 					 		$("#log").html("The apikey you entered is not valid");
@@ -351,7 +339,6 @@ $(document).ready(function(){
 					 
 					 $("table").find("tr:gt(0)").remove();
 
-					 $("#status").html(jqXHR.status);
 					 $("#log").html("You deleted all resources.");
 
 					});
@@ -359,7 +346,6 @@ $(document).ready(function(){
 					request.always(function(jqXHR, status) {
 					  // Tratamiento en cualquier caso
 					if(status == "error") {
-						$("#status").html(jqXHR.status);
 					 	console.log(jqXHR.status);
 					 	if (jqXHR.status == 401) {
 					 		$("#log").html("The apikey you entered is not valid");
