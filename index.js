@@ -129,8 +129,15 @@ app.get("/api/v1/death_penalty_stats/loadInitialData", (req,res) =>{
 	{ country : "GERMANY", abolition_year : 1987, for_all_crimes : "yes", murder_rate_per_100k_people : 0.8},
 	{ country : "PERU", abolition_year : 1979, for_all_crimes : "no", murder_rate_per_100k_people : 9.6},
 	{ country : "TURKEY", abolition_year : 1984, for_all_crimes : "no", murder_rate_per_100k_people : 2.6},
-	{ country : "SWEDEN", abolition_year : 1972, for_all_crimes : "yes", murder_rate_per_100k_people : 0.7}];
-	console.log("5 elements initialized.");
+	{ country : "SWEDEN", abolition_year : 1972, for_all_crimes : "yes", murder_rate_per_100k_people : 0.7},
+	{ country : "COLOMBIA", abolition_year : 1910, for_all_crimes : "yes", murder_rate_per_100k_people : 30.8},
+	{ country : "ITALY", abolition_year : 1994, for_all_crimes : "yes", murder_rate_per_100k_people : 0.8},
+	{ country : "POLAND", abolition_year : 1997, for_all_crimes : "yes", murder_rate_per_100k_people : 0.8},
+	{ country : "ARGENTINA", abolition_year : 1984, for_all_crimes : "no", murder_rate_per_100k_people : 7.0},
+	{ country : "FRANCE", abolition_year : 1981, for_all_crimes : "yes", murder_rate_per_100k_people : 1.2},
+	{ country : "HUNGARY", abolition_year : 1990, for_all_crimes : "yes", murder_rate_per_100k_people : 2.7},
+	{ country : "SOUTH AFRICA", abolition_year : 1997, for_all_crimes : "yes", murder_rate_per_100k_people : 31.9}];
+	console.log("12 elements initialized.");
 	res.sendStatus(201);
 }});
 
