@@ -25,18 +25,18 @@
               var itemForWidget =[item.country,parseInt(item.abolition_year),item.for_all_crimes, parseFloat(item.murder_rate_per_100k_people)];
               dataForWidget.push(itemForWidget);
             }
-            console.log("Data far widget: "+dataForWidget);
+              console.log("Data far widget: "+dataForWidget);
 
-            var data = google.visualization.arrayToDataTable(dataForWidget);  //transformation from data
-            var options = {
-              colorAxis: {colors: ['#00853f', 'black', '#e31b23']},
-              backgroundColor: '#81d4fa',
-              datalessRegionColor: '#f8bbd0',
-              defaultColor: '#f5f5f5',
-            }
+              var data = google.visualization.arrayToDataTable(dataForWidget);  //transformation from data
+              var options = {
+                colorAxis: {colors: ['#00853f', 'black', '#e31b23']},
+                backgroundColor: '#81d4fa',
+                datalessRegionColor: '#f8bbd0',
+                defaultColor: '#f5f5f5',
+              }
                  
+            }
           }
-            };
             var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
             chart.draw(data, options);
           }
