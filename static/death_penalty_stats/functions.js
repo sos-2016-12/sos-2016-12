@@ -113,7 +113,7 @@ $(document).ready(function(){
 					if (!page)
 						page = 1;
 
-					var offset = 0;
+					var offset = items*(page-1);
 
 					var from = $("#from-srch").val();
 
