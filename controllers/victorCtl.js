@@ -16,16 +16,16 @@ var apikey = 1234;
 		{ country : "Venezuela", year : 1819, gdppc : 13633, population : 31029000},
 		{ country : "Peru", year : 1824, gdppc : 11403, population : 31490000},
 		{ country : "Colombia", year : 1819, gdppc : 11284, population : 48782000},
-		{ country : "Brazil", year : 1889, gdppc : 10284, population : 58782000},
-		{ country : "France", year : 1789, gdppc : 22255, population : 60598605},
-		{ country : "Italy", year : 1919, gdppc : 15689, population : 40568939},
-		{ country : "Cuba", year : 1898, gdppc : 9284, population : 18082000},
-		{ country : "Uruguay", year : 1889, gdppc : 11284, population : 48782000},
-		{ country : "Mexico", year : 1759, gdppc : 7808, population : 56998956},
-		{ country : "Paraguay", year : 1856, gdppc : 13284, population : 25782063},
-		{ country : "Chile", year : 1819, gdppc : 11284, population : 48782000},
-		{ country : "Australia", year : 1869, gdppc : 20284, population : 68782000},
-		{ country : "Russia", year : 1914, gdppc : 19293, population : 250556568}];
+		{ country : "Brazil", year : 1889, gdppc : 10284, population : 206151000},
+		{ country : "France", year : 1870, gdppc : 22255, population : 64643000},
+		{ country : "Italy", year : 1946, gdppc : 15689, population : 60832000},
+		{ country : "Liberia", year : 1847, gdppc : 855, population : 4132000},
+		{ country : "Uruguay", year : 1828, gdppc : 21247, population : 3480000},
+		{ country : "Mexico", year : 1867, gdppc : 18370, population : 12227300},
+		{ country : "Paraguay", year : 1811, gdppc : 8717, population : 6855000},
+		{ country : "Chile", year : 1818, gdppc : 23556, population : 18192000},
+		{ country : "Austria", year : 1918, gdppc : 47031, population : 8736000},
+		{ country : "Russia", year : 1917, gdppc : 24067, population : 14668300}];
 
 
 		console.log("16 elements initialized.");

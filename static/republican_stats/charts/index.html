@@ -15,25 +15,37 @@
           google.charts.setOnLoadCallback(drawSeriesChart);
 
           function drawSeriesChart() {
-            console.log("DATAFROMSERVER: "+dataFromServer);
-            var dataForWidget=[["Country",'Year',"Gdppc"]];
+            console.log("Data From Server: "+dataFromServer);
+            var dataForWidget=[["Country",'Year',"Gdppc", "Population"]];
 
 
             for (i=0;i<dataFromServer.length;i++){
               var item=dataFromServer[i];
               console.log("item: "+item);
-              var itemForWidget =[item.country,parseInt(item.year),parseInt(item.gdppc)];
+              var itemForWidget =[item.country,parseInt(item.year),parseInt(item.gdppc), parseInt(item.population)];
               dataForWidget.push(itemForWidget);
             }
-            console.log("DATA FOR WIDGET: "+dataForWidget);
+            console.log("Data far widget: "+dataForWidget);
 
             var data = google.visualization.arrayToDataTable(dataForWidget);  //transformation from data
             var options = {
-              title: 'Correlation between a republican goverment'+
-              'and year of freedom',
-              hAxis: {title: 'Gdppc'},
-              vAxis: {title: 'Year'},
-              bubble: {textStyle: {fontSize: 11}}
+              title: 'Correlation between the year of republican goverment, gdppc'+
+              'and population',
+              hAxis: {title: 'Year'},
+              vAxis: {title: 'Gdppc'},
+              colorAxis: {colors: ['#f1f8e9', '#33691e']},
+              sizeAxis:{
+                    minValue: 0,  
+                    maxSize: 20
+
+                  },
+              bubble: {
+                  textStyle: {
+                      fontSize: 11,
+                      auroaColor: 'none',
+                  }
+                 
+              }
             };
             var chart = new google.visualization.BubbleChart(document.getElementById('series_chart_div'));
             chart.draw(data, options);
@@ -46,6 +58,6 @@
   </head>
 
   <body>
-    <div id="series_chart_div" style="width: 900px; height: 500px;"></div>
+    <div id="series_chart_div" style="width: 1300px; height: 700px;"></div>
   </body>
 </html>
