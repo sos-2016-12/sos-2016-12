@@ -126,14 +126,32 @@ $(document).ready(function(){
 					if (!to)
 						to=9999;
 
+					if (!from && !to) {
+						var request = $.ajax({
 
-					var request = $.ajax({
-
-						  url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats/"+country+"?apikey="+apikey+"&from="+from+"&to="+to+"&limit="+items+"&offset="+offset,
-						  type: "GET",
-						  contentType: "application/json",
+						  	url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats/"+country+"?apikey="+apikey+"&limit="+items+"&offset="+offset,
+						  	type: "GET",
+						  	contentType: "application/json",
   
-					});
+						});
+					} else if(!items && !page){
+						var request = $.ajax({
+
+						  	url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats/"+country+"?apikey="+apikey+"&from="+from+"&to="+to,
+						  	type: "GET",
+						  	contentType: "application/json",
+  
+						});
+					} else if(from && to) {
+						var request = $.ajax({
+
+						  	url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats/"+country+"?apikey="+apikey+"&from="+from+"&limit="+items+"&offset="+offset,
+						  	type: "GET",
+						  	contentType: "application/json",
+  
+						});
+					}
+						
 
 					request.done(function(data,status,jqXHR) {
 					  // Tratamiento en caso de exito
