@@ -115,37 +115,39 @@ $(document).ready(function(){
 
 					var offset = items*(page-1);
 
-					var from = $("#from-srch").val();
+					var fromS = $("#from-srch").val();
 
 					var to = $("#to-srch").val();
 
-					if (!country)
-						country = "";
-					if (!from)
-						from=0;
+					if (!fromS)
+						fromS=0;
 					if (!to)
 						to=9999;
 
-					if (!from && !to) {
+					if (country) {
+						var request = $.ajax({
+
+						  	url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats/"+country+"?apikey="+apikey,
+						  	type: "GET",
+						  	contentType: "application/json",
+  
+						});
+					} 
+
+					if(!country && !items && !page){
+						var request = $.ajax({
+
+						  	url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey="+apikey+"&from="+fromS+"&to="+to,
+						  	type: "GET",
+						  	contentType: "application/json",
+  
+						});
+					} 
+
+					if(!country && !fromS && !to) {
 						var request = $.ajax({
 
 						  	url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats/"+country+"?apikey="+apikey+"&limit="+items+"&offset="+offset,
-						  	type: "GET",
-						  	contentType: "application/json",
-  
-						});
-					} else if(!items && !page){
-						var request = $.ajax({
-
-						  	url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats/"+country+"?apikey="+apikey+"&from="+from+"&to="+to,
-						  	type: "GET",
-						  	contentType: "application/json",
-  
-						});
-					} else if(from && to) {
-						var request = $.ajax({
-
-						  	url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats/"+country+"?apikey="+apikey+"&from="+from+"&limit="+items+"&offset="+offset,
 						  	type: "GET",
 						  	contentType: "application/json",
   
@@ -161,7 +163,7 @@ $(document).ready(function(){
 
                 	id = 1;
 
-                	if (country != "") {
+                	if (country) {
             
             			trHTML += '<tr id="'+id+'"><td>' + id +'</td><td>'+ data.country + '</td><td>' + data.abolition_year + '</td><td>' + data.for_all_crimes + '</td><td>'
             				+ data.murder_rate_per_100k_people + '</td></tr>';
