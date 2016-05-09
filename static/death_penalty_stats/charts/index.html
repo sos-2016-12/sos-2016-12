@@ -17,13 +17,13 @@
 
           function drawRegionsMap() {
             console.log("Data From Server: "+dataFromServer);
-            var dataForWidget=[['Country','Abolition Year','for All Crimes?', 'Murder Rate']];
+            var dataForWidget=[['Country','Abolition']];
 
 
             for (i=0;i<dataFromServer.length;i++){
               var item=dataFromServer[i];
               console.log("item: "+item);
-              var itemForWidget =[item.country,parseInt(item.abolition_year)];
+              var itemForWidget =[item.country, parseInt(item.abolition_year)];
               dataForWidget.push(itemForWidget);
             }
               console.log("Data for widget: "+dataForWidget);
