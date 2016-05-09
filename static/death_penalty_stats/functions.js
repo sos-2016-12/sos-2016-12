@@ -108,6 +108,10 @@ $(document).ready(function(){
 
 					var country = $("#country-srch").val();
 
+					var items = $("#items").val();
+
+					var page = $("#page").val();
+
 					if (!items)
 						items = 9999;
 					if (!page)
@@ -132,54 +136,18 @@ $(document).ready(function(){
 						  	contentType: "application/json",
   
 						});
-					} 
+					} else {
 
-					if (!country) {
+						var request = $.ajax({
 
-						if(!items && !page){
-							var request = $.ajax({
-
-							  	url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey="+apikey+"&from="+fromS+"&to="+to,
-							  	type: "GET",
-							  	contentType: "application/json",
+							 url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey="+apikey+"&from="+fromS+"&to="+to+"&limit="+items+"&offset="+offset,
+							 type: "GET",
+							 contentType: "application/json",
   
-							});
-						} 
-
-						if(!fromS && !to) {
-							var request = $.ajax({
-
-							  	url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey="+apikey+"&limit="+items+"&offset="+offset,
-							  	type: "GET",
-							  	contentType: "application/json",
-  
-							});
-						}
-
-						if(fromS && to && items && page) {
-							var request = $.ajax({
-
-							  	url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey="+apikey+"&from="+fromS+"&to="+to+"&limit="+items+"&offset="+offset,
-							  	type: "GET",
-							  	contentType: "application/json",
-  
-							});
-						}
-
-						if(!fromS && !to && !items && !page) {
-							var request = $.ajax({
-
-							  	url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey="+apikey,
-							  	type: "GET",
-							  	contentType: "application/json",
-  
-							});
-						}
-
-
+						});
+						
 					}
 
-						
 						
 
 					request.done(function(data,status,jqXHR) {
