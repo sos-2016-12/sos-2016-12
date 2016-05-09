@@ -23,7 +23,7 @@
             for (i=0;i<dataFromServer.length;i++){
               var item=dataFromServer[i];
               console.log("item: "+item);
-              var itemForWidget =[item.country,parseInt(item.abolition_year),parseInt(item.for_all_crimes), parseInt(item.murder_rate_per_100k_people)];
+              var itemForWidget =[item.country,parseInt(item.abolition_year),item.for_all_crimes, parseFloat(item.murder_rate_per_100k_people)];
               dataForWidget.push(itemForWidget);
             }
             console.log("Data far widget: "+dataForWidget);
