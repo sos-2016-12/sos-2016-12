@@ -226,41 +226,46 @@ $(document).ready(function (){
 					});
 				});
 
-
-
 	$("#getData").click(function(){
-		loadTable();
-		/*
 		var apikey = $("#apikey").val();
+		var elements= $("#elements").val();
+		var pages=$("#pages").val();
 		var url="/api/v1/republican_stats/";
+		
+		url= url+"?apikey="+apikey+"&limit="+elements+"&offset="+elements*(pages-1);
+  
 
 		var request = $.ajax({
-
-			url: url+"?apikey="+apikey,
-			type: "GET",
-			contentType: "application/json",
-  
+		    url:url,
+		    type:"GET",
+		    contentType : "application/json"
 		});
-
+		
 		request.done(function(data,status,jqXHR) {
 					  // Tratamiento en caso de exito
 					var trHTML = '';
 
-                	$("#dataTable").find("tr:gt(0)").remove();
+                	$("#dataTable tbody").remove();
 
-       				$.each(data, function (i) {
+       				$.each(data, function (i, item) {
             
             		trHTML += '<tr><td>' + data[i].country 
             				+ '</td><td>' + data[i].year 
             				+ '</td><td>' + data[i].gdppc 
-            				+ '</td><td>' + data[i].population 
-            				+ '</td></tr>';
+            				+ '</td><td>' + data[i].population ;
        				 });
         
-       				 $("#dataTable").append(trHTML);
+       				 $('#dataTable').append(trHTML);
        	});
-*/
 
+		request.always(function (jqXHR,status){
+		    if(status=="error"){
+		      console.log("Status: "+jqXHR.status);
+		      if(jqXHR.status==401)
+		      alert("You entered a wrong apikey")
+		    }
+
+		});
 	});
 
 
