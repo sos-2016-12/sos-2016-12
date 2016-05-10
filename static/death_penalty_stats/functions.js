@@ -140,7 +140,7 @@ $(document).ready(function(){
 
 						var request = $.ajax({
 
-							 url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats?apikey="+apikey+"&from="+fromS+"&to="+to+"&limit="+items+"&offset="+offset,
+							 url: "http://sos-2016-12.herokuapp.com/api/v1/death_penalty_stats/"+fromS+"?apikey="+apikey+"&from="+fromS+"&to="+to+"&limit="+items+"&offset="+offset,
 							 type: "GET",
 							 contentType: "application/json",
   
