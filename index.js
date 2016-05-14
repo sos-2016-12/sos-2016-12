@@ -1,8 +1,32 @@
+
 var express = require("express");
 
 var app = express();
 
 var bodyParser = require("body-parser");
+
+/////////////// PROXY Ale///////////////////
+
+var request1 = require("request");
+
+var path1 = '/api/v1/olympicsgames?';
+var apiServerHost1 = 'https://sos-2016-06.herokuapp.com';
+
+app.use(path1,function(req,res){
+	var url = apiServerHost1 + req.baseUrl + req.url;
+	console.log("Piped: "+ req.baseUrl + req.url);
+ 	console.log("URL Accesed: "+ url);
+ 	
+	req.pipe(request1(url,(error,response,body)=>{
+      	if(error){
+	        console.error(error);
+         	res.sendStatus(503);//servicio no disponible
+ 	    }
+    })).pipe(res);
+});
+
+///////////////////////////////////////
+
 
 /////////////// PROXY Victor///////////////////
 
