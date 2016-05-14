@@ -4,6 +4,30 @@ var app = express();
 
 var bodyParser = require("body-parser");
 
+/////////////// PROXY Victor///////////////////
+
+var request = require("request");
+
+var path = '/api/v1/pressure-and-temperatures';
+var apiServerHost = 'https://sos-2016-11.herokuapp.com';
+
+app.use(path,function(req,res){
+	var url = apiServerHost + req.baseUrl + req.url;
+	console.log("Piped: "+ req.baseUrl + req.url);
+ 	console.log("URL Accesed: "+ url);
+ 	
+	req.pipe(request(url,(error,response,body)=>{
+      	if(error){
+	        console.error(error);
+         	res.sendStatus(503);//servicio no disponible
+ 	    }
+    })).pipe(res);
+});
+
+
+
+
+///////////////////////////////////////
 
 app.use(bodyParser.json());
 
