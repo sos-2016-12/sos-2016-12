@@ -24,10 +24,16 @@ app.use(path,function(req,res){
     })).pipe(res);
 });
 
-
-
-
 ///////////////////////////////////////
+
+
+
+
+/////////////CABECERAS CORS/////////////
+var cors = require("cors");
+app.use(cors()); //CABECERAS MÁXIMAS
+
+/////////////////////////
 
 app.use(bodyParser.json());
 
