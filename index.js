@@ -5,6 +5,15 @@ var app = express();
 
 var bodyParser = require("body-parser");
 
+var governify = require("governify"); //apikey para governify = multiPlan_C2_sos-2016-12-arr_ag
+
+
+
+governify.control(app,{
+	datastore : "http://datastore.governify.io/api/v6.1/",
+	namespace : "sos-2016-12-arr",
+	defaultPath : "https://sos-2016-06.herokuapp.com/api"
+});
 /////////////// PROXY Ale///////////////////
 
 var request1 = require("request");
