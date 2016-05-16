@@ -18,7 +18,7 @@ governify.control(app,{
 
 var request1 = require("request");
 
-var path1 = '/api/olympicsgames';
+var path1 = '/api/v1/olympicsgames';
 var apiServerHost1 = 'https://sos-2016-06.herokuapp.com';
 
 app.use(path1,function(req,res){
