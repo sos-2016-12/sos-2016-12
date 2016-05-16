@@ -12,7 +12,8 @@ var governify = require("governify"); //apikey para governify = multiPlan_C2_sos
 governify.control(app,{
 	datastore : "http://datastore.governify.io/api/v6.1/",
 	namespace : "sos-2016-12-arr",
-	defaultPath : "https://sos-2016-12.herokuapp.com/api/v1"
+	defaultPath : "/api/v1/death_penalty_stats",
+	defaultPath : "/api/v1/republican_stats"
 });
 /////////////// PROXY Ale///////////////////
 
