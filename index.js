@@ -12,13 +12,13 @@ var governify = require("governify"); //apikey para governify = multiPlan_C2_sos
 governify.control(app,{
 	datastore : "http://datastore.governify.io/api/v6.1/",
 	namespace : "sos-2016-12-arr",
-	defaultPath : "/api"
+	defaultPath : "/api/v1"
 });
 /////////////// PROXY Ale///////////////////
 
 var request1 = require("request");
 
-var path1 = '/api/v1/olympicsgames';
+var path1 = '/api/olympicsgames';
 var apiServerHost1 = 'https://sos-2016-06.herokuapp.com';
 
 app.use(path1,function(req,res){
