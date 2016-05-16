@@ -4,10 +4,10 @@ var apikey = 1234;
 
 
  module.exports.getLoadInitialData = (req,res) =>{
- 	var key = req.query.apikey;
+ 	/*var key = req.query.apikey;
 	if (key != apikey || !key){
 		res.sendStatus(401);
-	} else {
+	} else {*/
 	
 		republican_stats = [
 		{ country : "Switzerland", year : 1648, gdppc : 58730, population : 8362000},
@@ -30,7 +30,7 @@ var apikey = 1234;
 
 		console.log("16 elements initialized.");
 		res.sendStatus(201);
-	}
+	//}
 
 }
 
@@ -42,9 +42,9 @@ module.exports.getResources = (req,res) =>{
 	var to = req.query.to;
 	var aux = [];
 	var aux2 = [];
-	if (key != apikey || !key){
+	/*if (key != apikey || !key){
 		res.sendStatus(401);
-	} else {
+	} else {*/
 		if (fron || to || limit || offset) {
 			if (!fron)
 				fron = 0;
@@ -88,17 +88,17 @@ module.exports.getResources = (req,res) =>{
 		console.log("To = "+ to);
 		console.log("Limit = "+ limit);
 		console.log("Offset = "+ offset);
-	}
+	//}
 }
 
 module.exports.getData = (req,res) =>{
-	var key=req.query.apikey;
+	//var key=req.query.apikey;
 	var data = req.params.data;
 	var aux = null;
 	var aux2= [];
-	if (key != apikey || !key){
+	/*if (key != apikey || !key){
 		res.sendStatus(401);
-	} else {
+	} else {*/
 		if(isNaN(data)){
 			for (var i = 0; i < republican_stats.length; i++) {
 				if (republican_stats[i].country == data){
@@ -122,16 +122,16 @@ module.exports.getData = (req,res) =>{
 			res.sendStatus(404);
 		}
 		console.log("New GET of resource ");
-	}	
+	//}	
 }
 module.exports.getDataDouble = (req,res)=>{
-	var key=req.query.apikey;
+	//var key=req.query.apikey;
 	var country = req.params.country;
 	var year = req.params.year;
 	var aux= [];
-	if (key != apikey || !key){
+	/*if (key != apikey || !key){
 		res.sendStatus(401);
-	} else {
+	} else {*/
 		if(isNaN(country)){
 			for (var i = 0; i < republican_stats.length; i++) {
 				if (republican_stats[i].country == country){
@@ -148,16 +148,16 @@ module.exports.getDataDouble = (req,res)=>{
 		}
 		
 		console.log("New GET of resource ");
-	}
+	//}
 }
 
 module.exports.getPost = (req,res) =>{
-	var key=req.query.apikey;
+	//var key=req.query.apikey;
 	var stat = req.body;
 	var no = 0;
-	if (key != apikey || !key){
+	/*if (key != apikey || !key){
 		res.sendStatus(401);
-	}else{
+	}else{*/
 		if (stat.country == null || stat.country == "" || !isNaN(stat.country) || isNaN(stat.year) || isNaN(stat.gdppc)|| isNaN(stat.population) ){
 		 	res.sendStatus(400);
 		}else {
@@ -173,26 +173,26 @@ module.exports.getPost = (req,res) =>{
 					res.sendStatus(201);
 			}
 		}
-	}
+	//}
 }
 
 
 module.exports.getPostForbidden = (req,res) =>{
-	var key=req.query.apikey;
+	/*var key=req.query.apikey;
 	if (key != apikey || !key){
 		res.sendStatus(401);
-	} else {
+	} else {*/
 		res.sendStatus(405);
-	}
+	//}
 }
 
 module.exports.getPut =  (req,res) =>{
 	var key=req.query.apikey;
 	var stat = req.body;
 	var aux = null;
-	if (key != apikey || !key){
+	/*if (key != apikey || !key){
 		res.sendStatus(401);
-	} else {
+	} else {*/
 		if (stat.country == null || stat.country == "" || !isNaN(stat.country) || isNaN(stat.year) || isNaN(stat.gdppc)|| isNaN(stat.population) ){
 		 	res.sendStatus(400);
 		}else{
@@ -216,7 +216,7 @@ module.exports.getPut =  (req,res) =>{
 		}
 
 		console.log("New PUT of resource "+stat.country);
-	}	
+	//}	
 }
 
 module.exports.getPutYear = (req,res) =>{
@@ -225,9 +225,9 @@ module.exports.getPutYear = (req,res) =>{
 	var country = req.params.country;
 
 	var aux = null;
-	if (key != apikey || !key){
+	/*if (key != apikey || !key){
 		res.sendStatus(401);
-	} else {
+	} else {*/
 		if(isNaN(country)){
 			if (year<0 || year > 2016 || isNaN(year)){
 			 	res.sendStatus(400);
@@ -247,36 +247,36 @@ module.exports.getPutYear = (req,res) =>{
 			res.sendStatus(404);
 		}
 		console.log("New PUT of resource "+stat.country);
-	}	
+	//}	
 }
 
 module.exports.getPutForbidden =  (req,res) =>{
-	var key=req.query.apikey;
+	/*var key=req.query.apikey;
 	if (key != apikey || !key){
 		res.sendStatus(401);
-	} else {
+	} else {*/
 		res.sendStatus(405);
-	}
+	//}
 }
 
 module.exports.getDelete = (req,res) =>{
-	var key=req.query.apikey;
+	/*var key=req.query.apikey;
 	if (key != apikey || !key){
 		res.sendStatus(401);
-	} else {
+	} else {*/
 		republican_stats = [];
 		console.log("You DELETED all statistics");
 		res.send(200);
-	}
+	//}
 }
 
 module.exports.getDeleteOne = (req,res) =>{
 	var key=req.query.apikey;
 	var country = req.params.country;
 	var aux = null;
-	if (key != apikey || !key){
+	/*if (key != apikey || !key){
 		res.sendStatus(401);
-	} else {
+	} else {*/
 		for (var i = 0; i < republican_stats.length; i++) {
 			if (republican_stats[i].country == country){
 				aux = republican_stats[i];
@@ -289,7 +289,7 @@ module.exports.getDeleteOne = (req,res) =>{
 		}
 		
 		console.log("You deleted the country's statistics successfully.");
-	}	
+	//}	
 }
 
 
