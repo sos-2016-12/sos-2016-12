@@ -7,8 +7,7 @@ var bodyParser = require("body-parser");
 
 var governify = require("governify"); 
 //apikey para governify (standard) = multiPlan_C2_sos-2016-12-arr_ag
-//apikey para governify (premium) = multiPlan_C4_sos-2016-12-arr_ag
-
+///apikey para governify (premium) = multiPlan_C4_sos-2016-12-arr_ag
 
 
 governify.control(app,{
