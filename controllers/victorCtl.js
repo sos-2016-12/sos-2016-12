@@ -1,6 +1,6 @@
 
 var republican_stats = [];
-var apikey = 1234;
+//var apikey = 1234;
 
 
  module.exports.getLoadInitialData = (req,res) =>{
@@ -187,7 +187,7 @@ module.exports.getPostForbidden = (req,res) =>{
 }
 
 module.exports.getPut =  (req,res) =>{
-	var key=req.query.apikey;
+	//var key=req.query.apikey;
 	var stat = req.body;
 	var aux = null;
 	/*if (key != apikey || !key){
@@ -271,7 +271,7 @@ module.exports.getDelete = (req,res) =>{
 }
 
 module.exports.getDeleteOne = (req,res) =>{
-	var key=req.query.apikey;
+	//var key=req.query.apikey;
 	var country = req.params.country;
 	var aux = null;
 	/*if (key != apikey || !key){
