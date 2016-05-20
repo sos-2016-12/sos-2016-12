@@ -6,9 +6,11 @@
     <script type="text/javascript">
        google.charts.load('current', {'packages':['corechart']});
       $(document).ready(()=>{
+        var apikey = $("#apikey").val();
 
         var request=$.ajax({
-          url:"/api/v1/republican_stats?apikey=1234"
+
+          url:"/api/v1/republican_stats?apikey="+apikey
         });
 
         request.done((dataFromServer,status)=>{
