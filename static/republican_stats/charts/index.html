@@ -6,9 +6,11 @@
     <script type="text/javascript">
        google.charts.load('current', {'packages':['corechart']});
       $(document).ready(()=>{
+        
 
         var request=$.ajax({
-          url:"/api/v1/republican_stats?apikey=1234"
+
+          url:"/api/v1/republican_stats?apikey=multiPlan_C4_sos-2016-12-vss_ag"
         });
 
         request.done((dataFromServer,status)=>{

@@ -333,7 +333,7 @@ $(document).ready(function (){
 					if(!countryS && !yearS){
 						var request = $.ajax({
 
-							  url: "/api/v1/republican_stats?apikey=1234&from="+fromS+"&to="+to+"&limit="+elements+"&offset="+elements*(pages-1),
+							  url: "/api/v1/republican_stats?apikey="+apikey+"&from="+fromS+"&to="+to+"&limit="+elements+"&offset="+elements*(pages-1),
 							  type: "GET",
 							  contentType: "application/json",
 	  

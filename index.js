@@ -9,6 +9,8 @@ var governify = require("governify");
 //apikey para governify (standard) = multiPlan_C2_sos-2016-12-arr_ag
 ///apikey para governify (premium) = multiPlan_C4_sos-2016-12-arr_ag
 
+///apikey para governify (premium) = multiPlan_C4_sos-2016-12-vss_ag
+//apikey para governify (standard) = multiPlan_C2_sos-2016-12-vss_ag
 
 governify.control(app,{
 	datastore : "http://datastore.governify.io/api/v6.1/",
@@ -18,7 +20,7 @@ governify.control(app,{
 
 governify.control(app,{
 	datastore : "http://datastore.governify.io/api/v6.1/",
-	namespace : "sos-2016-12-arr",
+	namespace : "sos-2016-12-vss",
 	defaultPath : "/api/v1/republican_stats",
 });
 /////////////// PROXY Ale///////////////////
