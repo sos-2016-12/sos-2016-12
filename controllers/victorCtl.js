@@ -25,6 +25,12 @@ var republican_stats = [];
 		{ country : "Paraguay", year : 1811, gdppc : 8717, population : 6855000},
 		{ country : "Chile", year : 1818, gdppc : 23556, population : 18192000},
 		{ country : "Austria", year : 1918, gdppc : 47031, population : 8736000},
+		{ country : "Germany", year : 1918, gdppc : 46893, population : 82040000},
+		{ country : "Poland", year : 1918, gdppc : 26210, population : 38514000},
+		{ country : "Italy", year : 1946, gdppc : 35801, population : 60832000},
+		{ country : "Turkey", year : 1923, gdppc : 20188, population : 79270000},
+		{ country : "France", year : 1870, gdppc : 41018, population : 64629000},
+		{ country : "Hungary", year : 1946, gdppc : 25891, population : 9807000},
 		{ country : "Russia", year : 1917, gdppc : 24067, population : 14668300}];
 
 
