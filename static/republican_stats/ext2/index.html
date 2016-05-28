@@ -5,8 +5,26 @@
 
     <script type="text/javascript">
        google.charts.load('current', {'packages':['corechart']});
+
       $(document).ready(()=>{
         
+        var request = require("request");
+
+        var path = '/api/v1/pressure-and-temperatures?apikey=multiPlan_C4_sos-2016-11-pgt_ag';
+        var apiServerHost = 'https://sos-2016-11.herokuapp.com';
+
+        app.use(path,function(req,res){
+          var url = apiServerHost + req.baseUrl + req.url;
+          console.log("Piped: "+ req.baseUrl + req.url);
+          console.log("URL Accesed: "+ url);
+          
+          req.pipe(request(url,(error,response,body)=>{
+                if(error){
+                  console.error(error);
+                  res.sendStatus(503);//servicio no disponible
+              }
+            })).pipe(res);
+        });
 
         var requestMy=$.ajax({
 
@@ -15,31 +33,24 @@
           contentType : "application/json"
         });
 
-        var requestAle=$.ajax({
-
-          url:"/api/v1/death_penalty_stats?apikey=multiPlan_C4_sos-2016-12-arr_ag",
-          type:"GET",
-          contentType : "application/json"
-        });
-
         requestMy.done((myData)=>{
-          requestAle.done((aleData)=>{
+          res.done((pedroData)=>{
             google.charts.setOnLoadCallback(drawSeriesChart);
 
             function drawSeriesChart() {
               console.log("Data From My Server: "+myData);
-              console.log("Data From Ale's Server: "+aleData);
-              var dataForWidget=[["Country",'Year',"Gdppc", "Murder rate per 100K people"]];
+              console.log("Data From Pedro's Server: "+pedroData);
+              var dataForWidget=[["Country",'Year',"Gdppc", "Temperature"]];
 
 
               for (i=0;i<myData.length;i++){
                 var myItem=myData[i];
                 console.log("myItem: "+myItem);
-                console.log("aleItem: "+aleItem);
-                for (j=0;j<aleData.length;j++){
-                  var aleItem=aleData[j]; 
-                  if(myItem.country==aleItem.country){
-                    var itemForWidget =[myItem.country,parseInt(myItem.year),parseInt(myItem.gdppc), parseFloat(aleItem.murder_rate_per_100k_people)];
+                
+                for (j=0;j<pedroItem.length;j++){
+                  var pedroItem=pedroData[j]; 
+                  if(myItem.country==pedroItem.name){
+                    var itemForWidget =[myItem.country,parseInt(myItem.year),parseInt(myItem.gdppc), parseFloat(pedroItem.t)];
                     dataForWidget.push(itemForWidget);
                   }
                 }
@@ -49,7 +60,7 @@
               var data = google.visualization.arrayToDataTable(dataForWidget);  //transformation from data
               var options = {
                 title: 'Correlation between the year of republican goverment, gdppc'+
-                ' Murder rate per 100K people',
+                ' Temperatures',
                 hAxis: {title: 'Year'},
                 vAxis: {title: 'Gdppc'},
                 colorAxis: {colors: ['#F6CECE', '#DF0101']},
@@ -78,7 +89,7 @@
   </head>
 
   <body>
-    <h1>Integration Ale's API</h1>
+    <h1>Integration Pedro's API</h1>
     <div id="series_chart_div" style="width: 1300px; height: 700px;"></div>
   </body>
 </html>

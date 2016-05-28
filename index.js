@@ -64,7 +64,6 @@ app.use(path,function(req,res){
          	res.sendStatus(503);//servicio no disponible
  	    }
     })).pipe(res);
-    console.log("datos"+res);
 });
 
 ///////////////////////////////////////
