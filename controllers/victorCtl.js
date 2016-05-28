@@ -17,8 +17,6 @@ var republican_stats = [];
 		{ country : "Peru", year : 1824, gdppc : 11403, population : 31490000},
 		{ country : "Colombia", year : 1819, gdppc : 11284, population : 48782000},
 		{ country : "Brazil", year : 1889, gdppc : 10284, population : 206151000},
-		{ country : "France", year : 1870, gdppc : 22255, population : 64643000},
-		{ country : "Italy", year : 1946, gdppc : 15689, population : 60832000},
 		{ country : "Liberia", year : 1847, gdppc : 855, population : 4132000},
 		{ country : "Uruguay", year : 1828, gdppc : 21247, population : 3480000},
 		{ country : "Mexico", year : 1867, gdppc : 18370, population : 12227300},
