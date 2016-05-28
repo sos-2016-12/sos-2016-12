@@ -30,12 +30,13 @@
 
               for (i=0;i<myData.length;i++){
                 var myItem=myData[i];
-                var aleItem=aleData[i];
+                var aleItem=aleData[i]; 
                 console.log("myItem: "+myItem);
                 console.log("aleItem: "+aleItem);
-                if(myItem.country==aleItem.country)
+                if(myItem.country==aleItem.country){
                   var itemForWidget =[myItem.country,parseInt(myItem.year),parseInt(myItem.gdppc), parseInt(aleItem.murder_rate_per_100k_people)];
                   dataForWidget.push(itemForWidget);
+                }
               }
               console.log("Data far widget: "+dataForWidget);
 
