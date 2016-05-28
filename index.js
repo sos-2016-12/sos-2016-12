@@ -221,7 +221,7 @@ app.get("/api/v1/death_penalty_stats/loadInitialData", (req,res) =>{
 	{ country : "Argentina", abolition_year : 1984, for_all_crimes : "no", murder_rate_per_100k_people : 7.0},
 	{ country : "France", abolition_year : 1981, for_all_crimes : "yes", murder_rate_per_100k_people : 1.2},
 	{ country : "Hungary", abolition_year : 1990, for_all_crimes : "yes", murder_rate_per_100k_people : 2.7},
-	{ country : "South Africa", abolition_year : 1997, for_all_crimes : "yes", murder_rate_per_100k_people : 31.9}];
+	{ country : "SouthAfrica", abolition_year : 1997, for_all_crimes : "yes", murder_rate_per_100k_people : 31.9}];
 	console.log("12 elements initialized.");
 	res.sendStatus(201);
 });
