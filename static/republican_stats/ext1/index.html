@@ -30,17 +30,19 @@
               console.log("Data From My Server: "+myData);
               console.log("Data From Ale's Server: "+aleData);
               var dataForWidget=[["Country",'Year',"Gdppc", "Murder rate per 100K people"]];
-              
+
 
               for (i=0;i<aleData.length;i++){
                 var myItem=myData[i];
-                var aleItem=aleData[i]; 
                 console.log("myItem: "+myItem);
                 console.log("aleItem: "+aleItem);
-                //if(myItem.country===aleItem.country){
-                  var itemForWidget =[myItem.country,parseInt(myItem.year),parseInt(myItem.gdppc), parseFloat(aleItem.murder_rate_per_100k_people)];
-                  dataForWidget.push(itemForWidget);
-                //}
+                for (j=0;j<aleData.length;j++){
+                  var aleItem=aleData[j]; 
+                  if(myItem.country==aleItem.country){
+                    var itemForWidget =[myItem.country,parseInt(myItem.year),parseInt(myItem.gdppc), parseFloat(aleItem.murder_rate_per_100k_people)];
+                    dataForWidget.push(itemForWidget);
+                  }
+                }
               }
               console.log("Data far widget: "+dataForWidget);
 
