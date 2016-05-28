@@ -211,7 +211,7 @@ app.get("/api/v1/death_penalty_stats/loadInitialData", (req,res) =>{
 */
 app.get("/api/v1/death_penalty_stats/loadInitialData", (req,res) =>{
 	
-	death_penalty_stats = [{ country : "SPAIN", abolition_year : 1995, for_all_crimes : "yes", murder_rate_per_100k_people : 0.8},
+	death_penalty_stats = [{ country : "Spain", abolition_year : 1995, for_all_crimes : "yes", murder_rate_per_100k_people : 0.8},
 	{ country : "Germany", abolition_year : 1987, for_all_crimes : "yes", murder_rate_per_100k_people : 0.8},
 	{ country : "Peru", abolition_year : 1979, for_all_crimes : "no", murder_rate_per_100k_people : 9.6},
 	{ country : "Turkey", abolition_year : 1984, for_all_crimes : "no", murder_rate_per_100k_people : 2.6},
