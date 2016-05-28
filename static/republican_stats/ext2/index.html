@@ -5,10 +5,7 @@
 
     <script type="text/javascript">
        google.charts.load('current', {'packages':['corechart']});
-
-      $(document).ready(()=>{
-        
-        var request = require("request");
+       var request = require("request");
 
         var path = '/api/v1/pressure-and-temperatures?apikey=multiPlan_C4_sos-2016-11-pgt_ag';
         var apiServerHost = 'https://sos-2016-11.herokuapp.com';
@@ -25,6 +22,9 @@
               }
             })).pipe(res);
         });
+
+      $(document).ready(()=>{
+        
 
         var requestMy=$.ajax({
 
