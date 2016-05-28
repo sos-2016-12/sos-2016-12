@@ -5,23 +5,7 @@
 
     <script type="text/javascript">
        google.charts.load('current', {'packages':['corechart']});
-       var request = require("request");
 
-        var path = '/api/v1/pressure-and-temperatures?apikey=multiPlan_C4_sos-2016-11-pgt_ag';
-        var apiServerHost = 'https://sos-2016-11.herokuapp.com';
-
-        app.use(path,function(req,res){
-          var url = apiServerHost + req.baseUrl + req.url;
-          console.log("Piped: "+ req.baseUrl + req.url);
-          console.log("URL Accesed: "+ url);
-          
-          req.pipe(request(url,(error,response,body)=>{
-                if(error){
-                  console.error(error);
-                  res.sendStatus(503);//servicio no disponible
-              }
-            })).pipe(res);
-        });
 
       $(document).ready(()=>{
         
@@ -33,8 +17,14 @@
           contentType : "application/json"
         });
 
+        var requestPedro=$.ajax({
+
+          url:"/api/v1/pressure-and-temperatures?apikey=multiPlan_C4_sos-2016-11-pgt_ag",
+          type:"GET",
+          contentType : "application/json"
+        });
         requestMy.done((myData)=>{
-          res.done((pedroData)=>{
+          requestPedro.done((pedroData)=>{
             google.charts.setOnLoadCallback(drawSeriesChart);
 
             function drawSeriesChart() {
