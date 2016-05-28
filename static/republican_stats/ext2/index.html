@@ -37,7 +37,7 @@
                 var myItem=myData[i];
                 console.log("myItem: "+myItem);
                 
-                for (j=0;j<pedroItem.length;j++){
+                for (j=0;j<pedroData.length;j++){
                   var pedroItem=pedroData[j]; 
                   if(myItem.country==pedroItem.name){
                     var itemForWidget =[myItem.country,parseInt(myItem.year),parseInt(myItem.gdppc), parseFloat(pedroItem.t)];
