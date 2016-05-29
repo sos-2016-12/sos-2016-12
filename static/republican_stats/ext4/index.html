@@ -2,13 +2,18 @@
   <head>
     <script src="/republican_stats/js/jquery-2.2.3.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
 
     <script type="text/javascript">
-       google.charts.load('current', {'packages':['corechart']});
+      google.charts.load('current', { 'packages': ['map'] });
+
 
 
       $(document).ready(()=>{
         
+
+        $("#loadInitialData").click(function(){var country=
 
         var requestMy=$.ajax({
 
@@ -19,18 +24,18 @@
 
         var requestApi=$.ajax({
 
-          url:"/rest/v1/all",
+          url:"https://wheresitup.p.mashape.com/sources",
           type:"GET",
           contentType : "application/json"
         });
         requestMy.done((myData)=>{
           requestApi.done((apiData)=>{
-            google.charts.setOnLoadCallback(drawSeriesChart);
+            google.charts.setOnLoadCallback(drawMap);
 
-            function drawSeriesChart() {
-              console.log("Data From My Server: "+myData);
+            function drawMap() {
+              
               console.log("Data From Api's Server: "+apiData);
-              var dataForWidget=[["Country",'Year',"Gdppc", "Capital"]];
+              var dataForWidget=[["Country","Location"]];
 
 
               for (i=0;i<myData.length;i++){
@@ -39,8 +44,8 @@
                 
                 for (j=0;j<apiData.length;j++){
                   var apiItem=apiData[j]; 
-                  if(myItem.country==apiItem.name){
-                    var itemForWidget =[apiItem.capital,parseInt(myItem.year),parseInt(myItem.gdppc), parseInt(apiItem.area)];
+                  if(myItem.country==apiItem.country){
+                    var itemForWidget =[myItem.country,apiItem.location];
                     dataForWidget.push(itemForWidget);
                   }
                 }
@@ -48,27 +53,9 @@
               console.log("Data far widget: "+dataForWidget);
 
               var data = google.visualization.arrayToDataTable(dataForWidget);  //transformation from data
-              var options = {
-                title: 'Correlation between the year of republican goverment, gdppc'+
-                ' Temperatures',
-                hAxis: {title: 'Year'},
-                vAxis: {title: 'Gdppc'},
-                colorAxis: {colors: ['#CECEF6', '#08088A']},
-                sizeAxis:{
-                      minValue: 0,  
-                      maxSize: 20
-
-                    },
-                bubble: {
-                    textStyle: {
-                        fontSize: 11,
-                        auroaColor: 'none',
-                    }
-                   
-                }
-              };
-              var chart = new google.visualization.BubbleChart(document.getElementById('series_chart_div'));
-              chart.draw(data, options);
+              var options = { showTip: true };
+              var map = new google.visualization.Map(document.getElementById('chart_div'));
+              map.draw(data, options);
             }
           });
 
@@ -79,7 +66,8 @@
   </head>
 
   <body>
-    <h1>Integration with external api</h1>
+    <h1>Integration with Where is it Up</h1>
+    <p>Our API exposes site monitoring tools in 89 cities across 47 different countries on 6 continents</p>
     <div id="series_chart_div" style="width: 1300px; height: 700px;"></div>
   </body>
 </html>
