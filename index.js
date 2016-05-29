@@ -121,6 +121,24 @@ app.use(pathA,function(req,res){
     })).pipe(res);
 });
 
+var requestB = require("request");
+
+var pathB = '/teams/';
+var apiServerHostB = 'http://worldcup.sfg.io';
+
+app.use(pathB,function(req,res){
+	var url = apiServerHostB + req.baseUrl + req.url;
+	console.log("Piped: "+ req.baseUrl + req.url);
+ 	console.log("URL Accesed: "+ url);
+ 	
+	req.pipe(request2(url,(error,response,body)=>{
+      	if(error){
+	        console.error(error);
+         	res.sendStatus(503);//servicio no disponible
+ 	    }
+    })).pipe(res);
+});
+
 ///////////////////////////////////////
 
 
