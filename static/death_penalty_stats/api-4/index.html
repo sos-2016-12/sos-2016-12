@@ -19,10 +19,12 @@
 
         var requestExt=$.ajax({
 
-          url:"/api/v1/team?apikey=multiPlan_C4_sos-2016-12-arr_ag",
+          url:"/api/v1/team?apikey=LvCyzwRcggmshLvwhSsYAmCgEWKNp1L2LRgjsnXnV9Q4fspO1O",
           type:"GET",
           contentType : "application/json"
         });
+
+        
         requestMy.done((myData)=>{
           requestExt.done((extData)=>{
             google.charts.setOnLoadCallback(drawSeriesChart);
