@@ -24,7 +24,7 @@
 
         var requestApi=$.ajax({
 
-          url:"/indexs",
+          url:"/teams/",
           type:"GET",
           contentType : "application/json"
         });
@@ -45,7 +45,7 @@
                 for (j=0;j<apiData.length;j++){
                   var apiItem=apiData[j]; 
                   if(myItem.country==apiItem.country){
-                    var itemForWidget =[myItem.country,apiItem.Affordability_Index];
+                    var itemForWidget =[myItem.country,parseInt(apiItem.group_id)];
                     dataForWidget.push(itemForWidget);
                   }
                 }
@@ -66,8 +66,9 @@
   </head>
 
   <body>
-    <h1>Integration with Global Property Price Index</h1>
-    <p>Country and Affordability Index.</p>
+    <h1>Integration with worldcup.sfg.io/</h1>
+    <p>List of all teams in world cup, along with fifa abbreviation 
+    </p>
     <div id="series_chart_div" style="width: 1300px; height: 700px;"></div>
   </body>
 </html>
