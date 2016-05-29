@@ -222,6 +222,10 @@ app.get("/api/v1/death_penalty_stats/loadInitialData", (req,res) =>{
 	{ country : "France", abolition_year : 1981, for_all_crimes : "yes", murder_rate_per_100k_people : 1.2},
 	{ country : "Hungary", abolition_year : 1990, for_all_crimes : "yes", murder_rate_per_100k_people : 2.7},
 	{ country : "Russia", abolition_year : 1980, for_all_crimes : "no", murder_rate_per_100k_people : 9.0},
+	{ country : "Australia", abolition_year : 1964, for_all_crimes : "yes", murder_rate_per_100k_people : 1.0},
+	{ country : "Canada", abolition_year : 1976, for_all_crimes : "yes", murder_rate_per_100k_people : 2.0},
+	{ country : "United States", abolition_year : 2008, for_all_crimes : "no", murder_rate_per_100k_people : 15.0},
+	{ country : "Greece", abolition_year : 1986, for_all_crimes : "yes", murder_rate_per_100k_people : 7.0},
 	{ country : "SouthAfrica", abolition_year : 1997, for_all_crimes : "yes", murder_rate_per_100k_people : 31.9}];
 
 	console.log("12 elements initialized.");
