@@ -85,18 +85,18 @@ app.use(path,function(req,res){
 });
 
 
-var request3 = require("request");
+var requestA = require("request");
 
-var path3 = '/rest/v1/all';
-var apiServerHost3 = 'https://ajayakv-rest-countries-v1.p.mashape.com';
+var pathA = '/rest/v1/all';
+var apiServerHostA = 'https://ajayakv-rest-countries-v1.p.mashape.com';
 
-app.use(path3,function(req,res){
-	var url = apiServerHost2 + req.baseUrl + req.url;
+app.use(pathA,function(req,res){
+	var url = apiServerHostA + req.baseUrl + req.url;
 	console.log("Piped: "+ req.baseUrl + req.url);
  	console.log("URL Accesed: "+ url);
  	
 	req.pipe(request2(url,(error,response,body)=>{
-      	if(error){
+      	if(error){	
 	        console.error(error);
          	res.sendStatus(503);//servicio no disponible
  	    }
