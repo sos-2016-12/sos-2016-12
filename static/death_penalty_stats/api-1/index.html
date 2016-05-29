@@ -26,20 +26,20 @@
           requestExt.done((vData)=>{
             google.charts.setOnLoadCallback(drawRegionsMap);
 
-            function drawSeriesChart() {
+            function drawRegionsMap() {
               console.log("Data From My Server: "+myData);
               console.log("Data From Victor's Server: "+vData);
-              var dataForWidget=[["Country",'Year',"Gdppc", "Murder rate per 100K people"]];
+              var dataForWidget=[['Country','Year of institution of Republic','Gdppc', 'Murder rate per 100K people']];
 
 
               for (i=0;i<myData.length;i++){
-                var myItem=myData[i];
+                var myItem = myData[i];
                 console.log("myItem: "+myItem);
                 console.log("vItem: "+vItem);
-                for (j=0;j<vData.length;j++){
-                  var vItem=vData[j]; 
-                  if(myItem.country==vItem.country){
-                    var itemForWidget =[myItem.country,parseInt(myItem.year),parseInt(myItem.gdppc), parseFloat(vItem.murder_rate_per_100k_people)];
+                for (j=0; j<vData.length; j++){
+                  var vItem = vData[j]; 
+                  if(myItem.country == vItem.country){
+                    var itemForWidget = [myItem.country,parseInt(vItem.year),parseInt(vItem.gdppc), parseFloat(myItem.murder_rate_per_100k_people)];
                     dataForWidget.push(itemForWidget);
                   }
                 }
@@ -48,8 +48,7 @@
 
               var data = google.visualization.arrayToDataTable(dataForWidget);  //transformation from data
               var options = {
-                title: 'Correlation between the year of republican goverment, gdppc'+
-                ' Murder rate per 100K people',
+                title: 'countries, their gdppc and murder rate per 100k people',
                 colorAxis: {colors: ['#00853f', '#e31b23']},
               };
               var chart = var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
