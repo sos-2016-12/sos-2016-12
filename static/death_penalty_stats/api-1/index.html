@@ -51,9 +51,11 @@
                 title: 'countries, their gdppc and murder rate per 100k people',
                 colorAxis: {colors: ['#00853f', '#e31b23']},
               };
-              var chart = var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+              var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
               chart.draw(data, options);
             }
+
           });
 
         });
