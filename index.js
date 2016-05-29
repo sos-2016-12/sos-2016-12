@@ -228,7 +228,7 @@ app.get("/api/v1/death_penalty_stats/loadInitialData", (req,res) =>{
 	{ country : "Greece", abolition_year : 1986, for_all_crimes : "yes", murder_rate_per_100k_people : 7.0},
 	{ country : "SouthAfrica", abolition_year : 1997, for_all_crimes : "yes", murder_rate_per_100k_people : 31.9}];
 
-	console.log("12 elements initialized.");
+	console.log("16 elements initialized.");
 	res.sendStatus(201);
 });
 
