@@ -17,30 +17,30 @@
           contentType : "application/json"
         });
 
-        var requestPedro=$.ajax({
+        var requestApi=$.ajax({
 
-          url:"/api/v1/pressure-and-temperatures?apikey=multiPlan_C4_sos-2016-11-pgt_ag",
+          url:"/rest/v1/all",
           type:"GET",
           contentType : "application/json"
         });
         requestMy.done((myData)=>{
-          requestPedro.done((pedroData)=>{
+          requestApi.done((apiData)=>{
             google.charts.setOnLoadCallback(drawSeriesChart);
 
             function drawSeriesChart() {
               console.log("Data From My Server: "+myData);
-              console.log("Data From Pedro's Server: "+pedroData);
-              var dataForWidget=[["Country",'Year',"Gdppc", "Temperature"]];
+              console.log("Data From Api's Server: "+apiData);
+              var dataForWidget=[["Country",'Year',"Gdppc", "Capital"]];
 
 
               for (i=0;i<myData.length;i++){
                 var myItem=myData[i];
                 console.log("myItem: "+myItem);
                 
-                for (j=0;j<pedroData.length;j++){
-                  var pedroItem=pedroData[j]; 
-                  if(myItem.country==pedroItem.name){
-                    var itemForWidget =[myItem.country,parseInt(myItem.year),parseInt(myItem.gdppc), parseFloat(pedroItem.t)];
+                for (j=0;j<apiData.length;j++){
+                  var apiItem=apiData[j]; 
+                  if(myItem.country==apiItem.name){
+                    var itemForWidget =[apiItem.capital,parseInt(myItem.year),parseInt(myItem.gdppc), parseInt(apiItem.area)];
                     dataForWidget.push(itemForWidget);
                   }
                 }
