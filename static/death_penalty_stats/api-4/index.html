@@ -19,11 +19,10 @@
 
         var requestExt=$.ajax({
 
-          url:"/api/v1/team?apikey=LvCyzwRcggmshLvwhSsYAmCgEWKNp1L2LRgjsnXnV9Q4fspO1O",
+          url:"/api/v1/team",
           type:"GET",
           contentType : "application/json"
         });
-
         
         requestMy.done((myData)=>{
           requestExt.done((extData)=>{
