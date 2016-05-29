@@ -1,63 +1,73 @@
 <html>
   <head>
-    <script src="/death_penalty_stats/js/jquery-2.2.3.min.js"></script>
+    <script src="/republican_stats/js/jquery-2.2.3.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <script type="text/javascript">
-       google.charts.load('current', {'packages':['geochart']});
+       google.charts.load('current', {'packages':['corechart']});
+
+
       $(document).ready(()=>{
         
 
-        var request = $.ajax({
+        var requestMy=$.ajax({
 
-          url:"/api/v1/death_penalty_stats?apikey=multiPlan_C4_sos-2016-12-arr_ag",
+          url:"/api/v1/republican_stats?apikey=multiPlan_C4_sos-2016-12-vss_ag",
           type:"GET",
           contentType : "application/json"
         });
 
-        var requestExt = $.ajax({
+        var requestExt=$.ajax({
 
-          url:"http://api.tvmaze.com/shows/1",
+          url:"http://nflarrest.com/api/v1/team",
           type:"GET",
           contentType : "application/json"
         });
-
-        request.done((myData)=>{
+        requestMy.done((myData)=>{
           requestExt.done((extData)=>{
-            google.charts.setOnLoadCallback(drawRegionsMap);
+            google.charts.setOnLoadCallback(drawSeriesChart);
 
-            function drawRegionsMap() {
+            function drawSeriesChart() {
               console.log("Data From My Server: "+myData);
               console.log("Data From External Server: "+extData);
-              var dataForWidget=[['Country (Both)','Runtime (External)', 'ID (External)']];
+              var dataForWidget=[["Country",'Year',"Team", "Arrest Count"]];
 
 
-              for (i=0; i < myData.length; i++){
-                var myItem = myData[i];
+              for (i=0;i<myData.length;i++){
+                var myItem=myData[i];
                 console.log("myItem: "+myItem);
-                console.log("extItem: "+extItem);
-                for (j=0; j < extData.length; j++){
-                  var extItem = extData[j]; 
-                  if(myItem.country == extItem.network[2].country[0]){
-                    var itemForWidget = [myItem.country,parseInt(extItem.runtime), parseInt(extItem.id)];
-                    dataForWidget.push(itemForWidget);
-                  }
+                
+                for (j=0;j<extData.length;j++){
+                  var extItem=extData[j]; 
+                  var itemForWidget =[myItem.country,parseInt(myItem.abolition_year),extItem.Team, parseInt(extItem.arrest_count)];
+                  dataForWidget.push(itemForWidget);
                 }
               }
-              console.log("Data for widget: "+dataForWidget);
+              console.log("Data far widget: "+dataForWidget);
 
               var data = google.visualization.arrayToDataTable(dataForWidget);  //transformation from data
               var options = {
-                colorAxis: {colors: ['#00853f', '#e31b23']},
-                backgroundColor: '#81d4fa',
-                datalessRegionColor: 'white',
-                defaultColor: '#f5f5f5',
-              };
+                title: 'Correlation between the year of republican goverment, gdppc'+
+                ' Temperatures',
+                hAxis: {title: 'Year'},
+                vAxis: {title: 'Team'},
+                colorAxis: {colors: ['#F6CECE', '#DF0101']},
+                sizeAxis:{
+                      minValue: 0,  
+                      maxSize: 20
 
-              var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+                    },
+                bubble: {
+                    textStyle: {
+                        fontSize: 11,
+                        auroaColor: 'none',
+                    }
+                   
+                }
+              };
+              var chart = new google.visualization.BubbleChart(document.getElementById('series_chart_div'));
               chart.draw(data, options);
             }
-
           });
 
         });
@@ -67,7 +77,7 @@
   </head>
 
   <body>
-    <h1> TVMaze API Integration</h1>
-    <div id="regions_div" style="width: 1300px; height: 700px;"></div>
+    <h1>Integration NFL Arrests API</h1>
+    <div id="series_chart_div" style="width: 1300px; height: 700px;"></div>
   </body>
 </html>
