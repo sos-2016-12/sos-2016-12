@@ -24,7 +24,7 @@
 
         var requestApi=$.ajax({
 
-          url:"https://wheresitup.p.mashape.com/sources",
+          url:"https://ruv-global-property-price-index-v1.p.mashape.com/indexs",
           type:"GET",
           contentType : "application/json"
         });
@@ -35,7 +35,7 @@
             function drawMap() {
               
               console.log("Data From Api's Server: "+apiData);
-              var dataForWidget=[["Country","Location"]];
+              var dataForWidget=[["Country","Affordability Index"]];
 
 
               for (i=0;i<myData.length;i++){
@@ -45,7 +45,7 @@
                 for (j=0;j<apiData.length;j++){
                   var apiItem=apiData[j]; 
                   if(myItem.country==apiItem.country){
-                    var itemForWidget =[myItem.country,apiItem.location];
+                    var itemForWidget =[myItem.country,apiItem.Affordability_Index];
                     dataForWidget.push(itemForWidget);
                   }
                 }
@@ -66,8 +66,8 @@
   </head>
 
   <body>
-    <h1>Integration with Where is it Up</h1>
-    <p>Our API exposes site monitoring tools in 89 cities across 47 different countries on 6 continents</p>
+    <h1>Integration with Global Property Price Index</h1>
+    <p>Country and Affordability Index.</p>
     <div id="series_chart_div" style="width: 1300px; height: 700px;"></div>
   </body>
 </html>
