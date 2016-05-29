@@ -11,7 +11,6 @@ var republican_stats = [];
 	
 		republican_stats = [
 		{ country : "Switzerland", year : 1648, gdppc : 58730, population : 8362000},
-		{ country : "Paraguay", year : 1811, gdppc : 5294, population : 6855000},
 		{ country : "Argentina", year : 1816, gdppc : 22458, population : 43590000},
 		{ country : "Venezuela", year : 1819, gdppc : 13633, population : 31029000},
 		{ country : "Peru", year : 1824, gdppc : 11403, population : 31490000},
