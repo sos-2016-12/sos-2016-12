@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <script src="/death_penalty_stats/js/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+       google.charts.load('current', {'packages':['corechart']});
+      $(document).ready(()=>{
+        
+
+        var request = $.ajax({
+
+          url:"/api/v1/death_penalty_stats?apikey=multiPlan_C4_sos-2016-12-arr_ag",
+          type:"GET",
+          contentType : "application/json"
+        });
+
+        var requestExt = $.ajax({
+
+          url:"/api/v1/republican_stats?apikey=multiPlan_C4_sos-2016-12-vss_ag",
+          type:"GET",
+          contentType : "application/json"
+        });
+
+        request.done((myData)=>{
+          requestExt.done((vData)=>{
+            google.charts.setOnLoadCallback(drawRegionsMap);
+
+            function drawSeriesChart() {
+              console.log("Data From My Server: "+myData);
+              console.log("Data From Victor's Server: "+vData);
+              var dataForWidget=[["Country",'Year',"Gdppc", "Murder rate per 100K people"]];
+
+
+              for (i=0;i<myData.length;i++){
+                var myItem=myData[i];
+                console.log("myItem: "+myItem);
+                console.log("vItem: "+vItem);
+                for (j=0;j<vData.length;j++){
+                  var vItem=vData[j]; 
+                  if(myItem.country==vItem.country){
+                    var itemForWidget =[myItem.country,parseInt(myItem.year),parseInt(myItem.gdppc), parseFloat(vItem.murder_rate_per_100k_people)];
+                    dataForWidget.push(itemForWidget);
+                  }
+                }
+              }
+              console.log("Data far widget: "+dataForWidget);
+
+              var data = google.visualization.arrayToDataTable(dataForWidget);  //transformation from data
+              var options = {
+                title: 'Correlation between the year of republican goverment, gdppc'+
+                ' Murder rate per 100K people',
+                colorAxis: {colors: ['#00853f', '#e31b23']},
+              };
+              var chart = var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+              chart.draw(data, options);
+            }
+          });
+
+        });
+
+      });
+    </script>
+  </head>
+
+  <body>
+    <h1>Republican Stats API Integration</h1>
+    <div id="series_chart_div" style="width: 1300px; height: 700px;"></div>
+  </body>
+</html>
