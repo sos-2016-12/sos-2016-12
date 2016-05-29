@@ -29,7 +29,7 @@
             function drawRegionsMap() {
               console.log("Data From My Server: "+myData);
               console.log("Data From Victor's Server: "+vData);
-              var dataForWidget=[['Country','Year of institution of Republic', 'For All Crimes?']];
+              var dataForWidget=[['Country','Year of institution of Republic', 'Murder rate per 100k people']];
 
 
               for (i=0; i < myData.length; i++){
@@ -39,7 +39,7 @@
                 for (j=0; j < vData.length; j++){
                   var vItem = vData[j]; 
                   if(myItem.country == vItem.country){
-                    var itemForWidget = [myItem.country,parseInt(vItem.year), myItem.for_all_crimes];
+                    var itemForWidget = [myItem.country,parseInt(vItem.year), parseFloat(myItem.murder_rate_per_100k_people)];
                     dataForWidget.push(itemForWidget);
                   }
                 }
