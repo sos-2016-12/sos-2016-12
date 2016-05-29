@@ -43,6 +43,24 @@ app.use(path1,function(req,res){
     })).pipe(res);
 });
 
+var request2 = require("request");
+
+var path2 = '/rest/v1/all';
+var apiServerHost2 = 'https://restcountries.eu';
+
+app.use(path2,function(req,res){
+	var url = apiServerHost2 + req.baseUrl + req.url;
+	console.log("Piped: "+ req.baseUrl + req.url);
+ 	console.log("URL Accesed: "+ url);
+ 	
+	req.pipe(request2(url,(error,response,body)=>{
+      	if(error){
+	        console.error(error);
+         	res.sendStatus(503);//servicio no disponible
+ 	    }
+    })).pipe(res);
+});
+
 ///////////////////////////////////////
 
 
