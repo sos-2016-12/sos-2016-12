@@ -45,7 +45,7 @@
                 for (j=0;j<apiData.length;j++){
                   var apiItem=apiData[j]; 
                   if(myItem.country==apiItem.country){
-                    var itemForWidget =[myItem.country,parseInt(apiItem.group_id)];
+                    var itemForWidget =[myItem.country,myItem.country+": "+apiItem.group_id];
                     dataForWidget.push(itemForWidget);
                   }
                 }
