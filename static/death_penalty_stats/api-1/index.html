@@ -4,7 +4,7 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <script type="text/javascript">
-       google.charts.load('current', {'packages':['corechart']});
+       google.charts.load('current', {'packages':['geochart']});
       $(document).ready(()=>{
         
 
@@ -32,11 +32,11 @@
               var dataForWidget=[['Country','Year of institution of Republic','Gdppc', 'Murder rate per 100K people']];
 
 
-              for (i=0;i<myData.length;i++){
+              for (i=0; i < myData.length; i++){
                 var myItem = myData[i];
                 console.log("myItem: "+myItem);
                 console.log("vItem: "+vItem);
-                for (j=0; j<vData.length; j++){
+                for (j=0; j < vData.length; j++){
                   var vItem = vData[j]; 
                   if(myItem.country == vItem.country){
                     var itemForWidget = [myItem.country,parseInt(vItem.year),parseInt(vItem.gdppc), parseFloat(myItem.murder_rate_per_100k_people)];
@@ -44,7 +44,7 @@
                   }
                 }
               }
-              console.log("Data far widget: "+dataForWidget);
+              console.log("Data for widget: "+dataForWidget);
 
               var data = google.visualization.arrayToDataTable(dataForWidget);  //transformation from data
               var options = {
