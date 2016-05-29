@@ -61,6 +61,24 @@ app.use(path2,function(req,res){
     })).pipe(res);
 });
 
+var request3 = require("request");
+
+var path3 = '/api/v1/team';
+var apiServerHost3 = 'http://nflarrest.com';
+
+app.use(path3,function(req,res){
+	var url = apiServerHost3 + req.baseUrl + req.url;
+	console.log("Piped: "+ req.baseUrl + req.url);
+ 	console.log("URL Accesed: "+ url);
+ 	
+	req.pipe(request3(url,(error,response,body)=>{
+      	if(error){
+	        console.error(error);
+         	res.sendStatus(503);//servicio no disponible
+ 	    }
+    })).pipe(res);
+});
+
 ///////////////////////////////////////
 
 
@@ -97,6 +115,9 @@ app.use(pathA,function(req,res){
  	
 	req.pipe(request2(url,(error,response,body)=>{
       	if(error){	
+
+	req.pipe(requestA(url,(error,response,body)=>{
+      	if(error){
 	        console.error(error);
          	res.sendStatus(503);//servicio no disponible
  	    }
