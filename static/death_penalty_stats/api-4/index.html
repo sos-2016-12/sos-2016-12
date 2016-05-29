@@ -23,7 +23,7 @@
           type:"GET",
           contentType : "application/json"
         });
-        
+
         requestMy.done((myData)=>{
           requestExt.done((extData)=>{
             google.charts.setOnLoadCallback(drawSeriesChart);
@@ -31,7 +31,7 @@
             function drawSeriesChart() {
               console.log("Data From My Server: "+myData);
               console.log("Data From External Server: "+extData);
-              var dataForWidget=[["Country",'Year',"Team", "Arrest Count"]];
+              var dataForWidget=[['Country','Year', 'Arrest Count']];
 
 
               for (i=0;i<myData.length;i++){
@@ -40,7 +40,7 @@
                 
                 for (j=0;j<extData.length;j++){
                   var extItem=extData[j]; 
-                  var itemForWidget =[myItem.country,parseInt(myItem.abolition_year),extItem.Team, parseInt(extItem.arrest_count)];
+                  var itemForWidget =[myItem.country,parseInt(myItem.abolition_year), parseInt(extItem.arrest_count)];
                   dataForWidget.push(itemForWidget);
                 }
               }
