@@ -61,17 +61,17 @@ app.use(path2,function(req,res){
     })).pipe(res);
 });
 
-var request22 = require("request");
+var request3 = require("request");
 
-var path22 = '/api/v1/team';
-var apiServerHost22 = 'http://nflarrest.com';
+var path3 = '/api/v1/team';
+var apiServerHost3 = 'http://nflarrest.com';
 
-app.use(path22,function(req,res){
+app.use(path3,function(req,res){
 	var url = apiServerHost3 + req.baseUrl + req.url;
 	console.log("Piped: "+ req.baseUrl + req.url);
  	console.log("URL Accesed: "+ url);
  	
-	req.pipe(request22(url,(error,response,body)=>{
+	req.pipe(request3(url,(error,response,body)=>{
       	if(error){
 	        console.error(error);
          	res.sendStatus(503);//servicio no disponible
@@ -103,23 +103,23 @@ app.use(path,function(req,res){
 });
 
 
-// var request3 = require("request");
+var requestA = require("request");
 
-// var path3 = '/rest/v1/all';
-// var apiServerHost3 = 'https://ajayakv-rest-countries-v1.p.mashape.com';
+var pathA = '/rest/v1/all';
+var apiServerHostA = 'https://ajayakv-rest-countries-v1.p.mashape.com';
 
-// app.use(path3,function(req,res){
-// 	var url = apiServerHost2 + req.baseUrl + req.url;
-// 	console.log("Piped: "+ req.baseUrl + req.url);
-//  	console.log("URL Accesed: "+ url);
+app.use(pathA,function(req,res){
+	var url = apiServerHostA + req.baseUrl + req.url;
+	console.log("Piped: "+ req.baseUrl + req.url);
+ 	console.log("URL Accesed: "+ url);
  	
-// 	req.pipe(request2(url,(error,response,body)=>{
-//       	if(error){
-// 	        console.error(error);
-//          	res.sendStatus(503);//servicio no disponible
-//  	    }
-//     })).pipe(res);
-// });
+	req.pipe(requestA(url,(error,response,body)=>{
+      	if(error){
+	        console.error(error);
+         	res.sendStatus(503);//servicio no disponible
+ 	    }
+    })).pipe(res);
+});
 
 ///////////////////////////////////////
 
