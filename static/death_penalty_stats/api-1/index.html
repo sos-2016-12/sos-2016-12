@@ -39,7 +39,7 @@
                 for (j=0; j < vData.length; j++){
                   var vItem = vData[j]; 
                   if(myItem.country == vItem.country){
-                    var itemForWidget = [myItem.country,parseInt(vItem.year), parseFloat(myItem.for_all_crimes)];
+                    var itemForWidget = [myItem.country,parseInt(vItem.year), myItem.for_all_crimes];
                     dataForWidget.push(itemForWidget);
                   }
                 }
