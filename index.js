@@ -114,9 +114,6 @@ app.use(pathA,function(req,res){
  	console.log("URL Accesed: "+ url);
  	
 	req.pipe(request2(url,(error,response,body)=>{
-      	if(error){	
-
-	req.pipe(requestA(url,(error,response,body)=>{
       	if(error){
 	        console.error(error);
          	res.sendStatus(503);//servicio no disponible
