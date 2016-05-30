@@ -63,7 +63,7 @@ $(document).ready(function (){
 		  });
 
 		  request.always(function (jqXHR,status){
-		    if(status=="error" || jqXHR.status==401 || jqXHR.status==402){
+		    if(status=="error" && jqXHR.status==401 || jqXHR.status==402){
 		    	alert('Unauthorized: Apikey not valid');
 		    	
 
@@ -112,7 +112,7 @@ $(document).ready(function (){
 		  });
 
 		  request.always(function (jqXHR,status){
-		    if(status=="error" || jqXHR.status==401 || jqXHR.status==402){
+		    if(status=="error" && jqXHR.status==401 || jqXHR.status==402){
 
 			    alert('Unauthorized: Apikey not valid');
 
@@ -165,8 +165,6 @@ $(document).ready(function (){
 					 	console.log(jqXHR.status);
 					 	if ( jqXHR.status==401 || jqXHR.status==402) {
 					 		alert('Apikey not valid');
-					 	}else{
-					 		$("#log").html("error");
 					 	}
 					}
 
@@ -216,8 +214,6 @@ $(document).ready(function (){
 					 	console.log(jqXHR.status);
 					 	if (jqXHR.status==401 || jqXHR.status==402) {
 					 		alert('Apikey not valid');
-					 	}else{
-					 		$("#log").html("error");
 					 	}
 					}
 
@@ -377,8 +373,6 @@ $(document).ready(function (){
 					 	console.log(jqXHR.status);
 					 	if (jqXHR.status==401 || jqXHR.status==402) {
 					 		alert('Apikey not valid');
-					 	}else{
-					 		$("#log").html("error");
 					 	}
 					}	
 
