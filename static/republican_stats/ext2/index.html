@@ -40,19 +40,19 @@
                 for (j=0;j<pedroData.length;j++){
                   var pedroItem=pedroData[j]; 
                   if(myItem.country==pedroItem.name){
-                    var itemForWidget =[myItem.country, parseInt(myItem.year), parseInt(myItem.gdppc), pedroItem.t];
+                    var itemForWidget =[myItem.country, pmyItem.year, myItem.gdppc, parseFloat(pedroItem.t)];
                     dataForWidget.push(itemForWidget);
                   }
                 }
               }
-              console.log("Data far widget: "+dataForWidget);
+              console.log("Data for widget: "+dataForWidget);
 
               var data = google.visualization.arrayToDataTable(dataForWidget);  //transformation from data
               var options = {
                 title: 'Correlation between the year of republican goverment, gdppc'+
                 ' Temperatures',
                 hAxis: {title: 'Year'},
-                vAxis: {title: 'Gdppc'},
+                vAxis: {title: 'gdppcppc'},
                 colorAxis: {colors: ['#F6CECE', '#DF0101']},
                 sizeAxis:{
                       minValue: 0,  
