@@ -30,7 +30,7 @@
             function drawSeriesChart() {
               console.log("Data From My Server: "+myData);
               console.log("Data From Pedro's Server: "+pedroData);
-              var dataForWidget=[["Country",'Year',"Gdppc", "Temperature"]];
+              var dataForWidget=[["Country","Gdppc", "Temperature"]];
 
 
               for (i=0;i<myData.length;i++){
@@ -40,7 +40,7 @@
                 for (j=0;j<pedroData.length;j++){
                   var pedroItem=pedroData[j]; 
                   if(myItem.country==pedroItem.name){
-                    var itemForWidget =[myItem.country,parseInt(myItem.year),parseInt(myItem.gdppc), parseFloat(pedroItem.t)];
+                    var itemForWidget =[myItem.country,parseInt(myItem.gdppc), parseFloat(pedroItem.t)];
                     dataForWidget.push(itemForWidget);
                   }
                 }
