@@ -24,13 +24,11 @@ $(document).ready(function (){
 	    });
 
 	    request.always(function (jqXHR,status){
-		    if(status=="error" || jqXHR.status==401 || jqXHR.status==402){
+		    if(status=="error" && jqXHR.status==401 ){
 		        alert('Unauthorized: Apikey not valid');
-		    }else {
-
-		      //alert('Data loaded');
-
-		    }
+		    }else if(jqXHR.status==402){
+					 		alert('Sorry, you have to pay to use our API');
+			}
 	    });
 	});
 
@@ -63,7 +61,7 @@ $(document).ready(function (){
 		  });
 
 		  request.always(function (jqXHR,status){
-		    if(status=="error" && jqXHR.status==401 || jqXHR.status==402){
+		    if(status=="error" && jqXHR.status==401){
 		    	alert('Unauthorized: Apikey not valid');
 		    	
 
@@ -73,6 +71,9 @@ $(document).ready(function (){
 		    	alert('Data already exists');
 
 		    }
+		    else if(jqXHR.status==402){
+					 		alert('Sorry, you have to pay to use our API');
+			}
 		  });
 
 		}else{
@@ -112,17 +113,20 @@ $(document).ready(function (){
 		  });
 
 		  request.always(function (jqXHR,status){
-		    if(status=="error" && jqXHR.status==401 || jqXHR.status==402){
+		    if(status=="error" && jqXHR.status==401){
 
 			    alert('Unauthorized: Apikey not valid');
 
-		  	}if(status=="error" && jqXHR.status==405){
+		  	}else if(jqXHR.status==402){
+					 		alert('Sorry, you have to pay to use our API');
+			}
+		  	if(status=="error" && jqXHR.status==405){
 
 			    alert('Method not allowed');
 
 		    }if(status=="error" && jqXHR.status==404){
 
-			    alert('Not found');
+			    alert('This is somewhat embarrassing, isn’t it? It seems we can’t find what you’re looking for.');
 
 		    }
 		  });
@@ -163,8 +167,10 @@ $(document).ready(function (){
 					if(status == "error") {
 						$("#status").html(jqXHR.status);
 					 	console.log(jqXHR.status);
-					 	if ( jqXHR.status==401 || jqXHR.status==402) {
+					 	if ( jqXHR.status==401) {
 					 		alert('Apikey not valid');
+					 	}else if(jqXHR.status==402){
+					 		alert('Sorry, you have to pay to use our API');
 					 	}
 					}
 
@@ -212,8 +218,10 @@ $(document).ready(function (){
 					if(status == "error") {
 						$("#status").html(jqXHR.status);
 					 	console.log(jqXHR.status);
-					 	if (jqXHR.status==401 || jqXHR.status==402) {
+					 	if (jqXHR.status==401) {
 					 		alert('Apikey not valid');
+					 	}else if(jqXHR.status==402){
+					 		alert('Sorry, you have to pay to use our API');
 					 	}
 					}
 
@@ -255,8 +263,11 @@ $(document).ready(function (){
 		request.always(function (jqXHR,status){
 		    if(status=="error"){
 		      console.log("Status: "+jqXHR.status);
-		      if(jqXHR.status==401 || jqXHR.status==402)
-		      alert("You entered a wrong apikey")
+		      if(jqXHR.status==401){
+		      	alert("You entered a wrong apikey");
+		      }else if(jqXHR.status==402){
+					 		alert('Sorry, you have to pay to use our API');
+				}
 		    }
 
 		});
@@ -371,61 +382,20 @@ $(document).ready(function (){
 					 if(status == "error") {
 						$("#status").html(jqXHR.status);
 					 	console.log(jqXHR.status);
-					 	if (jqXHR.status==401 || jqXHR.status==402) {
+					 	if (jqXHR.status==401 ) {
 					 		alert('Apikey not valid');
+					 	}else if(jqXHR.status==402){
+					 		alert('Sorry, you have to pay to use our API');
+					 	}else if(jqXHR.status==404){
+					 		alert('This is somewhat embarrassing, isn’t it? It seems we can’t find what you’re looking for.	');
+
 					 	}
 					}	
 
 					});
 				
 
-		/*
 		
-	    /*console.log("Handling click");
-	    var apikey = $("#apikey").val();
-	    var countryS = $("#countryS").val();
-	    var yearS = $("#yearS").val();
-	    
-	     if(countryS && yearS){
-		  var request = $.ajax({
-		    url:"/api/v1/republican_stats/"+countryS+"/"+yearS+"?apikey="+apikey,
-		    type:"GET"
-		  });
-		}
-	    if(countryS){
-		  var request = $.ajax({
-		    url:"/api/v1/republican_stats/"+countryS+"?apikey="+apikey,
-		    type:"GET"
-		  });
-		}if(yearS){
-			var request = $.ajax({
-		    url:"/api/v1/republican_stats/"+yearS+"?apikey="+apikey,
-		    type:"GET"
-		  });
-		}if(!countryS && !yearS){
-			alert('What are you looking for?');
-		}
-
-
-
-	  request.done(function (data){
-	    console.log("Handling request (OK)");
-	    console.log("Data received: ");
-	    loadTable();
-
-
-	  });
-
-	  request.always(function (jqXHR,status){
-	    if(status=="error" && jqXHR.status==401){
-
-		   alert('Unauthorized: Apikey not valid');
-
-	  }
-
-	  });
-
-		*/
 	});
 
 
@@ -474,29 +444,17 @@ function loadTable(){
        				 $('#dataTable').append(trHTML);
        	});
 		
-		/*
-		request.done(function (data){
-		    console.log("Handling request (OK)");
-		 		    
-		    loadtable = $('<tbody></tbody>');
-		    for (i=0;i<data.length;i++){
-		      var row = $('<tr></tr>').appendTo(loadtable);
-		      $('<td class="data"></td>').text(data[i].country).appendTo(row);
-		      $('<td class="data"></td>').text(data[i].year).appendTo(row);
-		      $('<td class="data"></td>').text(data[i].gdppc).appendTo(row);
-		      $('<td class="data"></td>').text(data[i].population).appendTo(row);
-		    }
-		    console.log("Table:"+loadtable.html());
-		    loadtable.appendTo("#dataTable");
-		});
-		*/
 
 		request.always(function (jqXHR,status){
 		    if(status=="error"){
 		      console.log("Status: "+jqXHR.status);
-		      if(jqXHR.status==401 || jqXHR.status==402)
-		      alert("You entered a wrong apikey")
+		      if(jqXHR.status==401){
+		      	alert("You entered a wrong apikey")
+		      }else if(jqXHR.status==402){
+					alert('Sorry, you have to pay to use our API');
+				}
 		    }
+
 
 		});
 
