@@ -63,7 +63,7 @@ $(document).ready(function (){
 		  });
 
 		  request.always(function (jqXHR,status){
-		    if(status=="error" && jqXHR.status==401){
+		    if(status=="error" || jqXHR.status==401 || jqXHR.status==402){
 		    	alert('Unauthorized: Apikey not valid');
 		    	
 
@@ -112,7 +112,7 @@ $(document).ready(function (){
 		  });
 
 		  request.always(function (jqXHR,status){
-		    if(status=="error" && jqXHR.status==401){
+		    if(status=="error" || jqXHR.status==401 || jqXHR.status==402){
 
 			    alert('Unauthorized: Apikey not valid');
 
@@ -163,8 +163,7 @@ $(document).ready(function (){
 					if(status == "error") {
 						$("#status").html(jqXHR.status);
 					 	console.log(jqXHR.status);
-					 	if (jqXHR.status == 401) {
-					 		$("#log").html("The apikey you entered is not valid");
+					 	if ( jqXHR.status==401 || jqXHR.status==402) {
 					 		alert('Apikey not valid');
 					 	}else{
 					 		$("#log").html("error");
@@ -215,8 +214,7 @@ $(document).ready(function (){
 					if(status == "error") {
 						$("#status").html(jqXHR.status);
 					 	console.log(jqXHR.status);
-					 	if (jqXHR.status == 401) {
-					 		$("#log").html("The apikey you entered is not valid");
+					 	if (jqXHR.status==401 || jqXHR.status==402) {
 					 		alert('Apikey not valid');
 					 	}else{
 					 		$("#log").html("error");
@@ -261,7 +259,7 @@ $(document).ready(function (){
 		request.always(function (jqXHR,status){
 		    if(status=="error"){
 		      console.log("Status: "+jqXHR.status);
-		      if(jqXHR.status==401)
+		      if(jqXHR.status==401 || jqXHR.status==402)
 		      alert("You entered a wrong apikey")
 		    }
 
@@ -377,8 +375,7 @@ $(document).ready(function (){
 					 if(status == "error") {
 						$("#status").html(jqXHR.status);
 					 	console.log(jqXHR.status);
-					 	if (jqXHR.status == 401) {
-					 		$("#log").html("The apikey you entered is not valid");
+					 	if (jqXHR.status==401 || jqXHR.status==402) {
 					 		alert('Apikey not valid');
 					 	}else{
 					 		$("#log").html("error");
@@ -503,7 +500,7 @@ function loadTable(){
 		request.always(function (jqXHR,status){
 		    if(status=="error"){
 		      console.log("Status: "+jqXHR.status);
-		      if(jqXHR.status==401)
+		      if(jqXHR.status==401 || jqXHR.status==402)
 		      alert("You entered a wrong apikey")
 		    }
 
