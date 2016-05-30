@@ -2,6 +2,81 @@
   <head>
     <script src="/republican_stats/js/jquery-2.2.3.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+
+    <script type="text/javascript">
+      google.charts.load('current', { 'packages': ['map'] });
+
+
+
+      $(document).ready(()=>{
+        
+
+        
+
+        var requestMy=$.ajax({
+
+          url:"/api/v1/republican_stats?apikey=multiPlan_C4_sos-2016-12-vss_ag",
+          type:"GET",
+          contentType : "application/json"
+        });
+
+        var requestPedro=$.ajax({
+
+          url:"/api/v1/pressure-and-temperatures?apikey=multiPlan_C4_sos-2016-11-pgt_ag",
+          type:"GET",
+          contentType : "application/json"
+        });
+        requestMy.done((myData)=>{
+          requestPedro.done((pedroData)=>{
+            google.charts.setOnLoadCallback(drawMap);
+
+            function drawMap() {
+              
+              console.log("Data From Api's Server: "+apiData);
+              var dataForWidget=[["Country","Temperature"]];
+
+
+              for (i=0;i<myData.length;i++){
+                var myItem=myData[i];
+                console.log("myItem: "+myItem);
+                
+                for (j=0;j<pedroData.length;j++){
+                  var pedroItem=pedroData[j]; 
+                  if(myItem.country==pedroItem.name){
+                    var itemForWidget =[myItem.country,myItem.country+": "+pedroItem.t];
+                    dataForWidget.push(itemForWidget);
+                  }
+                }
+              }
+              console.log("Data for widget: "+dataForWidget);
+
+              var data = google.visualization.arrayToDataTable(dataForWidget);  //transformation from data
+              var options = { showTip: true };
+              var map = new google.visualization.Map(document.getElementById('chart_div'));
+              map.draw(data, options);
+            }
+          });
+
+        });
+
+      });
+    </script>
+  </head>
+
+  <body>
+    <h1>Integration Pedro's API</h1>
+    <p>Takes Country, Year and Gdppc from my api and Temperature from Pedro's api"</p>
+    <div id="chart_div"></div>
+  </body>
+</html>
+
+<!--
+<html>
+  <head>
+    <script src="/republican_stats/js/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <script type="text/javascript">
        google.charts.load('current', {'packages':['corechart']});
@@ -85,4 +160,4 @@
     <p>Takes Country, Year and Gdppc from my api and Temperature from Pedro's api"</p>
     <div id="series_chart_div" style="width: 1300px; height: 700px;"></div>
   </body>
-</html>
+</html>-->
