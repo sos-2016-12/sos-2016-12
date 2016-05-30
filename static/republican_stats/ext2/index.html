@@ -6,7 +6,6 @@
     <script type="text/javascript">
        google.charts.load('current', {'packages':['corechart']});
 
-
       $(document).ready(()=>{
         
 
@@ -23,6 +22,7 @@
           type:"GET",
           contentType : "application/json"
         });
+
         requestMy.done((myData)=>{
           requestPedro.done((pedroData)=>{
             google.charts.setOnLoadCallback(drawSeriesChart);
@@ -40,7 +40,7 @@
                 for (j=0;j<pedroData.length;j++){
                   var pedroItem=pedroData[j]; 
                   if(myItem.country==pedroItem.name){
-                    var itemForWidget =[myItem.country,parseInt(myItem.year),parseInt(myItem.gdppc), pedroItem.t];
+                    var itemForWidget =[myItem.country, parseInt(myItem.year), parseInt(myItem.gdppc), pedroItem.t];
                     dataForWidget.push(itemForWidget);
                   }
                 }
