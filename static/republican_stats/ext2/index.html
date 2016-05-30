@@ -30,7 +30,7 @@
             function drawSeriesChart() {
               console.log("Data From My Server: "+myData);
               console.log("Data From Pedro's Server: "+pedroData);
-              var dataForWidget=[["Country","Gdppc", "Temperature"]];
+              var dataForWidget=[["Country",'Year',"Gdppc", "Temperature"]];
 
 
               for (i=0;i<myData.length;i++){
@@ -40,7 +40,9 @@
                 for (j=0;j<pedroData.length;j++){
                   var pedroItem=pedroData[j]; 
                   if(myItem.country==pedroItem.name){
-                    var itemForWidget =[myItem.country,parseInt(myItem.gdppc), parseFloat(pedroItem.t)];
+                    var itemForWidget =[myItem.country,parseFloat(pedroItem.t), parseInt(myItem.year), parseInt(myItem.gdppc)];
+                    console.log(itemForWidget);
+
                     dataForWidget.push(itemForWidget);
                   }
                 }
@@ -52,7 +54,7 @@
                 title: 'Correlation between the year of republican goverment, gdppc'+
                 ' Temperatures',
                 hAxis: {title: 'Year'},
-                vAxis: {title: 'gdppcppc'},
+                vAxis: {title: 'gdppc'},
                 colorAxis: {colors: ['#F6CECE', '#DF0101']},
                 sizeAxis:{
                       minValue: 0,  
