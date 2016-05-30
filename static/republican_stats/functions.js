@@ -27,7 +27,9 @@ $(document).ready(function (){
 		    if(status=="error" && jqXHR.status==401 ){
 		        alert('Unauthorized: Apikey not valid');
 		    }else if(jqXHR.status==402){
-					 		alert('Sorry, you have to pay to use our API');
+					alert('Sorry, you have to pay to use our API');
+			}else if(jqXHR.status==429){
+					alert('Sorry, you have to pay again');
 			}
 	    });
 	});
@@ -73,6 +75,8 @@ $(document).ready(function (){
 		    }
 		    else if(jqXHR.status==402){
 					 		alert('Sorry, you have to pay to use our API');
+			}else if(jqXHR.status==429){
+					alert('Sorry, you have to pay again');
 			}
 		  });
 
@@ -128,7 +132,9 @@ $(document).ready(function (){
 
 			    alert('This is somewhat embarrassing, isn’t it? It seems we can’t find what you’re looking for.');
 
-		    }
+		    }else if(jqXHR.status==429){
+					alert('Sorry, you have to pay again');
+			}
 		  });
 
 		}else{
@@ -171,7 +177,9 @@ $(document).ready(function (){
 					 		alert('Apikey not valid');
 					 	}else if(jqXHR.status==402){
 					 		alert('Sorry, you have to pay to use our API');
-					 	}
+					 	}else if(jqXHR.status==429){
+							alert('Sorry, you have to pay again');
+						}
 					}
 
 				});
@@ -222,7 +230,9 @@ $(document).ready(function (){
 					 		alert('Apikey not valid');
 					 	}else if(jqXHR.status==402){
 					 		alert('Sorry, you have to pay to use our API');
-					 	}
+					 	}else if(jqXHR.status==429){
+							alert('Sorry, you have to pay again');
+						}
 					}
 
 					});
@@ -267,7 +277,10 @@ $(document).ready(function (){
 		      	alert("You entered a wrong apikey");
 		      }else if(jqXHR.status==402){
 					 		alert('Sorry, you have to pay to use our API');
+				}else if(jqXHR.status==429){
+					alert('Sorry, you have to pay again');
 				}
+
 		    }
 
 		});
@@ -389,7 +402,9 @@ $(document).ready(function (){
 					 	}else if(jqXHR.status==404){
 					 		alert('This is somewhat embarrassing, isn’t it? It seems we can’t find what you’re looking for.	');
 
-					 	}
+					 	}else if(jqXHR.status==429){
+							alert('Sorry, you have to pay again');
+					}
 					}	
 
 					});
@@ -452,7 +467,9 @@ function loadTable(){
 		      	alert("You entered a wrong apikey")
 		      }else if(jqXHR.status==402){
 					alert('Sorry, you have to pay to use our API');
-				}
+				}else if(jqXHR.status==429){
+					alert('Sorry, you have to pay again');
+			}
 		    }
 
 
